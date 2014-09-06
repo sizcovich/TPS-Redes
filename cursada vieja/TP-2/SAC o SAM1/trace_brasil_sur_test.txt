@@ -1,0 +1,22 @@
+Enlace South America-1 (SAm-1):
+o
+Enlace South American Crossing (SAC)/Latin American Nautilus (LAN):
+
+Destino Brasil:
+	www.infraero.gov.br - Tiene ip de EEUU en el medio, pero por los tiempos va directo.
+	www.unirio.br - Tiene ip de EEUU en el medio, pero por los tiempos va directo.
+	www.riocapitaldaenergia.rj.gov.br - En 7-8 pasa por EEUU pero por los tiempos va directo.
+	www.turismosantos.com.br - En 7-8 pasa por EEUU pero por los tiempos va directo.
+	www.guaruja.com.br - En 7-8 pasa por EEUU pero por los tiempos va directo.
+
+	Fallidos: Las siguientes ips no sirven para testear el enlace, pero evidencian los tiempos cuando el paquete viaja 
+	distancias largas a EEUU o Italia.
+
+		www.santosfc.com.br - Se va a Italia, se van los tiempos. No sirve!
+		www.rio.rj.gov.br - Se va para Italia y no termina. No sirve!
+		www.rj.gov.br - No sale del país. No sirve!
+		www.cgu.gov.br - Se va a EEUU, que es mentira por los tiempos, pero luego no termina. No sirve!
+		www.fazenda.rj.gov.br - Se va a EEUU, no sirve!
+		www.santos.sp.gov.br - Va para EEUU, no sirve!
+		www.praiagrande.sp.gov.br - Se va al carajo, no sirve!
+		www.guaruja.sp.gov.br - Se va al carajo, no sirve!

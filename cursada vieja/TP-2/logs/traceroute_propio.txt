@@ -1,0 +1,2091 @@
+Tracing route to www.alcala.es [37.46.74.134]
+over a maximum of 30 hops:
+
+1	108 ms	108 ms	108 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	109 ms	109 ms	108 ms	200.89.164.137
+6	108 ms	109 ms	109 ms	200.89.165.150
+7	108 ms	109 ms	218 ms	200.63.151.249
+8	*	*	*	Request timed out.
+9	217 ms	218 ms	217 ms	94.142.121.214
+10	218 ms	217 ms	217 ms	176.52.249.118
+11	*	*	*	Request timed out.
+12	218 ms	219 ms	217 ms	213.140.55.182
+13	327 ms	328 ms	328 ms	213.200.81.161
+14	327 ms	327 ms	328 ms	77.67.65.82
+15	328 ms	328 ms	326 ms	87.236.216.66
+16	326 ms	327 ms	327 ms	37.46.74.134
+
+Trace complete.
+Tracing route to www.uax.es [www.uax.es]
+over a maximum of 30 hops:
+
+1	108 ms	109 ms	108 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	100 ms	200.89.164.129
+6	101 ms	99 ms	99 ms	200.89.165.130
+7	99 ms	99 ms	100 ms	200.89.165.222
+8	100 ms	102 ms	101 ms	200.63.151.57
+9	100 ms	101 ms	99 ms	200.51.208.62
+10	*	*	*	Request timed out.
+11	199 ms	200 ms	200 ms	5.53.5.142
+12	200 ms	200 ms	299 ms	94.142.126.177
+13	200 ms	200 ms	200 ms	213.140.52.46
+14	200 ms	200 ms	202 ms	154.54.7.157
+15	201 ms	200 ms	199 ms	154.54.41.14
+16	300 ms	301 ms	302 ms	154.54.43.158
+17	301 ms	300 ms	301 ms	130.117.3.49
+18	299 ms	299 ms	299 ms	130.117.3.118
+19	299 ms	300 ms	301 ms	149.11.68.50
+20	300 ms	299 ms	299 ms	130.206.245.2
+21	300 ms	300 ms	299 ms	130.206.214.98
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.ua.es [www.ua.es]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	102 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	99 ms	101 ms	200.89.165.173
+6	99 ms	99 ms	100 ms	200.89.165.5
+7	100 ms	99 ms	99 ms	200.89.165.250
+8	99 ms	99 ms	101 ms	200.63.151.57
+9	101 ms	100 ms	101 ms	200.51.208.62
+10	101 ms	*	*	84.16.9.233
+11	200 ms	200 ms	200 ms	5.53.5.138
+12	200 ms	200 ms	200 ms	94.142.126.177
+13	200 ms	200 ms	200 ms	213.140.52.34
+14	200 ms	200 ms	200 ms	154.54.41.237
+15	200 ms	200 ms	200 ms	66.28.4.81
+16	299 ms	301 ms	299 ms	154.54.43.162
+17	299 ms	300 ms	300 ms	154.54.56.150
+18	300 ms	299 ms	300 ms	130.117.3.118
+19	299 ms	299 ms	299 ms	149.11.68.50
+20	300 ms	299 ms	301 ms	130.206.245.30
+21	299 ms	299 ms	300 ms	130.206.211.82
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.ualm.es [80.86.184.202]
+over a maximum of 30 hops:
+
+1	99 ms	100 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	101 ms	200.89.164.141
+6	101 ms	100 ms	100 ms	200.89.165.150
+7	99 ms	100 ms	99 ms	200.63.151.241
+8	*	*	*	Request timed out.
+9	200 ms	200 ms	200 ms	5.53.5.142
+10	201 ms	200 ms	200 ms	94.142.125.57
+11	200 ms	200 ms	200 ms	213.140.52.106
+12	200 ms	200 ms	200 ms	213.155.130.70
+13	300 ms	300 ms	301 ms	213.248.65.97
+14	299 ms	300 ms	301 ms	80.91.246.97
+15	299 ms	301 ms	299 ms	213.248.103.22
+16	300 ms	300 ms	299 ms	82.197.136.22
+17	299 ms	299 ms	301 ms	82.197.128.21
+18	299 ms	299 ms	299 ms	217.71.96.113
+19	299 ms	299 ms	299 ms	217.71.96.77
+20	299 ms	299 ms	299 ms	217.71.99.98
+21	299 ms	301 ms	299 ms	80.86.184.202
+22	299 ms	301 ms	299 ms	80.86.184.202
+23	299 ms	300 ms	*	80.86.184.202
+24	300 ms	301 ms	301 ms	80.86.184.202
+25	300 ms	299 ms	*	80.86.184.202
+26	300 ms	299 ms	301 ms	80.86.184.202
+27	299 ms	*	299 ms	80.86.184.202
+28	300 ms	300 ms	299 ms	80.86.184.202
+29	300 ms	*	299 ms	80.86.184.202
+30	300 ms	299 ms	299 ms	80.86.184.202
+
+Trace complete.
+Tracing route to www.uab.es [84.88.19.154]
+over a maximum of 30 hops:
+
+1	101 ms	100 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	99 ms	100 ms	200.89.164.153
+6	99 ms	99 ms	99 ms	200.89.165.130
+7	99 ms	101 ms	100 ms	200.89.165.222
+8	99 ms	100 ms	100 ms	208.178.244.213
+9	200 ms	200 ms	200 ms	67.17.95.49
+10	200 ms	200 ms	199 ms	67.16.147.142
+11	200 ms	200 ms	200 ms	4.68.111.121
+12	299 ms	302 ms	299 ms	4.69.138.123
+13	299 ms	299 ms	301 ms	4.69.140.142
+14	299 ms	300 ms	299 ms	4.69.148.253
+15	301 ms	300 ms	300 ms	4.69.132.86
+16	300 ms	300 ms	299 ms	4.69.134.130
+17	300 ms	300 ms	299 ms	4.69.134.145
+18	300 ms	299 ms	300 ms	4.69.137.53
+19	299 ms	301 ms	299 ms	4.69.161.94
+20	300 ms	300 ms	301 ms	4.69.161.77
+21	300 ms	300 ms	299 ms	4.69.158.198
+22	300 ms	301 ms	300 ms	213.242.113.78
+23	299 ms	300 ms	300 ms	130.206.245.1
+24	301 ms	299 ms	299 ms	130.206.245.30
+25	299 ms	301 ms	299 ms	130.206.211.70
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.uam.es [150.244.214.237]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	101 ms	101 ms	200.89.164.129
+6	99 ms	99 ms	100 ms	200.89.165.5
+7	99 ms	99 ms	101 ms	200.89.165.250
+8	100 ms	100 ms	99 ms	208.178.195.205
+9	200 ms	200 ms	200 ms	67.16.147.158
+10	199 ms	200 ms	200 ms	67.16.147.130
+11	*	*	*	Request timed out.
+12	299 ms	299 ms	299 ms	4.69.138.123
+13	300 ms	299 ms	299 ms	4.69.140.142
+14	302 ms	302 ms	301 ms	4.69.148.253
+15	299 ms	300 ms	300 ms	4.69.132.86
+16	299 ms	299 ms	300 ms	4.69.134.142
+17	301 ms	301 ms	299 ms	4.69.134.157
+18	299 ms	299 ms	299 ms	4.69.137.61
+19	299 ms	302 ms	299 ms	4.69.161.102
+20	299 ms	301 ms	300 ms	4.69.161.85
+21	299 ms	299 ms	299 ms	4.69.158.190
+22	500 ms	300 ms	301 ms	213.242.113.78
+23	300 ms	299 ms	299 ms	130.206.245.1
+24	299 ms	299 ms	301 ms	130.206.212.94
+25	300 ms	299 ms	400 ms	193.145.14.129
+26	299 ms	300 ms	300 ms	193.145.14.13
+27	299 ms	299 ms	299 ms	150.244.1.210
+28	299 ms	299 ms	300 ms	150.244.214.237
+
+Trace complete.
+Tracing route to www.unipi.it [www.unipi.it]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	101 ms	99 ms	200.89.164.141
+6	99 ms	99 ms	100 ms	200.89.165.150
+7	101 ms	100 ms	100 ms	208.178.245.21
+8	299 ms	300 ms	302 ms	64.215.30.90
+9	299 ms	300 ms	299 ms	90.147.80.98
+10	299 ms	300 ms	300 ms	90.147.80.85
+11	299 ms	301 ms	299 ms	90.147.80.209
+12	300 ms	302 ms	299 ms	193.206.136.14
+13	*	*	*	Request timed out.
+14	*	*	*	Request timed out.
+15	*	*	*	Request timed out.
+16	*	*	*	Request timed out.
+17	*	*	*	Request timed out.
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.unibo.it [www.unibo.it]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	101 ms	99 ms	200.89.164.137
+6	101 ms	100 ms	100 ms	200.89.165.150
+7	100 ms	99 ms	99 ms	208.50.25.65
+8	299 ms	299 ms	299 ms	208.50.25.118
+9	299 ms	299 ms	300 ms	90.147.80.94
+10	300 ms	301 ms	301 ms	90.147.80.110
+11	299 ms	299 ms	300 ms	193.206.128.126
+12	305 ms	300 ms	299 ms	137.204.2.202
+13	299 ms	299 ms	299 ms	137.204.1.251
+14	*	*	*	Request timed out.
+15	*	*	*	Request timed out.
+16	*	*	*	Request timed out.
+17	*	*	*	Request timed out.
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.unige.it [www.unige.it]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	101 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	101 ms	100 ms	200.89.164.137
+6	99 ms	100 ms	100 ms	200.89.165.150
+7	100 ms	101 ms	99 ms	208.50.25.97
+8	299 ms	300 ms	299 ms	64.215.30.90
+9	300 ms	299 ms	301 ms	90.147.80.17
+10	299 ms	300 ms	299 ms	90.147.80.74
+11	299 ms	299 ms	299 ms	90.147.80.218
+12	299 ms	300 ms	299 ms	90.147.81.174
+13	300 ms	299 ms	299 ms	193.206.129.164
+14	300 ms	299 ms	299 ms	130.251.253.41
+15	299 ms	301 ms	301 ms	130.251.253.182
+16	*	*	*	Request timed out.
+17	*	*	*	Request timed out.
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.unimib.it [149.132.2.194]
+over a maximum of 30 hops:
+
+1	100 ms	101 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	99 ms	100 ms	200.89.164.129
+6	99 ms	101 ms	100 ms	200.89.165.150
+7	99 ms	99 ms	101 ms	64.209.94.69
+8	300 ms	299 ms	299 ms	64.215.30.90
+9	299 ms	299 ms	300 ms	90.147.80.98
+10	301 ms	300 ms	300 ms	90.147.80.234
+11	299 ms	300 ms	299 ms	90.147.80.237
+12	399 ms	*	*	193.206.129.122
+13	300 ms	302 ms	299 ms	149.132.254.2
+14	299 ms	299 ms	299 ms	149.132.252.9
+15	*	*	*	Request timed out.
+16	299 ms	300 ms	299 ms	149.132.245.113
+17	299 ms	300 ms	299 ms	149.132.2.194
+
+Trace complete.
+Tracing route to www.uniroma3.it [193.205.139.223]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	100 ms	99 ms	200.89.164.169
+6	100 ms	100 ms	100 ms	200.89.165.150
+7	100 ms	100 ms	100 ms	64.209.94.69
+8	299 ms	300 ms	299 ms	208.50.25.118
+9	300 ms	300 ms	299 ms	90.147.80.98
+10	300 ms	299 ms	300 ms	90.147.80.85
+11	301 ms	299 ms	400 ms	90.147.80.65
+12	299 ms	301 ms	301 ms	193.206.142.58
+13	*	*	*	Request timed out.
+14	299 ms	299 ms	300 ms	193.204.167.85
+15	299 ms	299 ms	300 ms	193.204.167.82
+16	301 ms	300 ms	299 ms	193.205.139.223
+
+Trace complete.
+Tracing route to www.kaist.ac.kr [www.kaist.ac.kr]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	101 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	99 ms	99 ms	200.89.164.165
+6	100 ms	99 ms	100 ms	200.89.165.5
+7	99 ms	100 ms	99 ms	200.89.165.250
+8	101 ms	99 ms	99 ms	208.178.244.125
+9	200 ms	200 ms	200 ms	67.17.95.49
+10	200 ms	200 ms	200 ms	67.16.147.142
+11	200 ms	200 ms	200 ms	4.68.111.121
+12	199 ms	201 ms	200 ms	4.69.138.91
+13	300 ms	200 ms	200 ms	4.69.140.133
+14	300 ms	200 ms	199 ms	4.69.151.137
+15	200 ms	200 ms	200 ms	4.69.151.146
+16	200 ms	203 ms	200 ms	4.69.132.77
+17	200 ms	200 ms	200 ms	4.69.148.202
+18	200 ms	200 ms	200 ms	4.69.148.109
+19	199 ms	201 ms	200 ms	4.69.148.138
+20	201 ms	200 ms	200 ms	4.69.153.6
+21	200 ms	200 ms	200 ms	4.69.152.75
+22	201 ms	200 ms	200 ms	4.59.0.162
+23	500 ms	500 ms	503 ms	58.229.92.253
+24	501 ms	500 ms	401 ms	1.255.26.245
+25	503 ms	500 ms	500 ms	58.229.119.246
+26	500 ms	500 ms	500 ms	58.229.44.90
+27	500 ms	500 ms	500 ms	58.229.44.82
+28	500 ms	500 ms	502 ms	211.117.16.34
+29	500 ms	500 ms	500 ms	143.248.117.5
+30	500 ms	500 ms	500 ms	143.248.117.30
+
+Trace complete.
+Tracing route to www.skku.ac.kr [www.skku.ac.kr]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	99 ms	101 ms	200.89.164.153
+6	101 ms	99 ms	99 ms	200.89.165.150
+7	99 ms	100 ms	99 ms	200.63.151.249
+8	*	*	99 ms	84.16.9.233
+9	200 ms	300 ms	200 ms	94.142.123.14
+10	300 ms	301 ms	299 ms	84.16.14.153
+11	299 ms	299 ms	301 ms	121.189.2.129
+12	400 ms	401 ms	401 ms	112.174.89.29
+13	400 ms	400 ms	400 ms	112.174.83.77
+14	401 ms	400 ms	400 ms	112.174.8.9
+15	401 ms	399 ms	401 ms	112.174.15.82
+16	399 ms	399 ms	400 ms	220.78.135.174
+17	*	*	*	Request timed out.
+18	399 ms	399 ms	399 ms	112.189.78.134
+19	401 ms	400 ms	401 ms	210.123.61.10
+20	*	401 ms	*	210.123.61.10
+21	401 ms	*	401 ms	210.123.61.10
+22	*	*	*	Request timed out.
+23	*	399 ms	*	210.123.61.10
+24	400 ms	*	*	210.123.61.10
+25	400 ms	*	401 ms	210.123.61.10
+26	*	*	*	Request timed out.
+27	400 ms	*	401 ms	210.123.61.10
+28	*	401 ms	*	210.123.61.10
+29	*	401 ms	*	210.123.61.10
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.pusan.ac.kr [www.pusan.ac.kr]
+over a maximum of 30 hops:
+
+1	99 ms	101 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	100 ms	200.89.165.161
+6	99 ms	101 ms	99 ms	200.89.165.5
+7	100 ms	99 ms	99 ms	200.89.165.250
+8	101 ms	99 ms	99 ms	200.63.151.41
+9	100 ms	99 ms	99 ms	200.51.240.128
+10	*	*	*	Request timed out.
+11	300 ms	200 ms	200 ms	94.142.117.6
+12	300 ms	300 ms	299 ms	84.16.14.153
+13	299 ms	299 ms	300 ms	121.189.2.129
+14	400 ms	400 ms	401 ms	112.174.87.105
+15	401 ms	401 ms	400 ms	112.174.84.93
+16	400 ms	400 ms	401 ms	112.174.48.121
+17	401 ms	401 ms	401 ms	112.174.55.254
+18	400 ms	399 ms	400 ms	112.174.237.138
+19	401 ms	401 ms	401 ms	112.174.161.142
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.chonbuk.ac.kr [www.chonbuk.ac.kr]
+over a maximum of 30 hops:
+
+1	100 ms	100 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	100 ms	101 ms	200.89.164.157
+6	99 ms	100 ms	100 ms	200.89.165.130
+7	100 ms	101 ms	99 ms	200.89.165.222
+8	99 ms	100 ms	100 ms	200.63.151.57
+9	101 ms	99 ms	99 ms	200.51.208.62
+10	100 ms	99 ms	*	84.16.9.233
+11	200 ms	199 ms	200 ms	94.142.121.210
+12	300 ms	299 ms	300 ms	84.16.14.153
+13	299 ms	300 ms	299 ms	121.189.2.129
+14	400 ms	401 ms	400 ms	112.174.87.201
+15	401 ms	401 ms	401 ms	112.174.84.97
+16	401 ms	400 ms	400 ms	112.174.48.77
+17	400 ms	399 ms	400 ms	220.73.153.98
+18	401 ms	400 ms	401 ms	203.251.41.190
+19	*	*	*	Request timed out.
+20	400 ms	400 ms	401 ms	211.35.241.94
+21	401 ms	399 ms	400 ms	203.254.137.18
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.sch.ac.kr [www.sch.ac.kr]
+over a maximum of 30 hops:
+
+1	99 ms	100 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	99 ms	99 ms	200.89.164.153
+6	101 ms	100 ms	99 ms	200.89.165.130
+7	99 ms	100 ms	100 ms	200.89.165.222
+8	101 ms	100 ms	100 ms	200.63.151.57
+9	99 ms	99 ms	101 ms	200.51.208.62
+10	*	*	*	Request timed out.
+11	200 ms	200 ms	200 ms	94.142.123.26
+12	301 ms	299 ms	299 ms	213.140.36.14
+13	301 ms	300 ms	299 ms	121.189.2.129
+14	399 ms	399 ms	400 ms	112.174.87.105
+15	399 ms	400 ms	401 ms	112.174.83.141
+16	399 ms	401 ms	399 ms	112.174.8.117
+17	401 ms	399 ms	400 ms	112.174.16.198
+18	400 ms	400 ms	401 ms	203.251.43.90
+19	401 ms	400 ms	400 ms	112.188.164.90
+20	399 ms	400 ms	401 ms	112.188.161.190
+21	403 ms	400 ms	399 ms	118.42.172.2
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.wonkwang.ac.kr [www.wonkwang.ac.kr]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	101 ms	200.89.165.161
+6	99 ms	99 ms	99 ms	200.89.165.150
+7	100 ms	101 ms	101 ms	200.63.151.73
+8	*	*	*	Request timed out.
+9	200 ms	200 ms	200 ms	94.142.121.222
+10	299 ms	299 ms	299 ms	84.16.14.153
+11	299 ms	300 ms	299 ms	121.189.2.129
+12	400 ms	400 ms	400 ms	112.174.89.29
+13	401 ms	401 ms	399 ms	112.174.83.113
+14	401 ms	399 ms	400 ms	112.174.8.77
+15	400 ms	401 ms	399 ms	112.174.18.214
+16	401 ms	399 ms	399 ms	112.189.225.98
+17	*	*	*	Request timed out.
+18	401 ms	401 ms	400 ms	112.189.240.46
+19	*	401 ms	400 ms	220.87.255.50
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.umc.edu.dz [80.246.8.22]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	101 ms	200.89.164.153
+6	100 ms	100 ms	99 ms	200.89.165.150
+7	99 ms	101 ms	100 ms	64.214.130.253
+8	299 ms	299 ms	300 ms	64.215.25.118
+9	300 ms	299 ms	300 ms	166.49.208.238
+10	300 ms	300 ms	299 ms	166.49.135.226
+11	300 ms	301 ms	299 ms	166.49.170.78
+12	301 ms	300 ms	300 ms	80.246.1.18
+13	300 ms	400 ms	401 ms	80.246.0.136
+14	305 ms	299 ms	399 ms	80.246.8.22
+
+Trace complete.
+Tracing route to www.univ-usto.dz [193.194.88.4]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	101 ms	100 ms	200.89.165.141
+6	101 ms	99 ms	101 ms	200.89.165.150
+7	99 ms	101 ms	99 ms	195.22.220.128
+8	*	299 ms	300 ms	213.144.181.1
+9	400 ms	400 ms	400 ms	195.22.198.159
+10	*	*	*	Request timed out.
+11	*	*	*	Request timed out.
+12	*	*	*	Request timed out.
+13	*	*	*	Request timed out.
+14	*	*	*	Request timed out.
+15	*	*	*	Request timed out.
+16	*	*	*	Request timed out.
+17	*	*	*	Request timed out.
+18	399 ms	401 ms	400 ms	193.194.88.4
+
+Trace complete.
+Tracing route to www.univ-batna.dz [www.univ-batna.dz]
+over a maximum of 30 hops:
+
+1	101 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	99 ms	100 ms	200.89.164.169
+6	101 ms	99 ms	99 ms	200.89.165.130
+7	99 ms	100 ms	99 ms	200.89.165.222
+8	100 ms	100 ms	101 ms	208.178.195.205
+9	200 ms	200 ms	200 ms	67.16.147.158
+10	200 ms	201 ms	201 ms	67.16.147.130
+11	201 ms	*	*	4.68.111.121
+12	299 ms	299 ms	299 ms	4.69.138.123
+13	300 ms	300 ms	299 ms	4.69.140.142
+14	300 ms	300 ms	301 ms	4.69.148.253
+15	299 ms	301 ms	299 ms	4.69.132.86
+16	299 ms	299 ms	299 ms	4.69.134.138
+17	299 ms	301 ms	301 ms	4.69.134.145
+18	299 ms	299 ms	299 ms	4.69.137.49
+19	301 ms	299 ms	299 ms	4.69.143.145
+20	300 ms	299 ms	300 ms	4.69.140.6
+21	299 ms	299 ms	299 ms	4.69.163.5
+22	299 ms	300 ms	299 ms	4.69.153.145
+23	299 ms	299 ms	299 ms	212.73.203.102
+24	299 ms	300 ms	400 ms	62.40.98.42
+25	299 ms	299 ms	300 ms	62.40.112.18
+26	299 ms	299 ms	300 ms	62.40.112.55
+27	400 ms	400 ms	400 ms	62.40.124.66
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.univ-setif.dz [193.194.86.69]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	101 ms	200.89.165.169
+6	99 ms	99 ms	100 ms	200.89.165.5
+7	99 ms	101 ms	99 ms	200.89.165.250
+8	100 ms	100 ms	99 ms	207.136.166.241
+9	200 ms	199 ms	200 ms	67.17.95.49
+10	200 ms	200 ms	200 ms	67.16.147.142
+11	*	200 ms	199 ms	4.68.111.121
+12	301 ms	300 ms	299 ms	4.69.138.123
+13	299 ms	299 ms	299 ms	4.69.140.142
+14	299 ms	301 ms	300 ms	4.69.148.253
+15	299 ms	299 ms	300 ms	4.69.132.86
+16	299 ms	300 ms	300 ms	4.69.134.138
+17	299 ms	300 ms	300 ms	4.69.134.153
+18	299 ms	300 ms	300 ms	4.69.137.61
+19	300 ms	299 ms	301 ms	4.69.143.145
+20	300 ms	299 ms	299 ms	4.69.140.14
+21	299 ms	299 ms	300 ms	4.69.163.13
+22	301 ms	300 ms	299 ms	4.69.153.145
+23	300 ms	300 ms	299 ms	212.73.203.102
+24	300 ms	299 ms	299 ms	62.40.98.42
+25	300 ms	302 ms	300 ms	62.40.112.18
+26	400 ms	299 ms	299 ms	62.40.112.55
+27	400 ms	401 ms	400 ms	62.40.124.66
+28	*	*	*	Request timed out.
+29	300 ms	299 ms	300 ms	193.194.67.253
+30	299 ms	299 ms	304 ms	193.194.64.10
+
+Trace complete.
+Tracing route to www.univ-blida.dz [193.194.83.163]
+over a maximum of 30 hops:
+
+1	101 ms	100 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	100 ms	99 ms	200.89.165.161
+6	101 ms	101 ms	100 ms	200.89.165.130
+7	101 ms	99 ms	100 ms	200.89.165.222
+8	101 ms	100 ms	100 ms	208.178.195.205
+9	200 ms	200 ms	201 ms	67.17.95.49
+10	201 ms	200 ms	200 ms	67.16.147.142
+11	200 ms	200 ms	200 ms	4.68.111.121
+12	299 ms	300 ms	299 ms	4.69.138.123
+13	299 ms	299 ms	299 ms	4.69.140.142
+14	299 ms	299 ms	299 ms	4.69.148.253
+15	301 ms	300 ms	299 ms	4.69.132.86
+16	299 ms	299 ms	300 ms	4.69.134.130
+17	300 ms	299 ms	299 ms	4.69.134.145
+18	300 ms	299 ms	299 ms	4.69.137.49
+19	299 ms	299 ms	299 ms	4.69.143.145
+20	301 ms	299 ms	299 ms	4.69.140.6
+21	301 ms	299 ms	300 ms	4.69.163.5
+22	299 ms	300 ms	299 ms	4.69.153.145
+23	299 ms	300 ms	299 ms	212.73.203.102
+24	299 ms	299 ms	301 ms	62.40.98.42
+25	299 ms	299 ms	299 ms	62.40.112.18
+26	299 ms	299 ms	301 ms	62.40.112.55
+27	399 ms	401 ms	401 ms	62.40.124.66
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.univ-skikda.dz [193.194.68.29]
+over a maximum of 30 hops:
+
+1	100 ms	101 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	99 ms	100 ms	200.89.164.165
+6	99 ms	99 ms	101 ms	200.89.165.5
+7	99 ms	99 ms	99 ms	200.89.165.250
+8	100 ms	101 ms	99 ms	207.136.166.241
+9	201 ms	203 ms	202 ms	67.16.147.158
+10	200 ms	200 ms	200 ms	67.16.147.130
+11	*	*	*	Request timed out.
+12	299 ms	303 ms	302 ms	4.69.138.123
+13	301 ms	300 ms	302 ms	4.69.140.142
+14	303 ms	304 ms	299 ms	4.69.148.253
+15	299 ms	299 ms	300 ms	4.69.132.86
+16	299 ms	300 ms	301 ms	4.69.134.138
+17	299 ms	299 ms	301 ms	4.69.134.149
+18	299 ms	299 ms	299 ms	4.69.137.61
+19	301 ms	299 ms	299 ms	4.69.143.145
+20	299 ms	299 ms	300 ms	4.69.140.14
+21	299 ms	299 ms	299 ms	4.69.163.13
+22	299 ms	299 ms	299 ms	4.69.153.145
+23	299 ms	300 ms	300 ms	212.73.203.102
+24	299 ms	299 ms	299 ms	62.40.98.42
+25	300 ms	299 ms	299 ms	62.40.112.18
+26	299 ms	299 ms	299 ms	62.40.112.55
+27	401 ms	399 ms	399 ms	62.40.124.66
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.anu.edu.au [www.anu.edu.au]
+over a maximum of 30 hops:
+
+1	100 ms	100 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	99 ms	99 ms	200.89.165.173
+6	100 ms	100 ms	99 ms	200.89.165.130
+7	101 ms	100 ms	99 ms	200.89.165.222
+8	101 ms	100 ms	100 ms	64.209.94.97
+9	200 ms	199 ms	200 ms	67.16.147.154
+10	200 ms	200 ms	200 ms	67.16.147.130
+11	200 ms	200 ms	200 ms	4.68.111.121
+12	200 ms	199 ms	201 ms	64.125.14.89
+13	201 ms	201 ms	202 ms	64.125.30.190
+14	299 ms	200 ms	200 ms	64.125.30.202
+15	200 ms	201 ms	200 ms	64.125.30.65
+16	202 ms	200 ms	200 ms	64.125.30.1
+17	300 ms	200 ms	200 ms	64.125.24.18
+18	200 ms	200 ms	200 ms	64.125.31.65
+19	400 ms	400 ms	399 ms	64.124.200.214
+20	400 ms	399 ms	400 ms	202.158.194.173
+21	399 ms	400 ms	401 ms	202.158.194.198
+22	401 ms	399 ms	400 ms	202.158.194.30
+23	401 ms	401 ms	400 ms	202.158.201.83
+24	*	400 ms	*	182.255.118.10
+25	*	*	*	Request timed out.
+26	*	*	400 ms	182.255.118.10
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.unimelb.edu.au [www.unimelb.edu.au]
+over a maximum of 30 hops:
+
+1	101 ms	101 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	101 ms	101 ms	200.89.164.137
+6	99 ms	100 ms	100 ms	200.89.165.130
+7	100 ms	101 ms	99 ms	200.89.165.222
+8	100 ms	101 ms	99 ms	208.178.195.205
+9	*	200 ms	199 ms	67.17.106.162
+10	200 ms	199 ms	202 ms	129.250.9.117
+11	200 ms	200 ms	200 ms	129.250.3.172
+12	200 ms	200 ms	200 ms	129.250.3.174
+13	200 ms	199 ms	201 ms	129.250.2.59
+14	301 ms	299 ms	200 ms	129.250.4.25
+15	200 ms	200 ms	200 ms	129.250.5.55
+16	400 ms	400 ms	401 ms	128.241.219.154
+17	401 ms	401 ms	401 ms	202.158.194.161
+18	400 ms	401 ms	400 ms	202.158.194.241
+19	400 ms	400 ms	399 ms	202.158.194.181
+20	400 ms	401 ms	399 ms	202.158.210.26
+21	400 ms	399 ms	400 ms	202.158.200.250
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.usyd.edu.au [www.usyd.edu.au]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	100 ms	200.89.164.157
+6	99 ms	99 ms	99 ms	200.89.165.130
+7	99 ms	99 ms	99 ms	200.89.165.222
+8	99 ms	99 ms	100 ms	208.178.244.125
+9	200 ms	200 ms	199 ms	67.16.139.18
+10	200 ms	200 ms	200 ms	64.208.27.102
+11	200 ms	199 ms	199 ms	129.250.3.172
+12	199 ms	200 ms	201 ms	129.250.3.174
+13	200 ms	200 ms	199 ms	129.250.2.59
+14	199 ms	*	*	129.250.4.25
+15	299 ms	*	*	129.250.3.38
+16	299 ms	299 ms	301 ms	129.250.5.47
+17	300 ms	300 ms	300 ms	198.104.202.62
+18	400 ms	400 ms	400 ms	202.158.194.120
+19	400 ms	401 ms	400 ms	202.158.205.165
+20	401 ms	400 ms	399 ms	113.197.9.186
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.monash.edu.au [130.194.11.149]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	99 ms	200.89.164.153
+6	100 ms	100 ms	99 ms	200.89.165.5
+7	100 ms	100 ms	99 ms	200.89.165.250
+8	100 ms	99 ms	100 ms	159.63.23.5
+9	200 ms	199 ms	200 ms	67.17.106.162
+10	200 ms	200 ms	199 ms	64.208.27.102
+11	200 ms	200 ms	200 ms	129.250.3.172
+12	200 ms	200 ms	199 ms	129.250.3.174
+13	200 ms	200 ms	200 ms	129.250.2.59
+14	200 ms	*	*	129.250.4.25
+15	200 ms	200 ms	199 ms	129.250.5.55
+16	400 ms	400 ms	400 ms	128.241.219.154
+17	401 ms	399 ms	400 ms	202.158.194.161
+18	399 ms	401 ms	400 ms	202.158.194.241
+19	399 ms	399 ms	399 ms	202.158.200.98
+20	399 ms	400 ms	401 ms	202.158.200.150
+21	401 ms	400 ms	399 ms	130.194.28.105
+22	399 ms	399 ms	400 ms	130.194.28.149
+23	401 ms	400 ms	400 ms	130.194.11.149
+
+Trace complete.
+Tracing route to www.uwa.edu.au [www.uwa.edu.au]
+over a maximum of 30 hops:
+
+1	100 ms	100 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	100 ms	100 ms	200.89.164.165
+6	100 ms	99 ms	99 ms	200.89.165.5
+7	99 ms	100 ms	101 ms	200.89.165.250
+8	99 ms	100 ms	100 ms	208.178.195.205
+9	199 ms	200 ms	200 ms	67.16.147.158
+10	200 ms	201 ms	200 ms	67.16.147.130
+11	200 ms	201 ms	200 ms	4.68.111.121
+12	200 ms	199 ms	200 ms	64.125.14.89
+13	200 ms	200 ms	200 ms	64.125.30.190
+14	299 ms	200 ms	200 ms	64.125.30.202
+15	200 ms	200 ms	200 ms	64.125.30.65
+16	300 ms	200 ms	200 ms	64.125.30.1
+17	200 ms	200 ms	199 ms	64.125.24.18
+18	200 ms	200 ms	200 ms	64.125.28.17
+19	401 ms	401 ms	399 ms	64.125.193.134
+20	400 ms	401 ms	401 ms	202.158.194.161
+21	399 ms	399 ms	399 ms	202.158.194.241
+22	399 ms	400 ms	401 ms	202.158.194.181
+23	401 ms	400 ms	401 ms	202.158.194.17
+24	399 ms	400 ms	399 ms	202.158.194.5
+25	400 ms	401 ms	401 ms	202.158.198.10
+26	400 ms	400 ms	432 ms	113.197.9.118
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.ethz.ch [www.ethz.ch]
+over a maximum of 30 hops:
+
+1	108 ms	110 ms	108 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	109 ms	109 ms	108 ms	200.89.164.165
+6	108 ms	109 ms	109 ms	200.89.165.130
+7	108 ms	109 ms	108 ms	200.89.165.222
+8	108 ms	110 ms	108 ms	207.136.166.241
+9	218 ms	217 ms	219 ms	67.16.147.158
+10	218 ms	218 ms	219 ms	67.16.147.130
+11	217 ms	218 ms	217 ms	4.68.111.121
+12	326 ms	327 ms	328 ms	4.69.138.123
+13	328 ms	327 ms	327 ms	4.69.140.142
+14	328 ms	328 ms	328 ms	4.69.148.253
+15	327 ms	326 ms	328 ms	4.69.132.86
+16	327 ms	327 ms	326 ms	4.69.134.142
+17	326 ms	328 ms	328 ms	4.69.134.145
+18	328 ms	327 ms	327 ms	4.69.137.53
+19	326 ms	328 ms	328 ms	4.69.134.49
+20	327 ms	326 ms	326 ms	4.69.137.81
+21	327 ms	328 ms	328 ms	213.242.73.74
+22	327 ms	327 ms	328 ms	130.59.37.2
+23	328 ms	328 ms	326 ms	130.59.36.206
+24	326 ms	328 ms	327 ms	192.33.92.1
+25	327 ms	326 ms	326 ms	192.33.92.169
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.unige.ch [129.194.9.50]
+over a maximum of 30 hops:
+
+1	108 ms	108 ms	110 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	108 ms	109 ms	108 ms	200.89.165.145
+6	108 ms	108 ms	108 ms	200.89.165.5
+7	110 ms	108 ms	108 ms	200.89.165.250
+8	109 ms	108 ms	109 ms	208.178.195.205
+9	218 ms	219 ms	217 ms	67.16.147.158
+10	217 ms	218 ms	*	67.16.147.130
+11	*	218 ms	217 ms	4.68.111.121
+12	326 ms	328 ms	327 ms	4.69.138.123
+13	327 ms	326 ms	326 ms	4.69.140.142
+14	328 ms	328 ms	328 ms	4.69.148.253
+15	327 ms	327 ms	328 ms	4.69.132.86
+16	328 ms	327 ms	326 ms	4.69.134.142
+17	326 ms	328 ms	326 ms	4.69.134.157
+18	326 ms	327 ms	327 ms	4.69.137.53
+19	328 ms	326 ms	327 ms	4.69.134.49
+20	328 ms	328 ms	328 ms	4.69.137.81
+21	327 ms	327 ms	328 ms	213.242.73.74
+22	328 ms	327 ms	326 ms	130.59.36.210
+23	326 ms	327 ms	328 ms	130.59.37.182
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	328 ms	327 ms	327 ms	129.194.9.50
+
+Trace complete.
+Tracing route to www.epfl.ch [128.178.50.12]
+over a maximum of 30 hops:
+
+1	109 ms	108 ms	108 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	108 ms	108 ms	108 ms	200.89.165.145
+6	108 ms	109 ms	108 ms	200.89.165.5
+7	108 ms	108 ms	108 ms	200.89.165.250
+8	110 ms	108 ms	109 ms	208.178.244.213
+9	218 ms	219 ms	217 ms	67.16.147.158
+10	218 ms	217 ms	217 ms	67.16.147.130
+11	*	*	*	Request timed out.
+12	326 ms	328 ms	327 ms	4.69.138.123
+13	327 ms	326 ms	326 ms	4.69.140.142
+14	328 ms	328 ms	328 ms	4.69.148.253
+15	327 ms	327 ms	328 ms	4.69.132.86
+16	328 ms	328 ms	326 ms	4.69.134.134
+17	326 ms	327 ms	327 ms	4.69.134.149
+18	328 ms	326 ms	327 ms	4.69.137.61
+19	328 ms	328 ms	328 ms	4.69.134.49
+20	327 ms	327 ms	328 ms	4.69.137.81
+21	437 ms	327 ms	328 ms	213.242.73.74
+22	326 ms	327 ms	328 ms	130.59.37.66
+23	328 ms	328 ms	327 ms	192.33.209.34
+24	326 ms	328 ms	328 ms	128.178.200.3
+25	327 ms	326 ms	326 ms	128.178.100.5
+26	327 ms	328 ms	328 ms	128.178.50.12
+
+Trace complete.
+Tracing route to www.unisg.ch [www.unisg.ch]
+over a maximum of 30 hops:
+
+1	108 ms	108 ms	110 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	108 ms	109 ms	109 ms	200.89.165.145
+6	108 ms	108 ms	109 ms	200.89.165.5
+7	109 ms	108 ms	109 ms	200.89.165.250
+8	108 ms	108 ms	110 ms	64.209.94.97
+9	218 ms	219 ms	217 ms	67.17.95.49
+10	217 ms	218 ms	217 ms	67.16.147.142
+11	219 ms	*	218 ms	4.68.111.121
+12	328 ms	328 ms	328 ms	4.69.138.123
+13	326 ms	326 ms	328 ms	4.69.140.142
+14	327 ms	327 ms	326 ms	4.69.148.253
+15	326 ms	328 ms	328 ms	4.69.132.86
+16	328 ms	327 ms	327 ms	4.69.134.130
+17	328 ms	328 ms	327 ms	4.69.134.153
+18	327 ms	326 ms	326 ms	4.69.137.61
+19	327 ms	328 ms	328 ms	4.69.134.49
+20	327 ms	327 ms	328 ms	4.69.137.81
+21	328 ms	328 ms	326 ms	213.242.73.74
+22	326 ms	327 ms	327 ms	130.59.36.210
+23	327 ms	326 ms	326 ms	130.59.36.2
+24	328 ms	328 ms	326 ms	130.59.36.173
+25	328 ms	328 ms	328 ms	130.59.37.10
+26	327 ms	327 ms	328 ms	130.59.38.102
+27	328 ms	328 ms	326 ms	130.82.2.2
+28	326 ms	327 ms	327 ms	130.82.1.40
+29	328 ms	326 ms	327 ms	130.82.50.9
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.unine.ch [130.125.1.11]
+over a maximum of 30 hops:
+
+1	108 ms	109 ms	108 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	109 ms	108 ms	109 ms	200.89.164.129
+6	108 ms	108 ms	110 ms	200.89.165.130
+7	108 ms	108 ms	108 ms	200.89.165.222
+8	108 ms	109 ms	108 ms	159.63.23.5
+9	219 ms	217 ms	218 ms	67.16.147.154
+10	217 ms	217 ms	218 ms	67.16.147.130
+11	*	*	*	Request timed out.
+12	328 ms	327 ms	326 ms	4.69.138.123
+13	326 ms	327 ms	328 ms	4.69.140.142
+14	328 ms	327 ms	327 ms	4.69.148.253
+15	328 ms	328 ms	328 ms	4.69.132.86
+16	327 ms	326 ms	328 ms	4.69.134.138
+17	327 ms	342 ms	328 ms	4.69.134.153
+18	327 ms	327 ms	326 ms	4.69.137.49
+19	326 ms	328 ms	328 ms	4.69.134.49
+20	328 ms	327 ms	328 ms	4.69.137.81
+21	328 ms	327 ms	327 ms	213.242.73.74
+22	328 ms	328 ms	328 ms	130.59.37.66
+23	326 ms	326 ms	327 ms	130.59.36.81
+24	327 ms	328 ms	326 ms	192.42.42.34
+25	326 ms	328 ms	328 ms	130.125.1.11
+
+Trace complete.
+Tracing route to www.usp.ac.fj [www.usp.ac.fj]
+over a maximum of 30 hops:
+
+1	108 ms	108 ms	108 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	99 ms	200.89.164.165
+6	100 ms	99 ms	100 ms	200.89.165.5
+7	99 ms	99 ms	99 ms	200.89.165.250
+8	99 ms	100 ms	99 ms	208.178.244.125
+9	*	200 ms	200 ms	67.17.95.49
+10	200 ms	200 ms	200 ms	67.16.147.142
+11	200 ms	200 ms	200 ms	4.68.111.121
+12	200 ms	200 ms	200 ms	64.125.14.89
+13	200 ms	200 ms	200 ms	64.125.30.194
+14	200 ms	200 ms	200 ms	64.125.30.202
+15	*	*	*	Request timed out.
+16	200 ms	200 ms	200 ms	64.125.26.30
+17	299 ms	199 ms	200 ms	64.125.30.125
+18	200 ms	200 ms	300 ms	64.125.28.17
+19	399 ms	400 ms	400 ms	64.125.193.134
+20	400 ms	399 ms	399 ms	202.158.194.161
+21	400 ms	400 ms	399 ms	202.158.194.197
+22	399 ms	400 ms	400 ms	202.158.194.226
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.fnu.ac.fj [69.175.78.122]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	100 ms	100 ms	200.89.164.157
+6	99 ms	99 ms	99 ms	200.89.165.150
+7	99 ms	99 ms	100 ms	200.63.151.241
+8	*	*	*	Request timed out.
+9	200 ms	200 ms	200 ms	94.142.123.22
+10	299 ms	200 ms	200 ms	84.16.15.133
+11	200 ms	200 ms	200 ms	64.125.12.21
+12	200 ms	201 ms	200 ms	64.125.30.98
+13	200 ms	200 ms	200 ms	64.125.30.73
+14	199 ms	200 ms	200 ms	64.125.25.133
+15	299 ms	300 ms	299 ms	64.125.24.229
+16	200 ms	200 ms	200 ms	64.124.146.114
+17	200 ms	299 ms	299 ms	173.236.77.94
+18	299 ms	301 ms	300 ms	69.175.78.122
+
+Trace complete.
+Tracing route to www.fsm.ac.fj [69.175.71.186]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	99 ms	100 ms	200.89.165.145
+6	99 ms	100 ms	99 ms	200.89.165.150
+7	199 ms	200 ms	99 ms	200.63.151.65
+8	*	*	*	Request timed out.
+9	200 ms	200 ms	200 ms	94.142.123.14
+10	200 ms	200 ms	200 ms	94.142.126.137
+11	200 ms	200 ms	200 ms	64.125.12.21
+12	200 ms	200 ms	200 ms	64.125.30.98
+13	200 ms	200 ms	200 ms	64.125.30.73
+14	301 ms	199 ms	299 ms	64.125.25.133
+15	301 ms	300 ms	300 ms	64.125.24.229
+16	200 ms	300 ms	200 ms	64.124.146.114
+17	299 ms	300 ms	299 ms	173.236.77.110
+18	200 ms	200 ms	200 ms	69.175.71.186
+
+Trace complete.
+Tracing route to www.unifiji.ac.fj [66.147.244.130]
+over a maximum of 30 hops:
+
+1	100 ms	101 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	100 ms	100 ms	200.89.164.169
+6	100 ms	100 ms	101 ms	200.89.165.150
+7	99 ms	101 ms	100 ms	208.50.25.65
+8	402 ms	400 ms	399 ms	64.214.174.246
+9	1099 ms	1200 ms	1200 ms	184.105.223.158
+10	200 ms	199 ms	299 ms	66.160.133.118
+11	200 ms	200 ms	299 ms	199.58.199.118
+12	200 ms	200 ms	200 ms	66.147.244.130
+
+Trace complete.
+Tracing route to www.kuniv.edu.kw [139.141.139.131]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	108 ms	108 ms	109 ms	200.89.164.157
+6	108 ms	109 ms	109 ms	200.89.165.5
+7	108 ms	108 ms	109 ms	200.89.165.250
+8	109 ms	108 ms	109 ms	208.178.244.213
+9	218 ms	219 ms	217 ms	67.16.139.26
+10	218 ms	217 ms	217 ms	66.110.9.61
+11	437 ms	437 ms	437 ms	66.198.154.177
+12	437 ms	437 ms	437 ms	216.6.87.1
+13	437 ms	437 ms	436 ms	216.6.87.105
+14	328 ms	328 ms	327 ms	195.219.195.9
+15	327 ms	328 ms	328 ms	195.219.195.70
+16	437 ms	436 ms	437 ms	195.219.167.14
+17	437 ms	437 ms	437 ms	62.215.9.86
+18	437 ms	437 ms	436 ms	139.141.139.131
+19	437 ms	437 ms	437 ms	139.141.139.131
+20	436 ms	437 ms	437 ms	139.141.139.131
+21	437 ms	437 ms	437 ms	139.141.139.131
+22	437 ms	436 ms	437 ms	139.141.139.131
+
+Trace complete.
+Tracing route to www.paaet.edu.kw [www.paaet.edu.kw]
+over a maximum of 30 hops:
+
+1	108 ms	109 ms	108 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	99 ms	200.89.164.129
+6	99 ms	100 ms	99 ms	200.89.165.150
+7	100 ms	99 ms	100 ms	195.22.220.128
+8	299 ms	300 ms	299 ms	93.186.129.61
+9	400 ms	399 ms	399 ms	93.186.129.3
+10	400 ms	400 ms	*	195.229.3.197
+11	400 ms	399 ms	399 ms	195.229.0.94
+12	400 ms	400 ms	399 ms	195.229.27.190
+13	409 ms	410 ms	400 ms	62.150.222.11
+14	*	*	*	Request timed out.
+15	*	*	*	Request timed out.
+16	*	*	*	Request timed out.
+17	*	*	*	Request timed out.
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.arabou.edu.kw [184.168.176.242]
+over a maximum of 30 hops:
+
+1	99 ms	100 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	99 ms	200.89.164.141
+6	100 ms	99 ms	99 ms	200.89.165.5
+7	100 ms	99 ms	100 ms	200.89.165.250
+8	99 ms	100 ms	99 ms	200.63.151.33
+9	99 ms	99 ms	99 ms	200.51.240.128
+10	*	*	*	Request timed out.
+11	199 ms	199 ms	199 ms	94.142.117.122
+12	199 ms	199 ms	200 ms	94.142.124.121
+13	200 ms	200 ms	200 ms	213.140.52.182
+14	300 ms	299 ms	299 ms	66.192.242.38
+15	300 ms	299 ms	299 ms	206.15.85.10
+16	300 ms	299 ms	299 ms	184.168.0.69
+17	299 ms	299 ms	299 ms	184.168.0.69
+18	299 ms	299 ms	300 ms	97.74.255.129
+19	299 ms	299 ms	300 ms	184.168.176.242
+
+Trace complete.
+Tracing route to www.ack.edu.kw [www.ack.edu.kw]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	109 ms	109 ms	200.89.164.165
+6	100 ms	109 ms	100 ms	200.89.165.5
+7	99 ms	100 ms	100 ms	200.89.165.250
+8	99 ms	101 ms	99 ms	159.63.23.5
+9	199 ms	201 ms	200 ms	67.16.147.154
+10	200 ms	200 ms	200 ms	67.16.147.130
+11	200 ms	200 ms	200 ms	4.68.111.121
+12	299 ms	300 ms	299 ms	4.69.138.123
+13	300 ms	300 ms	301 ms	4.69.140.142
+14	299 ms	299 ms	299 ms	4.69.132.33
+15	301 ms	299 ms	299 ms	4.69.148.106
+16	299 ms	301 ms	300 ms	4.69.143.214
+17	299 ms	300 ms	299 ms	4.69.148.49
+18	299 ms	300 ms	301 ms	4.69.137.65
+19	299 ms	299 ms	300 ms	4.69.153.138
+20	*	*	*	Request timed out.
+21	301 ms	301 ms	299 ms	212.113.15.166
+22	399 ms	400 ms	401 ms	168.187.124.145
+23	400 ms	400 ms	400 ms	168.187.0.38
+24	700 ms	399 ms	401 ms	168.187.235.245
+25	400 ms	400 ms	400 ms	168.187.235.246
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.aum.edu.kw [50.22.235.32]
+over a maximum of 30 hops:
+
+1	101 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	99 ms	200.89.164.169
+6	99 ms	99 ms	99 ms	200.89.165.150
+7	100 ms	99 ms	99 ms	200.63.151.249
+8	100 ms	101 ms	*	84.16.9.233
+9	200 ms	200 ms	200 ms	94.142.121.210
+10	200 ms	*	*	94.142.121.141
+11	200 ms	200 ms	200 ms	213.140.51.190
+12	200 ms	200 ms	200 ms	173.192.18.128
+13	200 ms	200 ms	199 ms	173.192.18.172
+14	*	*	*	Request timed out.
+15	*	*	*	Request timed out.
+16	200 ms	200 ms	200 ms	208.43.118.134
+17	200 ms	200 ms	200 ms	50.22.235.32
+
+Trace complete.
+Tracing route to njalauniversity.edu.sl [184.168.30.190]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	99 ms	200.89.165.169
+6	100 ms	100 ms	99 ms	200.89.165.130
+7	99 ms	100 ms	100 ms	200.89.165.222
+8	99 ms	99 ms	100 ms	200.63.151.41
+9	99 ms	99 ms	99 ms	200.51.240.128
+10	100 ms	99 ms	99 ms	94.142.103.85
+11	200 ms	201 ms	200 ms	94.142.117.14
+12	199 ms	200 ms	200 ms	84.16.15.133
+13	200 ms	200 ms	200 ms	64.125.12.21
+14	200 ms	200 ms	200 ms	64.125.27.81
+15	200 ms	199 ms	200 ms	64.125.31.122
+16	299 ms	299 ms	300 ms	64.125.30.149
+17	200 ms	*	200 ms	209.66.64.6
+18	200 ms	200 ms	200 ms	97.74.253.94
+19	200 ms	200 ms	300 ms	97.74.253.94
+20	200 ms	200 ms	200 ms	97.74.253.98
+21	199 ms	200 ms	200 ms	97.74.254.134
+22	200 ms	201 ms	200 ms	184.168.30.190
+
+Trace complete.
+Tracing route to www.usl.edu.sl [94.76.225.78]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	101 ms	99 ms	200.89.164.157
+6	99 ms	100 ms	101 ms	200.89.165.150
+7	99 ms	99 ms	100 ms	200.63.151.65
+8	99 ms	99 ms	*	84.16.9.233
+9	199 ms	200 ms	199 ms	5.53.5.138
+10	200 ms	200 ms	200 ms	94.142.125.57
+11	200 ms	200 ms	200 ms	77.67.77.57
+12	299 ms	299 ms	299 ms	141.136.107.41
+13	299 ms	299 ms	299 ms	77.67.67.138
+14	300 ms	300 ms	299 ms	92.48.95.14
+15	400 ms	300 ms	299 ms	217.112.81.90
+16	300 ms	301 ms	299 ms	94.76.225.78
+
+Trace complete.
+Tracing route to www.u-tokyo.ac.jp [59.106.161.25]
+over a maximum of 30 hops:
+
+1	99 ms	100 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	100 ms	101 ms	200.89.164.153
+6	99 ms	100 ms	100 ms	200.89.165.150
+7	101 ms	101 ms	100 ms	200.63.151.73
+8	*	*	*	Request timed out.
+9	199 ms	200 ms	200 ms	5.53.5.138
+10	301 ms	200 ms	200 ms	94.142.124.109
+11	200 ms	200 ms	200 ms	129.250.8.249
+12	200 ms	200 ms	200 ms	129.250.4.206
+13	301 ms	300 ms	299 ms	129.250.4.182
+14	300 ms	299 ms	301 ms	129.250.2.53
+15	400 ms	399 ms	399 ms	129.250.4.190
+16	399 ms	400 ms	400 ms	129.250.6.186
+17	400 ms	400 ms	399 ms	61.213.162.162
+18	400 ms	399 ms	401 ms	61.120.145.162
+19	*	*	*	Request timed out.
+20	401 ms	399 ms	400 ms	157.17.130.2
+21	400 ms	399 ms	399 ms	157.17.132.90
+22	400 ms	400 ms	400 ms	59.106.9.254
+23	401 ms	401 ms	399 ms	59.106.161.2
+24	400 ms	401 ms	399 ms	59.106.161.25
+
+Trace complete.
+Tracing route to www.kyoto-u.ac.jp [133.3.251.95]
+over a maximum of 30 hops:
+
+1	100 ms	100 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	100 ms	99 ms	200.89.165.145
+6	100 ms	101 ms	99 ms	200.89.165.5
+7	100 ms	100 ms	99 ms	200.89.165.250
+8	99 ms	100 ms	100 ms	208.178.195.205
+9	200 ms	201 ms	200 ms	67.16.141.162
+10	200 ms	200 ms	199 ms	64.208.27.206
+11	300 ms	301 ms	299 ms	210.142.163.225
+12	299 ms	299 ms	299 ms	143.90.144.233
+13	300 ms	300 ms	300 ms	143.90.33.126
+14	300 ms	299 ms	299 ms	210.252.167.226
+15	299 ms	400 ms	299 ms	150.99.2.49
+16	399 ms	299 ms	399 ms	150.99.2.98
+17	*	*	*	Request timed out.
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	400 ms	400 ms	300 ms	133.3.251.95
+
+Trace complete.
+Tracing route to www.osaka-u.ac.jp [www.osaka-u.ac.jp]
+over a maximum of 30 hops:
+
+1	99 ms	101 ms	101 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	100 ms	99 ms	200.89.164.137
+6	101 ms	101 ms	99 ms	200.89.165.130
+7	101 ms	100 ms	99 ms	200.89.165.222
+8	99 ms	101 ms	100 ms	208.178.195.205
+9	200 ms	199 ms	200 ms	67.16.141.162
+10	200 ms	200 ms	200 ms	64.208.27.206
+11	299 ms	299 ms	301 ms	210.142.163.157
+12	301 ms	300 ms	299 ms	143.90.144.233
+13	299 ms	299 ms	299 ms	143.90.33.126
+14	400 ms	299 ms	299 ms	210.252.167.226
+15	300 ms	299 ms	301 ms	150.99.2.49
+16	299 ms	299 ms	400 ms	150.99.2.98
+17	299 ms	301 ms	300 ms	150.99.188.62
+18	299 ms	299 ms	299 ms	133.1.0.11
+19	300 ms	300 ms	299 ms	133.1.14.33
+20	299 ms	301 ms	301 ms	133.1.14.44
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.kyushu-u.ac.jp [www.kyushu-u.ac.jp]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	101 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	100 ms	200.89.165.173
+6	99 ms	99 ms	100 ms	200.89.165.5
+7	99 ms	99 ms	99 ms	200.89.165.250
+8	100 ms	99 ms	100 ms	208.178.244.125
+9	200 ms	302 ms	399 ms	67.16.141.170
+10	201 ms	199 ms	200 ms	64.208.27.206
+11	301 ms	300 ms	299 ms	210.142.163.225
+12	299 ms	299 ms	299 ms	143.90.33.221
+13	301 ms	299 ms	299 ms	143.90.33.126
+14	400 ms	400 ms	299 ms	210.252.167.226
+15	299 ms	400 ms	299 ms	150.99.2.49
+16	400 ms	400 ms	399 ms	150.99.2.98
+17	400 ms	401 ms	399 ms	150.99.2.42
+18	400 ms	399 ms	399 ms	150.99.187.142
+19	401 ms	399 ms	400 ms	133.5.9.225
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.hokudai.ac.jp [www.hokudai.ac.jp]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	100 ms	100 ms	200.89.164.169
+6	99 ms	100 ms	100 ms	200.89.165.130
+7	100 ms	100 ms	101 ms	200.89.165.222
+8	100 ms	101 ms	99 ms	208.178.195.205
+9	200 ms	299 ms	200 ms	67.16.141.170
+10	200 ms	200 ms	199 ms	64.208.27.206
+11	299 ms	299 ms	299 ms	210.142.163.157
+12	299 ms	299 ms	299 ms	143.90.33.221
+13	299 ms	299 ms	299 ms	143.90.33.126
+14	*	*	*	Request timed out.
+15	301 ms	302 ms	299 ms	150.99.2.49
+16	401 ms	401 ms	400 ms	150.99.2.5
+17	*	*	*	Request timed out.
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.num.edu.mn [103.9.90.199]
+over a maximum of 30 hops:
+
+1	99 ms	101 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	99 ms	100 ms	200.89.164.129
+6	99 ms	101 ms	99 ms	200.89.165.150
+7	100 ms	99 ms	101 ms	200.63.151.241
+8	*	*	*	Request timed out.
+9	200 ms	200 ms	200 ms	5.53.5.138
+10	200 ms	300 ms	199 ms	94.142.124.121
+11	200 ms	200 ms	200 ms	213.140.52.46
+12	199 ms	200 ms	200 ms	154.54.26.137
+13	299 ms	300 ms	299 ms	154.54.42.114
+14	300 ms	300 ms	301 ms	154.54.61.166
+15	301 ms	299 ms	299 ms	154.54.63.238
+16	299 ms	299 ms	299 ms	149.11.138.42
+17	399 ms	400 ms	400 ms	180.149.95.245
+18	400 ms	401 ms	400 ms	180.149.98.33
+19	400 ms	400 ms	399 ms	180.149.95.250
+20	399 ms	400 ms	500 ms	103.9.89.246
+21	401 ms	401 ms	400 ms	103.9.90.199
+
+Trace complete.
+Tracing route to www.must.edu.mn [202.5.195.7]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	101 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	101 ms	99 ms	100 ms	200.89.164.153
+6	100 ms	99 ms	99 ms	200.89.165.5
+7	99 ms	99 ms	101 ms	200.89.165.250
+8	101 ms	99 ms	100 ms	208.178.244.125
+9	200 ms	200 ms	200 ms	67.16.147.154
+10	200 ms	200 ms	200 ms	67.16.147.130
+11	200 ms	200 ms	200 ms	4.68.111.121
+12	200 ms	199 ms	199 ms	4.69.138.91
+13	200 ms	200 ms	200 ms	4.69.140.133
+14	200 ms	200 ms	200 ms	4.69.151.149
+15	200 ms	200 ms	200 ms	4.69.151.158
+16	200 ms	200 ms	199 ms	4.69.132.77
+17	200 ms	199 ms	200 ms	4.69.137.22
+18	199 ms	200 ms	200 ms	4.69.144.80
+19	200 ms	200 ms	200 ms	4.26.0.46
+20	399 ms	401 ms	401 ms	180.149.95.253
+21	401 ms	401 ms	399 ms	180.149.95.158
+22	401 ms	399 ms	400 ms	202.5.197.10
+23	400 ms	400 ms	399 ms	202.5.195.7
+24	399 ms	400 ms	399 ms	202.5.195.7
+
+Trace complete.
+Tracing route to www.msue.edu.mn [119.40.100.101]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	100 ms	200.89.164.153
+6	99 ms	99 ms	101 ms	200.89.165.150
+7	99 ms	99 ms	101 ms	200.63.151.249
+8	*	*	*	Request timed out.
+9	200 ms	200 ms	200 ms	94.142.123.22
+10	200 ms	200 ms	200 ms	94.142.124.121
+11	200 ms	200 ms	200 ms	213.140.52.34
+12	200 ms	200 ms	200 ms	154.54.26.133
+13	300 ms	299 ms	301 ms	154.54.42.114
+14	302 ms	301 ms	299 ms	154.54.76.58
+15	300 ms	300 ms	301 ms	154.54.63.242
+16	299 ms	301 ms	299 ms	149.11.138.42
+17	401 ms	399 ms	401 ms	180.149.95.245
+18	400 ms	400 ms	399 ms	180.149.95.210
+19	401 ms	399 ms	400 ms	119.40.100.101
+
+Trace complete.
+Tracing route to www.ulaanbaatar.edu.mn [www.ulaanbaatar.edu.mn]
+over a maximum of 30 hops:
+
+1	99 ms	100 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	99 ms	200.89.165.145
+6	99 ms	99 ms	101 ms	200.89.165.150
+7	99 ms	101 ms	99 ms	200.63.151.73
+8	*	*	*	Request timed out.
+9	200 ms	199 ms	200 ms	94.142.121.210
+10	200 ms	200 ms	200 ms	94.142.122.165
+11	200 ms	200 ms	200 ms	213.140.52.46
+12	201 ms	199 ms	200 ms	154.54.7.157
+13	299 ms	300 ms	301 ms	154.54.42.114
+14	300 ms	299 ms	299 ms	154.54.73.141
+15	399 ms	399 ms	300 ms	154.54.61.61
+16	299 ms	299 ms	300 ms	149.11.138.42
+17	400 ms	400 ms	400 ms	180.149.95.245
+18	400 ms	400 ms	400 ms	180.149.95.229
+19	601 ms	399 ms	401 ms	180.149.95.30
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.uu.nl [www.uu.nl]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	100 ms	200.89.164.129
+6	100 ms	100 ms	100 ms	200.89.165.150
+7	101 ms	99 ms	99 ms	208.50.25.97
+8	200 ms	200 ms	199 ms	134.222.248.25
+9	200 ms	199 ms	201 ms	134.222.228.177
+10	299 ms	299 ms	300 ms	134.222.226.37
+11	299 ms	300 ms	300 ms	134.222.226.158
+12	300 ms	299 ms	300 ms	134.222.228.13
+13	300 ms	299 ms	299 ms	134.222.199.87
+14	299 ms	299 ms	301 ms	134.222.232.51
+15	299 ms	299 ms	299 ms	134.222.155.83
+16	299 ms	299 ms	299 ms	145.145.16.98
+17	300 ms	299 ms	301 ms	131.211.4.113
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.uva.nl [www.uva.nl]
+over a maximum of 30 hops:
+
+1	99 ms	101 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	99 ms	200.89.165.145
+6	100 ms	99 ms	100 ms	200.89.165.150
+7	99 ms	99 ms	99 ms	64.209.94.69
+8	199 ms	200 ms	200 ms	134.222.248.25
+9	199 ms	299 ms	199 ms	134.222.232.37
+10	299 ms	299 ms	299 ms	134.222.226.41
+11	300 ms	299 ms	300 ms	134.222.226.154
+12	301 ms	299 ms	299 ms	134.222.231.148
+13	299 ms	299 ms	300 ms	134.222.231.150
+14	301 ms	299 ms	300 ms	134.222.199.83
+15	300 ms	299 ms	299 ms	134.222.232.53
+16	299 ms	300 ms	300 ms	134.222.155.83
+17	299 ms	300 ms	300 ms	145.145.19.130
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	299 ms	145.145.19.130
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.tudelft.nl [131.180.77.102]
+over a maximum of 30 hops:
+
+1	101 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	100 ms	100 ms	200.89.164.169
+6	99 ms	101 ms	100 ms	200.89.165.150
+7	99 ms	99 ms	101 ms	208.178.244.97
+8	200 ms	200 ms	199 ms	134.222.248.25
+9	200 ms	200 ms	200 ms	134.222.228.177
+10	299 ms	299 ms	299 ms	134.222.226.41
+11	300 ms	299 ms	300 ms	134.222.226.158
+12	299 ms	299 ms	299 ms	134.222.228.13
+13	299 ms	399 ms	399 ms	134.222.229.113
+14	299 ms	301 ms	299 ms	134.222.232.53
+15	299 ms	299 ms	299 ms	134.222.155.83
+16	301 ms	300 ms	299 ms	145.145.80.81
+17	300 ms	300 ms	299 ms	145.145.26.98
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	300 ms	301 ms	299 ms	131.180.77.102
+
+Trace complete.
+Tracing route to www.leidenuniv.nl [www.leidenuniv.nl]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	100 ms	100 ms	200.89.164.165
+6	101 ms	101 ms	100 ms	200.89.165.150
+7	99 ms	100 ms	99 ms	208.178.245.21
+8	200 ms	200 ms	199 ms	134.222.248.25
+9	200 ms	299 ms	200 ms	134.222.232.37
+10	299 ms	301 ms	299 ms	134.222.226.41
+11	299 ms	299 ms	299 ms	134.222.229.33
+12	299 ms	299 ms	299 ms	134.222.226.169
+13	300 ms	399 ms	299 ms	134.222.229.113
+14	300 ms	299 ms	299 ms	134.222.229.47
+15	300 ms	301 ms	299 ms	134.222.155.83
+16	299 ms	299 ms	299 ms	145.145.80.81
+17	301 ms	299 ms	300 ms	145.145.20.2
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.vu.nl [www.vu.nl]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	101 ms	99 ms	200.89.164.141
+6	100 ms	99 ms	100 ms	200.89.165.150
+7	101 ms	99 ms	99 ms	208.50.25.65
+8	200 ms	199 ms	199 ms	67.17.72.14
+9	201 ms	200 ms	200 ms	134.222.248.29
+10	300 ms	300 ms	299 ms	134.222.226.114
+11	299 ms	300 ms	300 ms	134.222.226.130
+12	299 ms	299 ms	199 ms	134.222.229.24
+13	300 ms	300 ms	300 ms	134.222.231.122
+14	301 ms	299 ms	299 ms	134.222.232.33
+15	301 ms	300 ms	300 ms	134.222.231.233
+16	299 ms	299 ms	301 ms	134.222.224.26
+17	299 ms	299 ms	299 ms	134.222.128.202
+18	299 ms	299 ms	301 ms	217.170.18.76
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.uwi.edu [www.uwi.edu]
+over a maximum of 30 hops:
+
+1	108 ms	109 ms	108 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	108 ms	108 ms	108 ms	200.89.164.157
+6	109 ms	108 ms	108 ms	200.89.165.130
+7	108 ms	108 ms	110 ms	200.89.165.222
+8	108 ms	108 ms	109 ms	64.209.94.97
+9	217 ms	217 ms	218 ms	67.16.139.18
+10	217 ms	217 ms	219 ms	154.54.13.61
+11	*	327 ms	437 ms	154.54.47.153
+12	218 ms	217 ms	219 ms	38.104.95.122
+13	328 ms	326 ms	326 ms	208.138.27.149
+14	218 ms	217 ms	217 ms	208.138.47.30
+15	437 ms	327 ms	327 ms	208.138.27.186
+16	*	326 ms	327 ms	208.131.167.61
+17	328 ms	328 ms	327 ms	208.131.167.62
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.mona.uwi.edu [www.mona.uwi.edu]
+over a maximum of 30 hops:
+
+1	110 ms	108 ms	108 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	108 ms	108 ms	108 ms	200.89.165.169
+6	108 ms	109 ms	108 ms	200.89.165.5
+7	108 ms	108 ms	108 ms	200.89.165.250
+8	110 ms	108 ms	108 ms	207.136.166.241
+9	217 ms	219 ms	437 ms	67.16.139.18
+10	217 ms	219 ms	218 ms	154.54.13.61
+11	*	437 ms	437 ms	154.54.47.153
+12	218 ms	217 ms	217 ms	38.104.95.122
+13	328 ms	328 ms	326 ms	208.138.47.89
+14	326 ms	328 ms	327 ms	208.138.47.18
+15	217 ms	217 ms	219 ms	208.138.27.186
+16	*	326 ms	328 ms	208.131.167.61
+17	328 ms	327 ms	326 ms	208.131.167.62
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to www.utech.edu.jm [www.utech.edu.jm]
+over a maximum of 30 hops:
+
+1	108 ms	108 ms	109 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	109 ms	109 ms	108 ms	200.89.165.161
+6	109 ms	108 ms	108 ms	200.89.165.130
+7	110 ms	108 ms	108 ms	200.89.165.222
+8	108 ms	108 ms	109 ms	208.178.244.125
+9	217 ms	219 ms	218 ms	67.16.139.18
+10	218 ms	219 ms	217 ms	213.200.84.37
+11	218 ms	217 ms	217 ms	216.221.156.90
+12	219 ms	218 ms	219 ms	63.245.5.120
+13	217 ms	217 ms	218 ms	63.245.5.106
+14	217 ms	218 ms	217 ms	63.245.3.62
+15	217 ms	219 ms	217 ms	65.183.0.101
+16	328 ms	328 ms	328 ms	65.183.10.22
+17	*	*	*	Request timed out.
+18	*	*	*	Request timed out.
+19	*	*	*	Request timed out.
+20	*	*	*	Request timed out.
+21	*	*	*	Request timed out.
+22	*	*	*	Request timed out.
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.
+Tracing route to ralston.emc.edu.jm [65.183.7.147]
+over a maximum of 30 hops:
+
+1	99 ms	101 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	99 ms	200.89.164.165
+6	99 ms	99 ms	99 ms	200.89.165.150
+7	99 ms	99 ms	101 ms	200.63.151.65
+8	100 ms	*	*	84.16.9.233
+9	200 ms	200 ms	200 ms	5.53.5.138
+10	202 ms	200 ms	300 ms	94.142.125.154
+11	200 ms	199 ms	200 ms	129.250.9.13
+12	200 ms	200 ms	200 ms	129.250.198.218
+13	199 ms	200 ms	200 ms	63.245.5.59
+14	299 ms	301 ms	301 ms	63.245.94.58
+15	299 ms	299 ms	299 ms	65.183.0.62
+16	300 ms	199 ms	200 ms	65.183.7.147
+
+Trace complete.
+Tracing route to www.cmi.edu.jm [65.183.4.198]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	101 ms	200.89.165.169
+6	99 ms	100 ms	99 ms	200.89.165.150
+7	99 ms	99 ms	101 ms	200.63.151.65
+8	*	*	*	Request timed out.
+9	200 ms	200 ms	200 ms	94.142.123.22
+10	*	*	*	Request timed out.
+11	200 ms	200 ms	200 ms	129.250.9.21
+12	200 ms	200 ms	200 ms	157.238.179.150
+13	200 ms	200 ms	200 ms	63.245.106.109
+14	299 ms	199 ms	200 ms	63.245.94.58
+15	200 ms	200 ms	200 ms	65.183.0.14
+16	*	*	*	Request timed out.
+17	*	*	209 ms	65.183.4.198
+
+Trace complete.
+Tracing route to www.ubc.ca [137.82.130.49]
+over a maximum of 30 hops:
+
+1	99 ms	99 ms	*	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	110 ms	99 ms	200.89.165.169
+6	99 ms	100 ms	99 ms	200.89.165.150
+7	100 ms	99 ms	110 ms	64.209.94.69
+8	299 ms	300 ms	399 ms	64.214.174.246
+9	1199 ms	1200 ms	1200 ms	72.52.92.158
+10	1210 ms	1200 ms	1200 ms	184.105.222.2
+11	300 ms	299 ms	299 ms	184.105.148.150
+12	300 ms	299 ms	299 ms	207.23.240.85
+13	299 ms	299 ms	299 ms	137.82.123.138
+14	299 ms	299 ms	300 ms	137.82.123.65
+15	*	*	*	Request timed out.
+16	299 ms	299 ms	299 ms	137.82.130.49
+
+Trace complete.
+Tracing route to www.utoronto.ca [128.100.72.45]
+over a maximum of 30 hops:
+
+1	100 ms	99 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	100 ms	99 ms	100 ms	200.89.164.153
+6	99 ms	99 ms	100 ms	200.89.165.150
+7	99 ms	100 ms	99 ms	208.178.245.21
+8	200 ms	200 ms	200 ms	64.209.92.98
+9	200 ms	200 ms	200 ms	184.105.222.18
+10	200 ms	200 ms	200 ms	216.66.30.114
+11	200 ms	200 ms	200 ms	205.211.94.134
+12	200 ms	200 ms	200 ms	128.100.96.7
+13	200 ms	200 ms	200 ms	128.100.72.45
+
+Trace complete.
+Tracing route to www.mcgill.ca [132.216.177.160]
+over a maximum of 30 hops:
+
+1	99 ms	100 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	99 ms	100 ms	200.89.165.161
+6	99 ms	100 ms	109 ms	200.89.165.130
+7	100 ms	99 ms	99 ms	200.89.165.222
+8	100 ms	99 ms	100 ms	208.178.244.213
+9	299 ms	200 ms	200 ms	67.16.148.102
+10	200 ms	200 ms	200 ms	66.110.9.61
+11	200 ms	200 ms	200 ms	66.198.154.177
+12	200 ms	200 ms	200 ms	216.6.87.1
+13	200 ms	200 ms	199 ms	216.6.87.138
+14	199 ms	199 ms	199 ms	66.198.111.18
+15	199 ms	200 ms	200 ms	64.86.226.13
+16	200 ms	200 ms	200 ms	216.6.115.89
+17	200 ms	200 ms	200 ms	206.82.135.34
+18	200 ms	200 ms	200 ms	192.77.63.26
+19	200 ms	200 ms	200 ms	132.202.62.90
+20	200 ms	200 ms	200 ms	206.167.128.42
+21	200 ms	200 ms	200 ms	132.216.255.2
+22	200 ms	200 ms	199 ms	132.216.216.5
+23	199 ms	199 ms	199 ms	132.216.177.160
+
+Trace complete.
+Tracing route to www.ualberta.ca [129.128.98.86]
+over a maximum of 30 hops:
+
+1	99 ms	100 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	109 ms	109 ms	100 ms	200.89.164.157
+6	99 ms	100 ms	99 ms	200.89.165.130
+7	100 ms	99 ms	99 ms	200.89.165.222
+8	99 ms	99 ms	100 ms	208.178.244.125
+9	200 ms	200 ms	199 ms	67.16.134.218
+10	199 ms	199 ms	199 ms	66.110.9.61
+11	299 ms	299 ms	299 ms	66.110.57.89
+12	299 ms	299 ms	*	66.110.57.82
+13	300 ms	299 ms	309 ms	66.198.127.25
+14	299 ms	299 ms	300 ms	64.86.123.21
+15	299 ms	309 ms	300 ms	64.86.123.26
+16	299 ms	299 ms	299 ms	66.163.76.125
+17	299 ms	299 ms	299 ms	66.163.78.177
+18	299 ms	300 ms	299 ms	66.163.70.2
+19	*	*	*	Request timed out.
+20	299 ms	299 ms	300 ms	129.128.0.50
+21	299 ms	299 ms	300 ms	129.128.0.35
+22	299 ms	299 ms	299 ms	129.128.3.197
+23	299 ms	299 ms	299 ms	129.128.98.86
+
+Trace complete.
+Tracing route to www.sfu.ca [142.58.102.68]
+over a maximum of 30 hops:
+
+1	100 ms	109 ms	100 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	109 ms	200.89.165.141
+6	110 ms	99 ms	100 ms	200.89.165.150
+7	109 ms	109 ms	110 ms	208.178.244.97
+8	409 ms	399 ms	400 ms	64.214.174.246
+9	1200 ms	1200 ms	1200 ms	72.52.92.158
+10	1200 ms	1200 ms	1200 ms	184.105.222.2
+11	299 ms	299 ms	299 ms	184.105.148.150
+12	299 ms	300 ms	299 ms	207.23.253.34
+13	299 ms	200 ms	300 ms	207.23.240.150
+14	299 ms	299 ms	299 ms	142.58.29.9
+15	299 ms	299 ms	299 ms	142.58.29.121
+16	299 ms	300 ms	299 ms	142.58.102.68
+
+Trace complete.
+Tracing route to www.ucalgary.ca [www.ucalgary.ca]
+over a maximum of 30 hops:
+
+1	99 ms	100 ms	99 ms	181.166.144.1
+2	*	*	*	Request timed out.
+3	*	*	*	Request timed out.
+4	*	*	*	Request timed out.
+5	99 ms	100 ms	99 ms	200.89.164.157
+6	99 ms	99 ms	99 ms	200.89.165.5
+7	100 ms	99 ms	100 ms	200.89.165.250
+8	99 ms	100 ms	99 ms	208.178.244.125
+9	199 ms	199 ms	199 ms	67.16.134.218
+10	199 ms	200 ms	200 ms	66.110.9.61
+11	300 ms	299 ms	299 ms	66.110.57.89
+12	300 ms	*	*	66.110.57.82
+13	299 ms	299 ms	299 ms	66.198.127.25
+14	299 ms	299 ms	299 ms	64.86.123.21
+15	300 ms	299 ms	299 ms	64.86.123.30
+16	300 ms	299 ms	299 ms	66.163.78.129
+17	300 ms	299 ms	299 ms	66.163.68.146
+18	299 ms	299 ms	299 ms	66.163.77.22
+19	299 ms	299 ms	300 ms	66.163.67.169
+20	299 ms	299 ms	300 ms	66.163.71.98
+21	299 ms	299 ms	299 ms	206.174.203.106
+22	299 ms	299 ms	309 ms	66.244.233.22
+23	*	*	*	Request timed out.
+24	*	*	*	Request timed out.
+25	*	*	*	Request timed out.
+26	*	*	*	Request timed out.
+27	*	*	*	Request timed out.
+28	*	*	*	Request timed out.
+29	*	*	*	Request timed out.
+30	*	*	*	Request timed out.
+
+Trace complete.

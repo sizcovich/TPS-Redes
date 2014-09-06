@@ -1,0 +1,23 @@
+RTT = 2 * Delay
+
+Delay = Tx + Tprop
+
+Tx = 
+
+
+Para ir a www.nuukkunstmuseum.gl Groenlandia
+Se usa el cable TAT-14 de eeuu hasta dinamarca
+6000km medido mediante google maps
+Tprop = 6000 Km / 2 * 10^5 Km s
+
+
+Para ir a www.tramites.gub.uy Uruguay
+Se usa el cable Bicentenario de las Toninas a Maldonado
+240km medido medianto google maps
+Tprop = 240 Km / 2 * 10^5 Km s
+
+Para ir a www.cm-lisboa.pt Portugal
+Se usa el cable Columbus-III de Hollywood a Lisboa
+6600km medido mediante google maps
+Tprop = 6600 Km / 2 * 10^5 Km s
+

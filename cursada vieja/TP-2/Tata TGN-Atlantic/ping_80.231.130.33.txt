@@ -1,0 +1,36 @@
+
+Haciendo ping a 80.231.130.33 con 32 bytes de datos:
+Respuesta desde 80.231.130.33: bytes=32 tiempo=240ms TTL=55
+Respuesta desde 80.231.130.33: bytes=32 tiempo=230ms TTL=55
+Respuesta desde 80.231.130.33: bytes=32 tiempo=232ms TTL=55
+Respuesta desde 80.231.130.33: bytes=32 tiempo=229ms TTL=55
+
+Estad¡sticas de ping para 80.231.130.33:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 229ms, M ximo = 240ms, Media = 232ms
+
+Haciendo ping a 80.231.130.33 con 32 bytes de datos:
+Respuesta desde 80.231.130.33: bytes=32 tiempo=260ms TTL=55
+Respuesta desde 80.231.130.33: bytes=32 tiempo=260ms TTL=55
+Respuesta desde 80.231.130.33: bytes=32 tiempo=228ms TTL=55
+Respuesta desde 80.231.130.33: bytes=32 tiempo=229ms TTL=55
+
+Estad¡sticas de ping para 80.231.130.33:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 228ms, M ximo = 260ms, Media = 244ms
+
+Haciendo ping a 80.231.130.33 con 32 bytes de datos:
+Respuesta desde 80.231.130.33: bytes=32 tiempo=243ms TTL=55
+Respuesta desde 80.231.130.33: bytes=32 tiempo=246ms TTL=55
+Respuesta desde 80.231.130.33: bytes=32 tiempo=262ms TTL=55
+Respuesta desde 80.231.130.33: bytes=32 tiempo=227ms TTL=55
+
+Estad¡sticas de ping para 80.231.130.33:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 227ms, M ximo = 262ms, Media = 244ms

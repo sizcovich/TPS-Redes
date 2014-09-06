@@ -1,0 +1,32 @@
+red con 2 equipos y un routet
+ambas maquinas descargando torrents
+Wireshark instalado en una de ellas.
+192.168.0.1 (Router) MAC
+192.168.0.2 (Notebook)
+192.168.0.3 (Desktop - Wireshark)
+
+MAC					IpSrc
+AsustekC_09:d8:5a	192.168.0.3 (Desktop - Wireshark)
+Motorola_7f:c0:76	192.168.0.1 (Router)
+Motorola_ad:67:89	10.97.109.97 (no sabemos)
+Motorola_f5:c2:f9	181.166.144.172 (no sabemos)
+TwinhanT_65:65:36	192.168.0.2 (Notebook)
+
+mucha entropia es mucha incertidumbre, poca probabilidad, mas informacion 
+mucha entropia , mucha informacion ,
+
+Se observa mucho trafico ARP generado por el 2. Nos llamaba la atencion porque habia tantos request a direcciones inexistentes y si bien no sabemos que 
+fue lo que ocurrio, entendemos que el nodo 2 no podia detectar respuestas e insistia con estos paquetes.
+
+Estamos analizando todos los paquetes broadcast de otros equipos.
+
+Analizando el trafico encontramos 2 mac que no pudimos identificar. Que hacen pedidos ARP con IP publicas. Intuimos que pertenecen a routers pero 
+no entendemos como su broadcast es alcanzado por una maquina con ip privada y que se encuentran en diferentes dominios de broadcast.
+
+Como distinguir nodos:
+Si tienen mucha o poca entropia lo relacionamos con mucha o poca actividad, con esto no llegamos a nada porque 2 equipos 
+
+con un paquete de este estilo le miento al router diciendole que tengo otra ip
+pkt2 = Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(psrc="192.168.0.12",pdst="192.168.0.1",op=2)
+
+

@@ -1,0 +1,27 @@
+
+Traza a la direcci¢n 33.252.ptr.skrin.is [212.30.252.33]
+sobre un m ximo de 30 saltos:
+
+  1    37 ms    18 ms    30 ms  1-245-247-190.fibertel.com.ar [190.247.245.1] 
+  2     *        *        *     Tiempo de espera agotado para esta solicitud.
+  3     *        *        *     Tiempo de espera agotado para esta solicitud.
+  4     *        *        *     Tiempo de espera agotado para esta solicitud.
+  5    15 ms    33 ms    23 ms  33-165-89-200.fibertel.com.ar [200.89.165.33] 
+  6    17 ms    35 ms    24 ms  250-165-89-200.fibertel.com.ar [200.89.165.250] 
+  7    13 ms    12 ms    12 ms  xe-1-2-2.ar3.eze1.gblx.net [208.178.244.213] 
+  8   139 ms   156 ms   140 ms  po4-20G.ar1.MIA2.gblx.net [67.16.134.218] 
+  9   142 ms   139 ms   140 ms  ix-2-3-1-0.tcore1.MLN-Miami.as6453.net [66.110.9.61] 
+ 10   257 ms   242 ms   257 ms  if-7-2.tcore1.AEQ-Ashburn.as6453.net [66.198.154.177] 
+ 11     *      229 ms     *     if-2-2.tcore2.AEQ-Ashburn.as6453.net [216.6.87.1] 
+ 12   229 ms   243 ms   229 ms  if-10-2.tcore1.L78-London.as6453.net [216.6.87.105] 
+ 13   262 ms     *      238 ms  Vlan908.icore1.LDN-London.as6453.net [80.231.130.102] 
+ 14   270 ms   269 ms   269 ms  Vlan545.icore1.LDN-London.as6453.net [195.219.83.122] 
+ 15     *        *        *     Tiempo de espera agotado para esta solicitud.
+ 16     *        *        *     Tiempo de espera agotado para esta solicitud.
+ 17     *        *        *     Tiempo de espera agotado para esta solicitud.
+ 18   307 ms   273 ms   290 ms  te1-3-C01-Sidumuli.c.is [217.151.190.145] 
+ 19   284 ms   282 ms   304 ms  gi1-1-R1-Akureyri.c.is [217.151.189.82] 
+ 20   301 ms   282 ms   282 ms  gw.skrin.is [212.30.252.62] 
+ 21   277 ms   273 ms   278 ms  33.252.ptr.skrin.is [212.30.252.33] 
+
+Traza completa.

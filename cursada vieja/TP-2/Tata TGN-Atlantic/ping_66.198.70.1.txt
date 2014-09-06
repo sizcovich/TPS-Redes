@@ -1,0 +1,36 @@
+
+Haciendo ping a 66.198.70.1 con 32 bytes de datos:
+Respuesta desde 66.198.70.1: bytes=32 tiempo=159ms TTL=52
+Respuesta desde 66.198.70.1: bytes=32 tiempo=175ms TTL=52
+Respuesta desde 66.198.70.1: bytes=32 tiempo=180ms TTL=52
+Respuesta desde 66.198.70.1: bytes=32 tiempo=159ms TTL=52
+
+Estad¡sticas de ping para 66.198.70.1:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 159ms, M ximo = 180ms, Media = 168ms
+
+Haciendo ping a 66.198.70.1 con 32 bytes de datos:
+Respuesta desde 66.198.70.1: bytes=32 tiempo=160ms TTL=52
+Respuesta desde 66.198.70.1: bytes=32 tiempo=160ms TTL=52
+Respuesta desde 66.198.70.1: bytes=32 tiempo=176ms TTL=52
+Respuesta desde 66.198.70.1: bytes=32 tiempo=195ms TTL=52
+
+Estad¡sticas de ping para 66.198.70.1:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 160ms, M ximo = 195ms, Media = 172ms
+
+Haciendo ping a 66.198.70.1 con 32 bytes de datos:
+Respuesta desde 66.198.70.1: bytes=32 tiempo=160ms TTL=52
+Respuesta desde 66.198.70.1: bytes=32 tiempo=184ms TTL=52
+Respuesta desde 66.198.70.1: bytes=32 tiempo=177ms TTL=52
+Respuesta desde 66.198.70.1: bytes=32 tiempo=191ms TTL=52
+
+Estad¡sticas de ping para 66.198.70.1:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 160ms, M ximo = 191ms, Media = 178ms

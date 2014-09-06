@@ -1,0 +1,26 @@
+Enlace Atlantis-2
+
+Evidencias:
+	Destino Nigeria:
+		1- www.oauife.edu.ng (ip registrada en Houston): Hace bs as a españa en 7-8.
+		2- www.unaab.edu.ng (ip registrada en Florida): No hace salto oceánico.
+		3- www.unilag.edu.ng (ip registrada en Lagos-Nigeria): Salta desde eeuu a nigeria, no aporta.
+		4- unn.edu.ng (ip registrada en New York): Hace bs as a españa en 7-8.
+		5- www.nou.edu.ng (ip registrada en Norcross, Georgia): No hace salto oceánico.
+
+	Destino Portugal:
+		1- www.valorsul.pt - usa Atlantis-2 (Argentina-España)
+		2- www.lispolis.pt - usa Atlantis-2 (Argentina-Italia)
+		3- www.visitlisboa.com - usa Atlantis-2 (Argentina-España con un salto no identificado en el medio)
+		4- www.simtejo.pt - usa Atlantis-2 (Argentina-España con un salto no identificado en el medio)
+	
+	Destino España:
+		1- www.ualm.es - usa Atlantis-2 (Argentina-España con un salto no identificado en el medio)
+		
+	Destino Corea:
+		1- www.skku.ac.kr - Hace bs as a españa en 7-8.
+		4- www.wonkwang.ac.kr -  Hace bs as a españa en 7-8.
+		
+	Destino Fiji:
+		1- www.fnu.ac.fj - Hace Bs As - España en 7-8. (Atlantis-2)
+		2- www.fsm.ac.fj - Hace Bs As - España en 7-8. (Atlantis-2)

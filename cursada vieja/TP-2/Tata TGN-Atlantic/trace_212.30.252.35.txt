@@ -1,0 +1,29 @@
+
+Traza a la direcci¢n mx1.posthysing.is [212.30.252.35]
+sobre un m ximo de 30 saltos:
+
+  1  1772 ms  1458 ms  1024 ms  1-245-247-190.fibertel.com.ar [190.247.245.1] 
+  2     *        *        *     Tiempo de espera agotado para esta solicitud.
+  3     *        *        *     Tiempo de espera agotado para esta solicitud.
+  4     *        *        *     Tiempo de espera agotado para esta solicitud.
+  5    50 ms    23 ms    23 ms  9-165-89-200.fibertel.com.ar [200.89.165.9] 
+  6    19 ms    13 ms    16 ms  250-165-89-200.fibertel.com.ar [200.89.165.250] 
+  7    27 ms    14 ms    13 ms  xe-1-2-1.ar3.eze1.gblx.net [208.178.244.125] 
+  8   168 ms   156 ms   141 ms  te8-4-10G.ar1.MIA2.gblx.net [67.16.147.134] 
+  9   155 ms   141 ms   171 ms  ix-2-3-1-0.tcore1.MLN-Miami.as6453.net [66.110.9.61] 
+ 10   243 ms   258 ms   258 ms  if-7-2.tcore1.AEQ-Ashburn.as6453.net [66.198.154.177] 
+ 11   263 ms   250 ms     *     if-2-2.tcore2.AEQ-Ashburn.as6453.net [216.6.87.1] 
+ 12   234 ms   234 ms   231 ms  if-3-2.tcore2.NJY-Newark.as6453.net [216.6.87.10] 
+ 13   265 ms   233 ms   269 ms  if-2-2.tcore1.NJY-Newark.as6453.net [66.198.70.1] 
+ 14   231 ms   235 ms   233 ms  if-4-2.tcore1.L78-London.as6453.net [80.231.130.33] 
+ 15   252 ms   270 ms   250 ms  Vlan908.icore1.LDN-London.as6453.net [80.231.130.102] 
+ 16   305 ms   271 ms   271 ms  Vlan545.icore1.LDN-London.as6453.net [195.219.83.122] 
+ 17     *        *        *     Tiempo de espera agotado para esta solicitud.
+ 18     *        *        *     Tiempo de espera agotado para esta solicitud.
+ 19     *        *        *     Tiempo de espera agotado para esta solicitud.
+ 20   278 ms   278 ms   300 ms  te1-3-C01-Sidumuli.c.is [217.151.190.145] 
+ 21   300 ms   286 ms   290 ms  gi1-1-R1-Akureyri.c.is [217.151.189.82] 
+ 22   316 ms   316 ms   287 ms  gw.skrin.is [212.30.252.62] 
+ 23   294 ms   279 ms   277 ms  mx1.posthysing.is [212.30.252.35] 
+
+Traza completa.
