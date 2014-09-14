@@ -120,19 +120,54 @@ Para la captura de paquetes, utilizamos Wireshark\footnote{http://www.wireshark.
 \section{Resultados}
 Decidimos presentar los resultados obtenidos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). Para eso, modificamos su formato obtenido de la forma $IP_{src}\ \rightarrow \ IP_{dst} ;$ y utilizamos Graphviz\footnote{http://www.graphviz.org/}. Por otro lado, graficamos los histogramas de IPs solicitadas o grafos dirigidos de IPs con pesos en los nodos. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
 
+Los resultados obtenidos fueron los siguientes:
 \subsection{CECEN-Wifi}
 
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/cecen_entero.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de la red CECEN-Wifi.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/cecen_centro.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de la red CECEN-Wifi.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/cecen_costado.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de la red CECEN-Wifi.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/cecen_arriba.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de la red CECEN-Wifi.}
+\end{center}
+\end{figure}
+
 \subsection{Starbucks}
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/starbucks_entero.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks.}
+\end{center}
+\end{figure}
 
 \subsection{Red Empresarial}
 
 
-%\begin{figure}[H] %[h] Aqui [b] para button [t] para top
-%\begin{center}
-%\includegraphics[width=470pt]{../imgs/ej10_EDF03.png}
-%\caption{Resultado de la simulación de EDF utilizando el lote descrito 
-%anteriormente utilizando dos núcleos y los parámetros 2 0 0 SchedEDF.}
-
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/tiargsa_entero.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de una empresa.}
+\end{center}
+\end{figure}
 
 \section{Referencias}
 \begin{itemize}
