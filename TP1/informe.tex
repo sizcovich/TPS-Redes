@@ -79,7 +79,7 @@ Los paquetes ARP consisten de los siguientes campos:
 \end{itemize}
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=300pt]{../imgs/arp.jpg}
+\includegraphics[width=350pt]{../imgs/arp.jpg}
 \caption{Formato de una ARP.}
 \end{center}
 \end{figure}
@@ -109,20 +109,24 @@ Los tiempos de captura fueron los siguientes:
   \begin{tabular}{| l | c |}
     \hline
     CECEN-Wifi & 23 minutos\\ \hline
-    Starbucks & 50 minutos\\ \hline
+    Starbucks & 3 horas\\ \hline
     Red Empresarial & 30 minutos\\
     \hline
   \end{tabular}
 \end{center}
 
-Para la captura de paquetes, utilizamos Wireshark\footnote{http://www.wireshark.org} y Scapy\footnote{http://www.secdev.org/projects/scapy/}. Para la obtención de resultados, filtramos por redes ARP y $who-has$.
+Para la captura de paquetes, generamos un script que, a partir de Scapy\footnote{http://www.secdev.org/projects/scapy/}, $sniffeara$ la red y almacenara las IP's fuente y destino involucradas en el envío y recepción de paquetes. Para corroborar la correctitud de nuestros datos, utilizamos Wireshark\footnote{http://www.wireshark.org} y comparamos lo obtenido con los resultados del programa. 
+
+Para almacenar los resultados, filtramos por redes ARP y $who-has$. Los resultados obtenidos fueron los siguientes:
 
 \section{Resultados}
-Decidimos presentar los resultados obtenidos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). Para eso, modificamos su formato obtenido de la forma $IP_{src}\ \rightarrow \ IP_{dst} ;$ y utilizamos Graphviz\footnote{http://www.graphviz.org/}. Por otro lado, graficamos los histogramas de IPs solicitadas o grafos dirigidos de IPs con pesos en los nodos. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
+Con el fin de visualizar los intercambios de paquetes obtenidos, utilizamos $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html} para realizar gráficos adecuados para ello. Para esto, decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). Para eso, modificamos su formato obtenido de la forma $IP_{src}\ IP_{dst}$.
 
 Los resultados obtenidos fueron los siguientes:
+
 \subsection{CECEN-Wifi}
 
+La red del $CECEN$ fue capturada durante 23 minutos. Los intercambios que se realizaron en ese tiempo fueron los que se pueden ver a continuación:
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/cecen_entero.png}
@@ -151,37 +155,39 @@ Los resultados obtenidos fueron los siguientes:
 \end{center}
 \end{figure}
 
-\subsubsection{Informaci\'on fuente src}
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
-
-\input{./imgs/chartBar/cecen_src_barchart}
-\vspace{2cm}
-
-\subsubsection{Informaci\'on fuente dst}
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
-
-\input{./imgs/chartBar/cecen_dst_barchart}
-\vspace{2cm}
-
 \subsection{Starbucks}
+
+La medición realizada durante 3 horas dio el siguientes resultado:
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/starbucks_entero.png}
-\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks.}
+\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
 \end{center}
 \end{figure}
 
-\subsubsection{Informaci\'on fuente src}
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+Con el fin de lograr extraer conclusiones relevantes sobre el intercambio de paquetes en dicha red, acotamos el tiempo de captura a 30 minutos. El resultado fue el que sigue:
 
-\input{./imgs/chartBar/starbucks_src_barchart}
-\vspace{2cm}
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/starbucks30_1.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
+\end{center}
+\end{figure}
 
-\subsubsection{Informaci\'on fuente dst}
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/starbucks30_2.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
+\end{center}
+\end{figure}
 
-\input{./imgs/chartBar/starbucks_dst_barchart}
-\vspace{2cm}
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/starbucks30_3.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
+\end{center}
+\end{figure}
+
 
 \subsection{Red Empresarial}
 
@@ -194,15 +200,42 @@ A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 \end{figure}
 
 \subsubsection{Informaci\'on fuente src}
+Por otro lado, graficamos los gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
 A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
-\input{./imgs/chartBar/tiarg_src_barchart}
+%\input{./imgs/chartBar/cecen_src_barchart}
 \vspace{2cm}
 
 \subsubsection{Informaci\'on fuente dst}
 A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
-\input{./imgs/chartBar/tiarg_dst_barchart}
+%\input{./imgs/chartBar/cecen_dst_barchart}
+\vspace{2cm}
+
+
+\subsubsection{Informaci\'on fuente src}
+A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+
+%\input{./imgs/chartBar/starbucks_src_barchart}
+\vspace{2cm}
+
+\subsubsection{Informaci\'on fuente dst}
+A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+
+%\input{./imgs/chartBar/starbucks_dst_barchart}
+\vspace{2cm}
+
+
+\subsubsection{Informaci\'on fuente src}
+A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+
+%\input{./imgs/chartBar/tiarg_src_barchart}
+\vspace{2cm}
+
+\subsubsection{Informaci\'on fuente dst}
+A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+
+%\input{./imgs/chartBar/tiarg_dst_barchart}
 \vspace{2cm}
 
 \section{Referencias}
