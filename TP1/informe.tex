@@ -115,12 +115,16 @@ Los tiempos de captura fueron los siguientes:
   \end{tabular}
 \end{center}
 
-Para la captura de paquetes, generamos un script que, a partir de Scapy\footnote{http://www.secdev.org/projects/scapy/}, $sniffeara$ la red y almacenara las IP's fuente y destino involucradas en el envío y recepción de paquetes. Para corroborar la correctitud de nuestros datos, utilizamos Wireshark\footnote{http://www.wireshark.org} y comparamos lo obtenido con los resultados del programa. 
+Para la captura de paquetes, generamos un script en Python que, a partir de la biblioteca Scapy\footnote{http://www.secdev.org/projects/scapy/}, $sniffeara$ la red y almacenara las IP's fuente y destino involucradas en el envío y recepción de paquetes. Para corroborar la correctitud de nuestros datos, utilizamos Wireshark\footnote{http://www.wireshark.org} y comparamos lo obtenido con los resultados del programa. 
 
 Para almacenar los resultados, filtramos por redes ARP y $who-has$. Los resultados obtenidos fueron los siguientes:
 
 \section{Resultados}
 Con el fin de visualizar los intercambios de paquetes obtenidos, utilizamos $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html} para realizar gráficos adecuados para ello. Para esto, decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). Para eso, modificamos su formato obtenido de la forma $IP_{src}\ IP_{dst}$.
+
+Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script\footnote{\texttt{informacion}}.
+
+A continuación intentamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
 
 Los resultados obtenidos fueron los siguientes:
 
@@ -129,31 +133,59 @@ Los resultados obtenidos fueron los siguientes:
 La red del $CECEN$ fue capturada durante 23 minutos. Los intercambios que se realizaron en ese tiempo fueron los que se pueden ver a continuación:
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=400pt]{../imgs/cecen_entero.png}
+%\includegraphics[width=200pt]{../imgs/cecen-outgoing.png}
 \caption{Resultado de la captura de envío y recepción de paquetes de la red CECEN-Wifi.}
 \end{center}
 \end{figure}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=400pt]{../imgs/cecen_centro.png}
+\includegraphics[width=400pt]{../imgs/zoom-cecen-outgoing.png}
 \caption{Resultado de la captura de envío y recepción de paquetes de la red CECEN-Wifi.}
 \end{center}
 \end{figure}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=400pt]{../imgs/cecen_costado.png}
+%\includegraphics[width=100pt]{../imgs/cecen-incoming.png}
 \caption{Resultado de la captura de envío y recepción de paquetes de la red CECEN-Wifi.}
 \end{center}
 \end{figure}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=400pt]{../imgs/cecen_arriba.png}
+\includegraphics[width=400pt]{../imgs/zoom-cecen-incoming.png}
 \caption{Resultado de la captura de envío y recepción de paquetes de la red CECEN-Wifi.}
 \end{center}
 \end{figure}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+%\includegraphics[width=100pt]{../imgs/cecen-entero.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de la red CECEN-Wifi.}
+\end{center}
+\end{figure}
+
+Como se puede observar, el router que actúa como $gateway$ es la IP .
+
+\subsubsection{Información de la fuente}
+
+A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+
+\begin{itemize}
+
+\item \textbf{Fuente src}
+%\input{./imgs/chartBar/cecen_src_barchart}
+\vspace{2cm}
+
+\item \textbf{Fuente dst}
+A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+
+%\input{./imgs/chartBar/cecen_dst_barchart}
+\vspace{2cm}
+\end{itemize}
+
+Por otro lado, graficamos los gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
 
 \subsection{Starbucks}
 
@@ -173,74 +205,184 @@ Por otro lado, con el fin de lograr extraer conclusiones relevantes sobre el int
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=400pt]{../imgs/starbucks30_1.png}
+\includegraphics[width=400pt]{../imgs/starbucks30_entero.png}
 \caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
 \end{center}
 \end{figure}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=400pt]{../imgs/starbucks30_2.png}
+%\includegraphics[width=400pt]{../imgs/starbucks30-incoming.png}
 \caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
 \end{center}
 \end{figure}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=400pt]{../imgs/starbucks30_3.png}
+\includegraphics[width=400pt]{../imgs/zoom-starbucks-incoming.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/zoom-starbucks-incoming2.png}
 \caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
 \end{center}
 \end{figure}
 
 
-\subsection{Red Empresarial}
-
-
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=400pt]{../imgs/tiargsa_entero.png}
-\caption{Resultado de la captura de envío y recepción de paquetes de una empresa.}
+%\includegraphics[width=400pt]{../imgs/starbucks30-outgoing.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
 \end{center}
 \end{figure}
 
-\subsubsection{Informaci\'on fuente src}
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/zoom-starbucks-outgoing.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/zoom-starbucks-outgoing2.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de Starbucks durante tres horas.}
+\end{center}
+\end{figure}
+
 Por otro lado, graficamos los gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
+
+\subsubsection{Información de la fuente}
+
 A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
-%\input{./imgs/chartBar/cecen_src_barchart}
-\vspace{2cm}
+\begin{itemize}
+\item \textbf{Fuente src}
 
-\subsubsection{Informaci\'on fuente dst}
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
-
-%\input{./imgs/chartBar/cecen_dst_barchart}
-\vspace{2cm}
-
-
-\subsubsection{Informaci\'on fuente src}
 A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
 %\input{./imgs/chartBar/starbucks_src_barchart}
 \vspace{2cm}
 
-\subsubsection{Informaci\'on fuente dst}
+\item \textbf{Fuente dst}
 A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
 %\input{./imgs/chartBar/starbucks_dst_barchart}
 \vspace{2cm}
 
+\end{itemize}
 
-\subsubsection{Informaci\'on fuente src}
+\subsection{Red Empresarial}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+%\includegraphics[width=400pt]{../imgs/tiarg-incoming.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de una empresa.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+%\includegraphics[width=400pt]{../imgs/tiarg-outgoing.png}
+\caption{Resultado de la captura de envío y recepción de paquetes de una empresa.}
+\end{center}
+\end{figure}
+
+Por otro lado, graficamos los gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
+
+\subsubsection{Información de la fuente}
+
+A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+
+
+\begin{itemize}
+\item \textbf{Fuente src}
 A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
 %\input{./imgs/chartBar/tiarg_src_barchart}
 \vspace{2cm}
 
-\subsubsection{Informaci\'on fuente dst}
+\item \textbf{Fuente dst}
 A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
 %\input{./imgs/chartBar/tiarg_dst_barchart}
 \vspace{2cm}
+\end{itemize}
+
+
+\subsection{Información obtenida de los gráficos}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Red & Tamaño de la muestra (paquetes)\\
+\hline
+CECEN-Wifi & \\
+Starbucks   &   \\
+Empresa    &   \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsubsection{Entropía}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Red & Fuente de información modelada $S$ & Entropía $H(S)$\\
+\hline
+CECEN-Wifi & $S_{src}$ & \\
+CECEN-Wifi & $S_{dst}$ & \\
+\hline
+Starbucks   & $S_{src}$ & \\
+Starbucks   & $S_{dst}$ & \\
+\hline
+Empresa    & $S_{src}$ & \\
+Empresa    & $S_{dst}$ & \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Discusión}
+Describimos a continuación nuestra interpretación de algunos fenómenos observados, de manera de facilitar la discusión de los resultados obtenidos.
+
+
+\subsection{Nodos que emiten paquetes ARP \textit{who-has} hacia un único nodo destino}
+
+Dado que la captura de paquetes fue realizada sobre redes wireless públicas, asumimos que la mayoría de las personas conectadas a la red sólo desean obtener acceso a internet, con lo que sus dispositivos únicamente solicitan la dirección física del gateway que les asigna al conectarse a la red.
+
+
+\subsection{Nodos que emiten paquetes ARP \textit{who-has} hacia muchos nodos destino}
+
+Teniendo en cuenta lo anterior, interpretamos que este escenario es generalmente producido por un router que intenta mantener actualizada su tabla ARP emitiendo paquetes ARP \textit{who-has} periódicamente para cada dirección IP en dicha tabla, bajo la suposición que cada dirección IP es asignada a distintos hosts que se conectan y desconectan de la red a medida que transcurre el tiempo.
+
+
+\subsection{Nodos que no emiten ningún paquete ARP}
+
+Suponemos que estos nodos se conectaron a la red y resolvieron la dirección física del gateway antes de iniciar la captura. De acuerdo con lo dicho anteriormente, cada nodo recibe periódicamente un paquete ARP \textit{who-has} emitido por el router al que está conecatdo. Este paquete incluye sus direcciones IP y física. Suponemos que cada nodo refresca su tabla ARP con esta información, lo que evita la necesidad de emitir paquetes ARP \textit{who-has} para solicitar la dirección física del router ya que esa entrada en su tabla ARP nunca llega a caducar.
+
+
+\subsection{Paquetes ARP con IP origen 0.0.0.0}
+
+Pudimos detectar en las redes algunos paquetes ARP \textit{who-has} con IP origen 0.0.0.0.
+El motivo de uso de esta IP es el siguiente:
+Cuando un cliente se conecta a una red que posee un servidor DHCP y quiere recibir una IP de éste, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, éste manda una o varias ofertas de IP a ese ID.
+El cliente eventualmente podría recibir la oferta, tomar uno de esos IP y extraer la dirección del router.
+Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \textit{who-has} es respondido, el cliente rechaza el IP elegido.
+
+
+\subsection{Direcciones en el rango 169.254.0.0/16}
+
+Entre los paquetes capturados detectamos varios que usaban el rango 169.254.0.0/16 como dirección IP origen o destino, el cual difiere con el rango utilizado para las IP asignadas por el servidor DHCP a los dispositivos de la red. Las direcciones en este rango se denominan \textit{direcciones de enlace local}, y son direcciones reservadas. Un host puede eventualmente asignarse una IP libre (lo corrobora con ARP) de enlace local para poder acceder de forma básica a la red cuando todavía no se le ha asignado una IP válida, ya sea de forma manual o automática (DHCP).\footnote{\url{http://tools.ietf.org/html/rfc3927}}
+
+Esto le permite al host comunicarse con los otros dispositivos de la red, pero no con dispositivos externos a la misma.
+
+\section{Conclusiones}
+Observamos que para las muestras obtenidas, tomar los símbolos con menor información de las fuentes de información $S_{src}$ y $S_{dst}$ muestra una confiabilidad aceptable para redes donde existe un sólo router o donde los paquetes ARP tienen una interacción intensa con una IP determinada.
 
 \section{Referencias}
 \begin{itemize}
