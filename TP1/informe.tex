@@ -131,8 +131,9 @@ Para almacenar los resultados, filtramos por redes ARP y $who-has$. Los resultad
 
 Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script.
 
-Con el fin de visualizar los intercambios de paquetes obtenidos, utilizamos $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html} para realizar gráficos adecuados para ello. Para esto, decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). Para eso, modificamos su formato obtenido al formato $IP_{src}\ IP_{dst}$.
-Por otro lado, realizamos gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
+Con el fin de visualizar los intercambios de paquetes obtenidos, utilizamos $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html} para realizar gráficos adecuados para ello. Para esto, decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). Para eso, modificamos su formato obtenido al formato $IP_{src}\ IP_{dst}$ y realizamos los grafos donde el tamaño y el color de cada nodo es proporcional a la cantidad de aristas que lo inciden.
+
+Por otro lado, realizamos gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente. Para una simple visualización de los resultados, agregamos el valor de la entropía en forma de recta.
 
 A continuación intentamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
 
@@ -155,6 +156,9 @@ La red del $CECEN$ fue capturada durante 23 minutos. Los intercambios que se rea
 \end{center}
 \end{figure}
 
+Como se puede observar, el router que actúa como $gateway$ es la IP 192.168.1.1 dado que se encuentra representada por el nodo de mayor tamaño y color más oscuro. En este caso, la segunda IP con mayor cantidad de envío de paquetes es 0.0.0.0.
+
+
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=450pt]{../imgs/cecen-incoming.png}
@@ -169,6 +173,8 @@ La red del $CECEN$ fue capturada durante 23 minutos. Los intercambios que se rea
 \end{center}
 \end{figure}
 
+Como se puede observar, el router que actúa como $gateway$ es la IP 192.168.1.1 dado que se encuentra representada por el nodo de mayor tamaño y color más oscuro. El resto de las IPs presentan tamaño y color similares, luego no hay ninguna cuya cantidad de aristas que las inciden sean relevantes respecto de las demás.
+
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=450pt]{../imgs/cecen-entero.png}
@@ -176,7 +182,7 @@ La red del $CECEN$ fue capturada durante 23 minutos. Los intercambios que se rea
 \end{center}
 \end{figure}
 
-Como se puede observar, el router que actúa como $gateway$ es la IP 192.168.1.1.
+Como se puede observar, los tres grafos son isomorfos. Esto se debe a que la mayoría de los dispositivos que envían datos también reciben. Dado que el router es el que más envía y recibe paquetes comunicándose con todos los demás dispositivos, es el de mayor tamaño y color más oscuro en las tres representaciones.
 
 \subsubsection{Información de la fuente}
 
@@ -202,6 +208,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 \end{figure}
 \end{itemize}
 
+Luego del análisis de grafos representados en la sección de arriba, se puede observar que la IP con menor cantidad de información es la 192.168.1.1. Esto resulta lógico dado que consiste en la IP del router, encargado de la transferencia de la mayor cantidad de paquetes con todos los dispositivos conectados a la red. Dado que la amplitud de transferencia de paquetes es similar en el resto de los dispositivos, su cantidad de información es semejante.
 
 \subsection{Starbucks}
 
@@ -214,7 +221,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 \end{center}
 \end{figure}
 
-Como se puede observar, son dos las direcciones IP que realizan intercambios con el resto de los dispositivos conectados a la red, luego las que funcionan como gateways. Una de ellos es el router y la otro, un celular que se utilizó para evaluar los dispositivos conectados a la red a través de la aplicación $Fing\ -\ Network Tools$ \footnote{$play.google.com/store/apps/details?id=com.overlook.android.fing\&hl=fr$}. Dicha aplicación encuentra las redes Wi-Fi conectadas en tiempo real, evaluando niveles de seguridad y mostrando las direcciones MAC de cada dispositivo conectado como también su fabricante. Utilizamos dicha aplicación para evaluar las modificaciones que podían surgir en el intercambio de paquetes y consideramos interesante variar el análisis.
+Como se puede observar, son dos las direcciones IP que realizan intercambios con el resto de los dispositivos conectados a la red, luego las que funcionan como gateways. Una de ellas es el router y la otra, un celular que se utilizó para evaluar los dispositivos conectados a la red a través de la aplicación $Fing\ -\ Network Tools$ \footnote{$play.google.com/store/apps/details?id=com.overlook.android.fing\&hl=fr$}. Dicha aplicación encuentra las redes Wi-Fi conectadas en tiempo real, evaluando niveles de seguridad y mostrando las direcciones MAC de cada dispositivo conectado como también su fabricante. Utilizamos dicha aplicación para evaluar las modificaciones que podían surgir en el intercambio de paquetes y consideramos interesante variar el análisis.
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
