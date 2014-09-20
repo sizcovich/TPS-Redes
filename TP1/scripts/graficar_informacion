@@ -16,17 +16,23 @@
 
 graphics_toolkit('gnuplot');
 
-if(length(argv()) != 2)
+if(length(argv()) != 3)
 	printf('Parámetros incorrectos. Ver comentarios al principio del script.\n');
 	exit(-1)
 end
 
 inputfile = argv(){1};
 figure    = argv(){2};
+entropy   = argv(){3};
 
-[ips, entropy] = textread(inputfile, '%s %f');
+[ips, information] = textread(inputfile, '%s %f');
 
-bar(entropy);
+x = [0:0.1:10];
+
+b = bar( information);
+hold on;
+
+
  xlim([0 length(ips) + 1]);
 
 ylabel('Information');
@@ -54,4 +60,9 @@ hnew = text(xtick, yposition, xticklabel);
 set(hnew,'rotation',45,'horizontalalignment','right');
 % Fin xticks verticales %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-print(figure, '-dpng');
+p1 = plot([0 11], [ str2num(entropy)  str2num(entropy)],"1-");
+set(p1, "linestyle", "-");
+set (p1, "linewidth", 3);
+legend(p1,"Entropy"); 
+
+print(figure, '-dpdf');
