@@ -59,9 +59,9 @@
 \newpage
 
 \section{Introducción}
-El objetivo del trabajo práctico consistió en analizar estadísticamente el protocolo de comunicación ARP\footnote{Protocolo de Red de bajo nivel para traducir direcciones IP en direcciones MAC donde se encuentran direcciones IP de capa 3 con direcciones MAC de capa 2.} de un segmento de red determinado. Con este fin, se elaboraron mediciones en distintos espacios de redes públicas para estudiar la entropía de cada una de ellas en base a los mensajes ARP observados.
+El objetivo del trabajo práctico consistió en analizar estadísticamente el protocolo de comunicación ARP\footnote{Protocolo de Red de bajo nivel para traducir direcciones IP en direcciones MAC donde se encuentran direcciones IP de capa 3 con direcciones MAC de capa 2.} de un segmento de red determinado. Con este fin, se elaboraron mediciones en distintos espacios de redes públicas para obtener nodos distinguidos e IPs significativas de cada una de ellas en base a la información y entropía de los mensajes ARP observados.
 
-ARP (Address Resolution Protocol) consiste en un protocolo usado frecuentemente por las redes locales para conectar las capas 3 (capa de red) y 2 (capa de enlace) mediante la conversión o identificación de IP v4 con direcciones físicas MAC.
+ARP (Address Resolution Protocol) consiste en un protocolo usado frecuentemente por las redes locales para conectar las capas 3 (capa de red) y 2 (capa de enlace) mediante la conversión o identificación de direcciones IP con direcciones Ethernet (direcciones MAC).
 
 Los dos tipos de paquetes posibles en dicho protocolo son los paquetes de petición y de respuesta:
 \begin{itemize}
@@ -124,6 +124,7 @@ Para almacenar los resultados, filtramos por redes ARP y $who-has$. Los resultad
 Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script.
 
 Con el fin de visualizar los intercambios de paquetes obtenidos, utilizamos $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html} para realizar gráficos adecuados para ello. Para esto, decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). Para eso, modificamos su formato obtenido al formato $IP_{src}\ IP_{dst}$.
+Por otro lado, realizamos gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
 
 A continuación intentamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
 
@@ -171,7 +172,7 @@ Como se puede observar, el router que actúa como $gateway$ es la IP 192.168.1.1
 
 \subsubsection{Información de la fuente}
 
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+A continuación se muestran las 10 IPs con menor cantidad de información.
 
 \begin{itemize}
 
@@ -179,22 +180,20 @@ A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/cecen_src_chartbar.png}
-\caption{Información de los símbolos(Ips) origen.}
+\caption{Información de los símbolos(IPs) origen.}
 \end{center}
 \end{figure}
 
 \item \textbf{Fuente dst}
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/cecen_dst_chartbar.png}
-\caption{Información de los símbolos(Ips) destino.}
+\caption{Información de los símbolos(IPs) destino.}
 \end{center}
 \end{figure}
 \end{itemize}
 
-Por otro lado, graficamos los gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
 
 \subsection{Starbucks}
 
@@ -252,31 +251,26 @@ Como se puede observar, son dos las direcciones IP que realizan intercambios con
 \end{center}
 \end{figure}
 
-Por otro lado, graficamos los gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
-
 \subsubsection{Información de la fuente}
 
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
+A continuación se muestran las 10 IPs con menor cantidad de información.
 
 \begin{itemize}
 \item \textbf{Fuente src}
 
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
-
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/starbucks_src_chartbar.png}
-\caption{Información de los símbolos(Ips) origen.}
+\caption{Información de los símbolos(IPs) origen.}
 \end{center}
 \end{figure}
 
 \item \textbf{Fuente dst}
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/starbucks_dst_chartbar.png}
-\caption{Información de los símbolos(Ips) destino.}
+\caption{Información de los símbolos(IPs) destino.}
 \end{center}
 \end{figure}
 
@@ -300,39 +294,34 @@ A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
 Como se puede observar, el router que actúa como $gateway$ es la IP 192.168.1.1.
 
-Por otro lado, graficamos los gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente.
-
 \subsubsection{Información de la fuente}
 
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
-
+A continuación se muestran las 10 IPs con menor cantidad de información.
 
 \begin{itemize}
 \item \textbf{Fuente src}
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/tiarg_src_chartbar.png}
-\caption{Información de los símbolos(Ips) origen.}
+\caption{Información de los símbolos(IPs) origen.}
 \end{center}
 \end{figure}
 
 \item \textbf{Fuente dst}
-A continuaci\'on se muestran las 10 ips con menor cantidad de informaci\'on.
 
 %\input{./imgs/chartBar/tiarg_dst_barchart}
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/tiarg_dst_chartbar.png}
-\caption{Información de los símbolos(Ips) destino.}
+\caption{Información de los símbolos(IPs) destino.}
 \end{center}
 \end{figure}
 
 \end{itemize}
 
 
-\subsection{Información obtenida de los gráficos}
+\subsection{Información estadística obtenida de las muestras}
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
@@ -382,7 +371,7 @@ Teniendo en cuenta lo anterior, interpretamos que este escenario es generalmente
 \subsection{Nodos que no emiten ningún paquete ARP}
 
 Suponemos que estos nodos se conectaron a la red y resolvieron la dirección física del gateway antes de iniciar la captura. De acuerdo con lo dicho anteriormente, cada nodo recibe periódicamente un paquete ARP \textit{who-has} emitido por el router al que está conecatdo. Este paquete incluye sus direcciones IP y física. Suponemos que cada nodo refresca su tabla ARP con esta información, lo que evita la necesidad de emitir paquetes ARP \textit{who-has} para solicitar la dirección física del router ya que esa entrada en su tabla ARP nunca llega a caducar.
-
+Otra hipótesis es que estos nodos fueron desconectados de la red o son IPs que no fueron asignadas.
 
 \subsection{Paquetes ARP con IP origen 0.0.0.0}
 
@@ -390,7 +379,7 @@ Pudimos detectar en las redes algunos paquetes ARP \textit{who-has} con IP orige
 El motivo de uso de esta IP es el siguiente:
 Cuando un cliente se conecta a una red que posee un servidor DHCP y quiere recibir una IP de éste, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, éste manda una o varias ofertas de IP a ese ID.
 El cliente eventualmente podría recibir la oferta, tomar uno de esos IP y extraer la dirección del router.
-Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \textit{who-has} es respondido, el cliente rechaza el IP elegido.
+Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC address y la IP 0.0.0.0 como dirección IP origen para verificar que no este en uso (éste request se lo conoce como \textbf{ARP Probe}). Si el \textit{who-has} es respondido, el cliente rechaza el IP elegido.
 
 
 \subsection{Direcciones en el rango 169.254.0.0/16}
