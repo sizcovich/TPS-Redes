@@ -1,0 +1,57 @@
+#!/usr/bin/octave -qf
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Uso: ./graficar_informacion <datos> <figura>                                %
+%                                                                             %
+% Este script lee una tabla de IPs/información del path <datos> y genera un   %
+% gráfico de barras que es guardado como <figura>.tex.                        %
+%                                                                             %
+% Formato de los datos esperados en la entrada standard:                      %
+%                                                                             %
+% ip_1 informacion_ip_1                                                       %
+% ip_2 informacion_ip_2                                                       %
+% ...                                                                         %
+% ip_n informacion_ip_n                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+graphics_toolkit('gnuplot');
+
+if(length(argv()) != 2)
+	printf('Parámetros incorrectos. Ver comentarios al principio del script.\n');
+	exit(-1)
+end
+
+inputfile = argv(){1};
+figure    = argv(){2};
+
+[ips, entropy] = textread(inputfile, '%s %f');
+
+bar(entropy);
+ xlim([0 length(ips) + 1]);
+
+ylabel('Information');
+
+% xticks verticales según este link: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% http://octave.1599824.n4.nabble.com/vertical-xtick-labels-td1636894.html
+
+xtick = (1:length(ips));
+xticklabel = ips;
+
+% get position of current xtick labels 
+h = get(gca,'xlabel'); 
+xlabelstring = get(h,'string'); 
+xlabelposition = get(h,'position'); 
+
+% construct position of new xtick labels 
+yposition = xlabelposition(2); 
+yposition = repmat(yposition,length(xtick),1); 
+
+% disable current xtick labels 
+set(gca,'xtick',[]); 
+
+% set up new xtick labels and rotate 
+hnew = text(xtick, yposition, xticklabel); 
+set(hnew,'rotation',45,'horizontalalignment','right');
+% Fin xticks verticales %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+print(figure, '-dpng');
