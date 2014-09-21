@@ -87,20 +87,20 @@ Los paquetes ARP consisten de los siguientes campos:
 Un ejemplo típico de uso podría ser el siguiente:
 
 \begin{quotation}
-Una máquina en una red desea enviarle un paquete de datos a otra máquina de la misma red. Para eso, la máquina emisora busca, en su tabla local, la dirección MAC asociada a la dirección IP a la cuál desea mandar el paquete. Si no la encuentra, realiza el broadcast de la petición ARP, que llegará eventualmente a la máquina destino si se encuentra conectada a la red. 
+Una máquina en una red desea enviarle un paquete de datos a otra máquina de la misma red. Para eso, la máquina emisora busca, en su tabla local, la dirección MAC asociada a la dirección IP a la cuál desea mandar el paquete. Si no la encuentra, realiza el broadcast de la petición ARP, que llegará eventualmente si se encuentra conectada, a la máquina destino. 
 La máquina destino recibirá la petición y responderá de manera unicast a la máquina que realizó la petición, poniendo en el paquete su dirección MAC para que la máquina destino de la respuesta pueda conocer la dirección MAC que necesitaba.
 \end{quotation}
 
-El análisis de la red consiste en reconocer su topología en base al nivel de información que proveen las diferentes IP, como fuente y como destino, tomando a las IP como símbolos y estimando su probabilidad de aparición con su frecuencia muestral. Para nuestro análisis, nos limitamos a la utilización de los paquetes $who-has$.
+El análisis de la red consiste en reconocer su topología en base al nivel de información que proveen las diferentes IP, como fuente y como destino, tomando a las IP como símbolos y estimado su probabilidad de aparición con su frecuencia muestral. Para nuestro análisis, nos limitamos a la utilización de los paquetes $who-has$.
 
 \section{Desarrollo}
 
-Con el fin de obtener resultados relevantes, decidimos analizar 2 redes Wi-Fi públicas de gran uso y una red empresarial. Éstas fueron:
+Con el fin de obtener resultados relevantes, decidimos analizar redes Wi-Fi públicas de gran uso. Éstas fueron:
 
 \begin{itemize}
 \item CECEN-Wifi - Red pública del Pabellón II de Ciudad Universitaria, de gran utilización por parte de los estudiantes y docentes de la facultad.
 \item Starbucks Núñez - Red pública utilizada por los clientes.
-\item Red Empresarial - Red privada con una magnitud aproximada de 30 dispositivos conectados en simultáneo.
+\item Red Empresarial - Con una magnitud aproximada de 30 dispositivos conectados en simultáneo.
 \end{itemize}
 
 Los tiempos de captura fueron los siguientes:
@@ -117,15 +117,15 @@ Los tiempos de captura fueron los siguientes:
 
 Para la captura de paquetes, generamos un script en Python que, a partir de la biblioteca Scapy\footnote{http://www.secdev.org/projects/scapy/}, $sniffeara$ la red y almacenara las IP's fuente y destino involucradas en el envío y recepción de paquetes. Para corroborar la correctitud de nuestros datos, utilizamos Wireshark\footnote{http://www.wireshark.org} y comparamos lo obtenido con los resultados del programa. 
 
-Para almacenar los resultados, filtramos por protocolo $ARP$ y mensajes del tipo $who-has$.
+Para almacenar los resultados, filtramos por redes ARP y $who-has$. Los resultados obtenidos fueron los siguientes:
 
 \section{Resultados}
 
-Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo en bits\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script.
+Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script.
 
-Con el fin de visualizar los intercambios de paquetes decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). El peso de los nodos esta representado por color y tamaño que es proporcional a la cantidad de aristas que lo inciden. %Para eso, modificamos su formato obtenido al formato $IP_{src}\ IP_{dst}$.
-La herramienta utilizada para graficar los mismo fue $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html}.
-Por otro lado, realizamos gráficos de barra de la información de cada símbolo con respecto de la entropía de su respectiva fuente\footnote{La información y entropía se midieron en bits.}. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN. Para una simple visualización de los resultados, agregamos el valor de la entropía en forma de recta.
+Con el fin de visualizar los intercambios de paquetes obtenidos, utilizamos $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html} para realizar gráficos adecuados para ello. Para esto, decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). Para eso, modificamos su formato obtenido al formato $IP_{src}\ IP_{dst}$ y realizamos los grafos donde el tamaño y el color de cada nodo es proporcional a la cantidad de aristas que lo inciden.
+
+Por otro lado, realizamos gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente. Para una simple visualización de los resultados, agregamos el valor de la entropía en forma de recta.
 
 A continuación intentamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
 
@@ -405,6 +405,7 @@ Esto le permite al host comunicarse con los otros dispositivos de la red, pero n
 \section{Conclusiones}
 Observamos que para las muestras obtenidas, tomar los símbolos con menor información de las fuentes de información $S_{src}$ y $S_{dst}$ muestra una confiabilidad aceptable para redes donde existe un sólo router o donde los paquetes ARP tienen una interacción intensa con una IP determinada.
 
+Por otro lado, notamos que, en la práctica, el modelo teórico de información/entropía no ayuda a distinguir nodos significativos pero que el modelo topológico resultó más útil para ello. Esto se debe a que en el modelo topológico no se tuvieron en cuenta los paquetes repetidos.
 \section{Referencias}
 \begin{itemize}
 \item PETERSON, DAVIE ; Computer Networks, 5th edition, Wiley
