@@ -110,6 +110,8 @@ Con el fin de obtener resultados relevantes, decidimos analizar 2 redes Wi-Fi p�
 \item Red Empresarial - Red privada con una magnitud aproximada de 30 dispositivos conectados en simultáneo.
 \end{itemize}
 
+Éstas fueron elegidas de acuerdo a sus diferentes tamaños para lograr analizar redes de distintas características.
+ 
 Los tiempos de captura fueron los siguientes:
 
 \begin{center}
@@ -182,7 +184,7 @@ Como se puede observar, el router que actúa como $gateway$ es la IP 192.168.1.1
 \end{center}
 \end{figure}
 
-Como se puede observar, los tres grafos tienen pesos similares en los nodos. Esto se debe a que la mayoría de los dispositivos que envían datos también reciben. Dado que el router es el que más envía y recibe paquetes comunicándose con todos los demás dispositivos, es el de mayor tamaño y color más oscuro en las tres representaciones.
+Como se puede observar, los tres grafos son isomorfos. Esto se debe a que la mayoría de los dispositivos que envían datos también reciben. Dado que el router es el que más envía y recibe paquetes comunicándose con todos los demás dispositivos, es el de mayor tamaño y color más oscuro en las tres representaciones.
 
 \subsubsection{Información de la fuente}
 
@@ -222,7 +224,7 @@ Por otro lado, podemos percibir que la IP 0.0.0.0 aparece entre una de las 10 co
 \end{center}
 \end{figure}
 
-Como se puede observar, son tres las direcciones IP que realizan intercambios con el resto de los dispositivos conectados a la red, luego las que funcionan como gateways. Una de ellas es el router y la otra, un celular que se utilizó para evaluar los dispositivos conectados a la red a través de la aplicación $Fing\ -\ Network Tools$ \footnote{$play.google.com/store/apps/details?id=com.overlook.android.fing\&hl=fr$}. Dicha aplicación encuentra las redes Wi-Fi conectadas en tiempo real, evaluando niveles de seguridad y mostrando las direcciones MAC de cada dispositivo conectado como también su fabricante. %Utilizamos dicha aplicación para evaluar las modificaciones que podían surgir en el intercambio de paquetes y consideramos interesante variar el análisis.
+Como se puede observar, son dos las direcciones IP que realizan intercambios con el resto de los dispositivos conectados a la red, luego las que funcionan como gateways. Una de ellas es el router y la otra, un celular que se utilizó para evaluar los dispositivos conectados a la red a través de la aplicación $Fing\ -\ Network Tools$ \footnote{$play.google.com/store/apps/details?id=com.overlook.android.fing\&hl=fr$}. Dicha aplicación encuentra las redes Wi-Fi conectadas en tiempo real, evaluando niveles de seguridad y mostrando las direcciones MAC de cada dispositivo conectado como también su fabricante. Utilizamos dicha aplicación para evaluar las modificaciones que podían surgir en el intercambio de paquetes y consideramos interesante variar el análisis.
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
@@ -269,8 +271,6 @@ En este caso, se puede ver que el nodo con mayor cantidad de aristas incidentes 
 \end{figure}
 
 En este caso, son dos los nodos con mayor peso: el 10.254.54.226 y el 10.254.54.69. Les sigue el nodo 10.254.54.1.
-Analizando la ip 10.254.54.226 desde $wireshark$ se ve que la misma no envió ningun paquete $is-at$, por lo que podría ser un router.
-Con respecto a la ip 10.254.54.69, analizando los datos desde el $wireshark$, podemos ver que envió paquetes $is-at$ hacia distintas ips con el fin de mal informar que su dirección MAC se correspondia con la ip 10.254.54.1 en un intento de realizar ARP Spoofing.
 
 \subsubsection{Información de la fuente}
 
@@ -316,7 +316,7 @@ Se puede observar que los gráficos son congruentes respecto de los grafos prese
 \end{center}
 \end{figure}
 
-Como se puede contemplar, el router que actúa como $gateway$ es la IP 192.168.1.1.
+Como se puede contemplar, el router que actúa como $gateway$ es la IP 192.168.1.1. Se puede ver que la magnitud de envíos y recepción de datos difiere para ciertos nodos (por ejemplo, el 192.168.1.42), esto se debe a que no todos los dispositivos necesitan enviar y recibir la misma cantidad de paquetes.
 
 \subsubsection{Información de la fuente}
 
@@ -366,16 +366,16 @@ Empresa    &  382 \\
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
-Red & Fuente de información modelada $S$ & Entropía $H(S)$ \\ %& Max Entropía $MAX(H(S))$ \\
+Red & Fuente de información modelada $S$ & Entropía $H(S)$\\
 \hline
-\multirow{2}{*}{CECEN-Wifi}  & $S_{src}$ & 1.56 \\ %& 5.67 \\
-	                         & $S_{dst}$ & 5.17 \\ %& 6.41 \\
+\multirow{2}{*}{CECEN-Wifi}  & $S_{src}$ & 1.56 \\
+	                                                      & $S_{dst}$ & 5.17 \\
 \hline
-\multirow{2}{*}{Starbucks}   & $S_{src}$ & 1.84 \\ %& 5.17 \\
-                             & $S_{dst}$ & 7.44 \\ %& 8.01 \\
+\multirow{2}{*}{Starbucks}   & $S_{src}$ & 1.84 \\
+                                           	           & $S_{dst}$ & 7.44 \\
 \hline
-\multirow{2}{*}{Empresa}     & $S_{src}$ & 3.67 \\ %& 4.17 \\
-	                         & $S_{dst}$ & 3.12 \\ %& 4.75 \\
+\multirow{2}{*}{Empresa}     & $S_{src}$ & 3.67 \\
+	                                                     & $S_{dst}$ & 3.12 \\
 \hline
 \end{tabular}
 \end{center}
@@ -414,13 +414,14 @@ Entre los paquetes capturados detectamos varios que usaban el rango 169.254.0.0/
 Esto le permite al host comunicarse con los otros dispositivos de la red, pero no con dispositivos externos a la misma.
 
 \section{Conclusiones}
-Observamos que para las muestras obtenidas, con respecto a la hipótesis de que podríamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$,  los símbolos con menor información en general nos ayuda a encontrar los mismos. Sin embargo, la información se ve distorsionada cuando exite mucha duplicación de paquetes $who-has$, o dispositivos utilizados para analizar la red. A pesar de esto, la confiabilidad para encontrar routers de la red es aceptable, en especial para redes donde existe un sólo router o donde los paquetes ARP tienen una interacción intensa con una IP determinada.
+Observamos que para las muestras obtenidas, tomar los símbolos con menor información de las fuentes de información $S_{src}$ y $S_{dst}$ muestra una confiabilidad aceptable para redes donde existe un sólo router o donde los paquetes ARP tienen una interacción intensa con una IP determinada.
 
-
+Por otro lado, notamos que, en la práctica, el modelo teórico de información/entropía no ayuda a distinguir nodos significativos pero que el modelo topológico resultó más útil para ello. Esto se debe a que en el modelo topológico no se tuvieron en cuenta los paquetes repetidos.
 \section{Referencias}
 \begin{itemize}
 \item PETERSON, DAVIE ; Computer Networks, 5th edition, Wiley
 \item STEVENS, W. Richard ; TCP/IP Illustrated, Volume 1
+
 \item $http://wiki.wireshark.org/Gratuitous\_ARP$
 \end{itemize}
 \end{document}
