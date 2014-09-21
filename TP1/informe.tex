@@ -59,9 +59,16 @@
 \newpage
 
 \section{Introducción}
-El objetivo del trabajo práctico consistió en analizar estadísticamente el protocolo de comunicación ARP\footnote{Protocolo de Red de bajo nivel para traducir direcciones IP en direcciones MAC donde se encuentran direcciones IP de capa 3 con direcciones MAC de capa 2.} de un segmento de red determinado. Con este fin, se elaboraron mediciones en distintos espacios de redes públicas para obtener nodos distinguidos e IPs significativas de cada una de ellas en base a la información y entropía de los mensajes ARP observados.
+El objetivo del trabajo práctico consistió en analizar estadísticamente el protocolo de comunicación ARP\footnote{$http://tools.ietf.org/html/rfc826$} de un segmento de red determinado. Con este fin, se elaboraron mediciones en distintos espacios de redes públicas para obtener nodos distinguidos e IPs significativas en base a la información y entropía de los mensajes ARP observados de cada una de ellas.
 
-ARP (Address Resolution Protocol) consiste en un protocolo usado frecuentemente por las redes locales para conectar las capas 3 (capa de red) y 2 (capa de enlace) mediante la conversión o identificación de direcciones IP con direcciones Ethernet (direcciones MAC).
+ARP (Address Resolution Protocol) consiste en un Protocolo de Red de bajo nivel para traducir direcciones IP de 32-bit(capa 3) en direcciones Ethernet de 48-bit(capa 2).
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=250pt]{../imgs/IPtoMAC.png}
+%\caption{Formato de una ARP.}
+\end{center}
+\end{figure}
 
 Los dos tipos de paquetes posibles en dicho protocolo son los paquetes de petición y de respuesta:
 \begin{itemize}
@@ -87,20 +94,20 @@ Los paquetes ARP consisten de los siguientes campos:
 Un ejemplo típico de uso podría ser el siguiente:
 
 \begin{quotation}
-Una máquina en una red desea enviarle un paquete de datos a otra máquina de la misma red. Para eso, la máquina emisora busca, en su tabla local, la dirección MAC asociada a la dirección IP a la cuál desea mandar el paquete. Si no la encuentra, realiza el broadcast de la petición ARP, que llegará eventualmente si se encuentra conectada, a la máquina destino. 
+Una máquina en una red desea enviarle un paquete de datos a otra máquina de la misma red. Para eso, la máquina emisora busca, en su tabla local, la dirección MAC asociada a la dirección IP a la cuál desea mandar el paquete. Si no la encuentra, realiza el broadcast de la petición ARP, que llegará eventualmente a la máquina destino si se encuentra conectada a la red. 
 La máquina destino recibirá la petición y responderá de manera unicast a la máquina que realizó la petición, poniendo en el paquete su dirección MAC para que la máquina destino de la respuesta pueda conocer la dirección MAC que necesitaba.
 \end{quotation}
 
-El análisis de la red consiste en reconocer su topología en base al nivel de información que proveen las diferentes IP, como fuente y como destino, tomando a las IP como símbolos y estimado su probabilidad de aparición con su frecuencia muestral. Para nuestro análisis, nos limitamos a la utilización de los paquetes $who-has$.
+El análisis de la red consiste en reconocer su topología en base al nivel de información que proveen las diferentes IP, como fuente y como destino, tomando a las IP como símbolos y estimando su probabilidad de aparición con su frecuencia muestral. Para nuestro análisis, nos limitamos a la utilización de los paquetes $who-has$.
 
 \section{Desarrollo}
 
-Con el fin de obtener resultados relevantes, decidimos analizar redes Wi-Fi públicas de gran uso. Éstas fueron:
+Con el fin de obtener resultados relevantes, decidimos analizar 2 redes Wi-Fi públicas de gran uso y una red empresarial. Éstas fueron:
 
 \begin{itemize}
 \item CECEN-Wifi - Red pública del Pabellón II de Ciudad Universitaria, de gran utilización por parte de los estudiantes y docentes de la facultad.
 \item Starbucks Núñez - Red pública utilizada por los clientes.
-\item Red Empresarial - Con una magnitud aproximada de 30 dispositivos conectados en simultáneo.
+\item Red Empresarial - Red privada con una magnitud aproximada de 30 dispositivos conectados en simultáneo.
 \end{itemize}
 
 Los tiempos de captura fueron los siguientes:
@@ -118,15 +125,15 @@ Los tiempos de captura fueron los siguientes:
 Para la captura de paquetes, generamos un script en Python que, a partir de la biblioteca Scapy\footnote{http://www.secdev.org/projects/scapy/}, $sniffeara$ la red y almacenara las IP's fuente y destino involucradas en el envío y recepción de paquetes. Para corroborar la correctitud de nuestros datos, utilizamos Wireshark\footnote{http://www.wireshark.org} y comparamos lo obtenido con los resultados del programa. 
 Las capturas se realizaron seteando la interfaz de red en modo $promiscuo$. Esto significa que vamos a poder analizar paquetes que esten dirigidos a MACs ajenas, y además solo vamos a analizar paquetes de la red en la que estamos asociados mediante el Access Point.
 
-Para almacenar los resultados, filtramos por redes ARP y $who-has$. Los resultados obtenidos fueron los siguientes:
+Para almacenar los resultados, filtramos por protocolo $ARP$ y mensajes del tipo $who-has$.
 
 \section{Resultados}
 
-Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script.
+Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo en bits\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script.
 
-Con el fin de visualizar los intercambios de paquetes obtenidos, utilizamos $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html} para realizar gráficos adecuados para ello. Para esto, decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). Para eso, modificamos su formato obtenido al formato $IP_{src}\ IP_{dst}$ y realizamos los grafos donde el tamaño y el color de cada nodo es proporcional a la cantidad de aristas que lo inciden.
-
-Por otro lado, realizamos gráficos de barra respecto de la entropía. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN analizando la información de cada símbolo con respecto a la entropía de su respectiva fuente. Para una simple visualización de los resultados, agregamos el valor de la entropía en forma de recta.
+Con el fin de visualizar los intercambios de paquetes decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). El peso de los nodos esta representado por color y tamaño que es proporcional a la cantidad de aristas que lo inciden. %Para eso, modificamos su formato obtenido al formato $IP_{src}\ IP_{dst}$.
+La herramienta utilizada para graficar los mismo fue $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html}.
+Por otro lado, realizamos gráficos de barra de la información de cada símbolo con respecto de la entropía de su respectiva fuente\footnote{La información y entropía se midieron en bits.}. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN. Para una simple visualización de los resultados, agregamos el valor de la entropía en forma de recta.
 
 A continuación intentamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
 
