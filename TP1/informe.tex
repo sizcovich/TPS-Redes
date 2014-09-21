@@ -116,6 +116,7 @@ Los tiempos de captura fueron los siguientes:
 \end{center}
 
 Para la captura de paquetes, generamos un script en Python que, a partir de la biblioteca Scapy\footnote{http://www.secdev.org/projects/scapy/}, $sniffeara$ la red y almacenara las IP's fuente y destino involucradas en el envío y recepción de paquetes. Para corroborar la correctitud de nuestros datos, utilizamos Wireshark\footnote{http://www.wireshark.org} y comparamos lo obtenido con los resultados del programa. 
+Las capturas se realizaron seteando la interfaz de red en modo $promiscuo$. Esto significa que vamos a poder analizar paquetes que esten dirigidos a MACs ajenas, y además solo vamos a analizar paquetes de la red en la que estamos asociados mediante el Access Point.
 
 Para almacenar los resultados, filtramos por redes ARP y $who-has$. Los resultados obtenidos fueron los siguientes:
 
@@ -305,7 +306,7 @@ Se puede observar que los gráficos son congruentes respecto de los grafos prese
 \end{center}
 \end{figure}
 
-En este caso, el router que actúa como $gateway$ es la IP 192.168.1.1. 
+Como se puede contemplar, el router que actúa como $gateway$ es la IP 192.168.1.1.
 
 \subsubsection{Información de la fuente}
 
@@ -357,14 +358,14 @@ Empresa    &  382 \\
 \hline
 Red & Fuente de información modelada $S$ & Entropía $H(S)$\\
 \hline
-CECEN-Wifi & $S_{src}$ & 1.56 \\
-CECEN-Wifi & $S_{dst}$ & 5.17 \\
+\multirow{2}{*}{CECEN-Wifi}  & $S_{src}$ & 1.56 \\
+	                                                      & $S_{dst}$ & 5.17 \\
 \hline
-Starbucks   & $S_{src}$ & 1.84 \\
-Starbucks   & $S_{dst}$ & 7.44 \\
+\multirow{2}{*}{Starbucks}   & $S_{src}$ & 1.84 \\
+                                           	           & $S_{dst}$ & 7.44 \\
 \hline
-Empresa    & $S_{src}$ & 3.67 \\
-Empresa    & $S_{dst}$ & 3.12 \\
+\multirow{2}{*}{Empresa}     & $S_{src}$ & 3.67 \\
+	                                                     & $S_{dst}$ & 3.12 \\
 \hline
 \end{tabular}
 \end{center}
