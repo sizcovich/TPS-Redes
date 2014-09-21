@@ -59,16 +59,9 @@
 \newpage
 
 \section{Introducción}
-El objetivo del trabajo práctico consistió en analizar estadísticamente el protocolo de comunicación ARP\footnote{$http://tools.ietf.org/html/rfc826$} de un segmento de red determinado. Con este fin, se elaboraron mediciones en distintos espacios de redes públicas para obtener nodos distinguidos e IPs significativas en base a la información y entropía de los mensajes ARP observados de cada una de ellas.
+El objetivo del trabajo práctico consistió en analizar estadísticamente el protocolo de comunicación ARP\footnote{Protocolo de Red de bajo nivel para traducir direcciones IP en direcciones MAC donde se encuentran direcciones IP de capa 3 con direcciones MAC de capa 2.} de un segmento de red determinado. Con este fin, se elaboraron mediciones en distintos espacios de redes públicas para obtener nodos distinguidos e IPs significativas de cada una de ellas en base a la información y entropía de los mensajes ARP observados.
 
-ARP (Address Resolution Protocol) consiste en un Protocolo de Red de bajo nivel para traducir direcciones IP de 32-bit(capa 3) en direcciones Ethernet de 48-bit(capa 2).
-
-\begin{figure}[H] %[h] Aqui [b] para button [t] para top
-\begin{center}
-\includegraphics[width=250pt]{../imgs/IPtoMAC.png}
-%\caption{Formato de una ARP.}
-\end{center}
-\end{figure}
+ARP (Address Resolution Protocol) consiste en un protocolo usado frecuentemente por las redes locales para conectar las capas 3 (capa de red) y 2 (capa de enlace) mediante la conversión o identificación de direcciones IP con direcciones Ethernet (direcciones MAC).
 
 Los dos tipos de paquetes posibles en dicho protocolo son los paquetes de petición y de respuesta:
 \begin{itemize}
@@ -123,7 +116,6 @@ Los tiempos de captura fueron los siguientes:
 \end{center}
 
 Para la captura de paquetes, generamos un script en Python que, a partir de la biblioteca Scapy\footnote{http://www.secdev.org/projects/scapy/}, $sniffeara$ la red y almacenara las IP's fuente y destino involucradas en el envío y recepción de paquetes. Para corroborar la correctitud de nuestros datos, utilizamos Wireshark\footnote{http://www.wireshark.org} y comparamos lo obtenido con los resultados del programa. 
-Las capturas se realizaron seteando la interfaz de red en modo $promiscuo$. Esto significa que vamos a poder analizar paquetes que esten dirigidos a MACs ajenas, y además solo vamos a analizar paquetes de la red en la que estamos asociados mediante el Access Point.
 
 Para almacenar los resultados, filtramos por protocolo $ARP$ y mensajes del tipo $who-has$.
 
@@ -244,6 +236,7 @@ Como se puede observar, son dos las direcciones IP que realizan intercambios con
 \end{center}
 \end{figure}
 
+En este caso, se puede ver que el nodo con mayor cantidad de aristas incidentes es el 10.254.54.1, siguiéndole el 10.254.54.226 y el 10.254.54.251.
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
@@ -266,6 +259,8 @@ Como se puede observar, son dos las direcciones IP que realizan intercambios con
 \end{center}
 \end{figure}
 
+En este caso, son dos los nodos con mayor peso: el 10.254.54.226 y el 10.254.54.69. Les sigue el nodo 10.254.54.1.
+
 \subsubsection{Información de la fuente}
 
 A continuación se muestran las 10 IPs con menor cantidad de información.
@@ -280,6 +275,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 \end{center}
 \end{figure}
 
+
 \item \textbf{Fuente dst}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
@@ -290,6 +286,8 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 \end{figure}
 
 \end{itemize}
+
+Se puede observar que los gráficos son congruentes respecto de los grafos presentados anteriormente dado que las IPs con menor información son las que realizan más intercambios de paquetes.
 
 \subsection{Red Empresarial}
 
@@ -307,7 +305,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 \end{center}
 \end{figure}
 
-Como se puede observar, el router que actúa como $gateway$ es la IP 192.168.1.1.
+En este caso, el router que actúa como $gateway$ es la IP 192.168.1.1. 
 
 \subsubsection{Información de la fuente}
 
@@ -335,6 +333,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 
 \end{itemize}
 
+Podemos contemplar que la IP de menor información utilizada como destino es el router, poseyendo las demás una medida de información similar. En el caso de las IPs origen, podemos ver que la de menor información es la 192.168.1.46 y que el router se encuentra en 7mo lugar. 
 
 \subsection{Información estadística obtenida de las muestras}
 
@@ -358,14 +357,14 @@ Empresa    &  382 \\
 \hline
 Red & Fuente de información modelada $S$ & Entropía $H(S)$\\
 \hline
-\multirow{2}{*}{CECEN-Wifi}  & $S_{src}$ & 1.56 \\
-						     & $S_{dst}$ & 5.17 \\
+CECEN-Wifi & $S_{src}$ & 1.56 \\
+CECEN-Wifi & $S_{dst}$ & 5.17 \\
 \hline
-\multirow{2}{*}{Starbucks}   & $S_{src}$ & 1.84 \\
-						     & $S_{dst}$ & 7.44 \\
+Starbucks   & $S_{src}$ & 1.84 \\
+Starbucks   & $S_{dst}$ & 7.44 \\
 \hline
-\multirow{2}{*}{Empresa}     & $S_{src}$ & 3.67 \\
-						    & $S_{dst}$ & 3.12 \\
+Empresa    & $S_{src}$ & 3.67 \\
+Empresa    & $S_{dst}$ & 3.12 \\
 \hline
 \end{tabular}
 \end{center}
