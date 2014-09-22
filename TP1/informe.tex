@@ -76,7 +76,7 @@ Los dos tipos de paquetes posibles en dicho protocolo son los paquetes de petici
 \item Los paquetes de respuesta ($is-at$) son enviados de manera unicast pues se utilizan para responder a la máquina que realizó una petición con anterioridad.
 \end{itemize}
 
-Los paquetes ARP consisten de los siguientes campos:
+Los paquetes ARP contienen los siguientes campos:
 \begin{itemize}
 \item Operación: Especifica la operación que el emisor está realizando. 1 para petición, 2 para responder.
 \item Dirección MAC del emisor.
@@ -99,6 +99,7 @@ La máquina destino recibirá la petición y responderá de manera unicast a la 
 \end{quotation}
 
 El análisis de la red consiste en reconocer su topología en base al nivel de información que proveen las diferentes IP, como fuente y como destino, tomando a las IP como símbolos y estimando su probabilidad de aparición con su frecuencia muestral. Para nuestro análisis, nos limitamos a la utilización de los paquetes $who-has$.
+
 
 \section{Desarrollo}
 
@@ -129,6 +130,7 @@ Las capturas se realizaron seteando la interfaz de red en modo $promiscuo$. Esto
 
 Para almacenar los resultados, filtramos por protocolo $ARP$ y mensajes del tipo $who-has$.
 
+
 \section{Resultados}
 
 Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo en bits\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script.
@@ -141,6 +143,7 @@ A continuación intentamos identificar los routers en la red utilizando la infor
 
 Los resultados obtenidos fueron los siguientes:
 
+\newpage
 \subsection{CECEN-Wifi}
 
 La red del $CECEN$ fue capturada durante 23 minutos. Los intercambios que se realizaron en ese tiempo fueron los que se pueden ver a continuación:
@@ -186,6 +189,7 @@ Como se puede observar, el router que actúa como $gateway$ es la IP 192.168.1.1
 
 Como se puede observar, los tres grafos tienen pesos similares en los nodos. Esto se debe a que la mayoría de los dispositivos que envían datos también reciben. Dado que el router es el que más envía y recibe paquetes comunicándose con todos los demás dispositivos, es el de mayor tamaño y color más oscuro en las tres representaciones.
 
+\newpage
 \subsubsection{Información de la fuente}
 
 A continuación se muestran las 10 IPs con menor cantidad de información.
@@ -200,6 +204,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 \end{center}
 \end{figure}
 
+\newpage
 \item \textbf{Fuente dst}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
@@ -213,6 +218,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 Luego del análisis de grafos representados en la sección anterior, se puede observar que la IP con menor cantidad de información es la 192.168.1.1. Esto resulta lógico dado que consiste en la IP del router, encargado de la transferencia de la mayor cantidad de paquetes con todos los dispositivos conectados a la red. Dado que la amplitud de transferencia de paquetes es similar en el resto de los dispositivos, su cantidad de información es semejante.
 Por otro lado, podemos percibir que la IP 0.0.0.0 aparece entre una de las 10 con menor cantidad de información en lo que respecta el origen del envío de paquetes pero esto no ocurre con el destino.
 
+\newpage
 \subsection{Starbucks}
 
  El resultado de capturar durante 30 minutos la red de Starbucks fue el que sigue:
@@ -274,6 +280,7 @@ En este caso, son dos los nodos con mayor peso: el 10.254.54.226 y el 10.254.54.
 Analizando la ip 10.254.54.226 desde $wireshark$ se ve que la misma no envió ningun paquete $is-at$, por lo que podría ser un router.\\
 Con respecto a la ip 10.254.54.69, analizando los datos desde el $wireshark$, podemos ver que envió paquetes $is-at$ hacia distintas ips con el fin de mal informar que su dirección MAC se correspondia con la ip 10.254.54.1 en un intento de realizar ARP Spoofing.
 
+\newpage
 \subsubsection{Información de la fuente}
 
 A continuación se muestran las 10 IPs con menor cantidad de información.
@@ -289,6 +296,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 \end{figure}
 
 
+\newpage
 \item \textbf{Fuente dst}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
@@ -302,6 +310,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 
 Se puede observar que los gráficos son congruentes respecto de los grafos presentados anteriormente dado que las IPs con menor información son las que realizan más intercambios de paquetes.
 
+\newpage
 \subsection{Red Empresarial}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
@@ -320,6 +329,7 @@ Se puede observar que los gráficos son congruentes respecto de los grafos prese
 
 Como se puede contemplar, el router que actúa como $gateway$ es la IP 192.168.1.1. Se puede ver que la magnitud de envíos y recepción de datos difiere para ciertos nodos (por ejemplo, el 192.168.1.42), esto se debe a que no todos los dispositivos necesitan enviar y recibir la misma cantidad de paquetes.
 
+\newpage
 \subsubsection{Información de la fuente}
 
 A continuación se muestran las 10 IPs con menor cantidad de información.
@@ -334,6 +344,7 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 \end{center}
 \end{figure}
 
+\newpage
 \item \textbf{Fuente dst}
 
 %\input{./imgs/chartBar/tiarg_dst_barchart}
@@ -382,6 +393,7 @@ Red & Fuente de información modelada $S$ & Entropía $H(S)$ \\ %& Max Entropía
 \end{tabular}
 \end{center}
 
+\newpage
 \section{Discusión}
 Describimos a continuación nuestra interpretación de algunos fenómenos observados, de manera de facilitar la discusión de los resultados obtenidos.
 
