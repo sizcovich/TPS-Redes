@@ -15,9 +15,12 @@ if __name__ == '__main__':
 	entropy = 0
 	for key in dicc_ip_rep.keys():
 		prob = dicc_ip_rep[key]*1.0/length
-		print "prob" + str(prob )
+		print "prob " + str(prob )
 		info  = math.log(1/prob,2)
-		print "info" + str(info)
+		print "info " + str(info)
 		entropy = entropy + prob*info
-	print entropy
-	print length
+	cantidad_ips = len(dicc_ip_rep.keys())
+	max_entropy = math.log(cantidad_ips,2)
+	print "Entropia: " + str(entropy)
+	print "Maxima entropia: " + str(max_entropy)
+	print "Cantidad de IPs: "  + str(cantidad_ips)

@@ -133,10 +133,10 @@ Para almacenar los resultados, filtramos por protocolo $ARP$ y mensajes del tipo
 
 \section{Resultados}
 
-Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo en bits\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script.
+Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.}  en bits utilizando un script.
 
 Con el fin de visualizar los intercambios de paquetes decidimos presentarlos en forma de grafos dirigidos de IPs con pesos en los nodos (donde existe un eje entre la IP $x$ y la IP $y$ sí y sólo sí se observó un request ARP con source IP $x$ y target IP $y$). El peso de los nodos esta representado por color y tamaño que es proporcional a la cantidad de aristas que lo inciden. %Para eso, modificamos su formato obtenido al formato $IP_{src}\ IP_{dst}$.
-La herramienta utilizada para graficar los mismo fue $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html}.
+La herramienta utilizada para graficar los mismos fue $yED$\footnote{http://www.yworks.com/en/products\_yed\_about.html}.
 Por otro lado, realizamos gráficos de barra de la información de cada símbolo con respecto de la entropía de su respectiva fuente\footnote{La información y entropía se midieron en bits.}. De este modo, logramos analizar qué IPs son estadísticamente significativas en la LAN. Para una simple visualización de los resultados, agregamos el valor de la entropía en forma de recta.
 
 A continuación intentamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
@@ -216,12 +216,14 @@ A continuación se muestran las 10 IPs con menor cantidad de información.
 \end{itemize}
 
 Luego del análisis de grafos representados en la sección anterior, se puede observar que la IP con menor cantidad de información es la 192.168.1.1. Esto resulta lógico dado que consiste en la IP del router, encargado de la transferencia de la mayor cantidad de paquetes con todos los dispositivos conectados a la red. Dado que la amplitud de transferencia de paquetes es similar en el resto de los dispositivos, su cantidad de información es semejante.
-Por otro lado, podemos percibir que la IP 0.0.0.0 aparece entre una de las 10 con menor cantidad de información en lo que respecta el origen del envío de paquetes pero esto no ocurre con el destino.
+Por otro lado, podemos percibir que la IP 0.0.0.0 aparece entre una de las 10 con menor cantidad de información en lo que respecta el origen del envío de paquetes.
+
+Con respecto a la entropía podemos ver que hay varias IPs en donde su información está por debajo de la misma. Esto se debe a que éstas tuvieron un alto índice de duplicación de paquetes $who-has$ hacia ellos como destino. Este comportamiento podría darse porque nunca enviaron la respuesta del mismo. Además, otro factor que incide es que varias IPs tuvieron pocos request $who-has$ como destino produciendo que contengan una alta información.
 
 \newpage
 \subsection{Starbucks}
 
- El resultado de capturar durante 30 minutos la red de Starbucks fue el que sigue:
+ El resultado de capturar durante 30 minutos la red de Starbucks fue el siguiente:
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
@@ -230,7 +232,7 @@ Por otro lado, podemos percibir que la IP 0.0.0.0 aparece entre una de las 10 co
 \end{center}
 \end{figure}
 
-Como se puede observar, son tres las direcciones IP que realizan intercambios con el resto de los dispositivos conectados a la red, luego las que funcionan como gateways. Una de ellas es el router y la otra, un celular que se utilizó para evaluar los dispositivos conectados a la red a través de la aplicación $Fing\ -\ Network Tools$ \footnote{$play.google.com/store/apps/details?id=com.overlook.android.fing\&hl=fr$}. Dicha aplicación encuentra las redes Wi-Fi conectadas en tiempo real, evaluando niveles de seguridad y mostrando las direcciones MAC de cada dispositivo conectado como también su fabricante. %Utilizamos dicha aplicación para evaluar las modificaciones que podían surgir en el intercambio de paquetes y consideramos interesante variar el análisis.
+Como se puede observar, son tres las direcciones IP que realizan intercambios con el resto de los dispositivos conectados a la red, luego las que funcionan como gateways. Una de ellas es el router y la otra, un celular que se utilizó para evaluar los dispositivos conectados a la red a través de la aplicación $Fing\ -\ Network Tools$ \footnote{$http://www.overlooksoft.com/fing$}. Dicha aplicación encuentra las redes Wi-Fi conectadas en tiempo real, evaluando niveles de seguridad y mostrando las direcciones MAC de cada dispositivo conectado como también su fabricante. %Utilizamos dicha aplicación para evaluar las modificaciones que podían surgir en el intercambio de paquetes y consideramos interesante variar el análisis.
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
@@ -327,7 +329,8 @@ Se puede observar que los gráficos son congruentes respecto de los grafos prese
 \end{center}
 \end{figure}
 
-Como se puede contemplar, el router que actúa como $gateway$ es la IP 192.168.1.1. Se puede ver que la magnitud de envíos y recepción de datos difiere para ciertos nodos (por ejemplo, el 192.168.1.42), esto se debe a que no todos los dispositivos necesitan enviar y recibir la misma cantidad de paquetes.
+Como se puede contemplar, el router que actúa como $gateway$ es la IP 192.168.1.1. Se puede ver que la magnitud de envíos y recepción de datos difiere para ciertos nodos (por ejemplo, el 192.168.1.42), esto se debe a que no todos los dispositivos necesitan enviar y recibir la misma cantidad de paquetes. 
+Podemos apreciar tambien que hay varios nodos con gran cantidad de paquetes enviados y recibidos, esto podría deberse a que, dado que es una red empresarial, se utilicen servidores de datos, servidor de maquinas virtuales o acceso remoto a otros dispositivos dentro de la red.
 
 \newpage
 \subsubsection{Información de la fuente}
@@ -428,7 +431,7 @@ Entre los paquetes capturados detectamos varios que usaban el rango 169.254.0.0/
 Esto le permite al host comunicarse con los otros dispositivos de la red, pero no con dispositivos externos a la misma.
 
 \section{Conclusiones}
-Observamos que para las muestras obtenidas, con respecto a la hipótesis de que podríamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$, los símbolos con menor información en general nos ayudan a encontrar los routers. Sin embargo, la información se ve distorsionada cuando exite mucha duplicación de paquetes $who-has$, o dispositivos utilizados para analizar la red. A pesar de esto, la confiabilidad para encontrar routers de la red es aceptable, en especial para redes donde existe un sólo router o donde los paquetes ARP tienen una interacción intensa con una IP determinada.
+Observamos que para las muestras obtenidas, con respecto a la hipótesis de que podríamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$, los símbolos con menor información en general nos ayudan a encontrar los routers. Sin embargo, la información se ve distorsionada cuando exite mucha duplicación de paquetes $who-has$, dispositivos utilizados para analizar la red o dentro de una red empresarial si existen servidores internos mas concurridos que el router. A pesar de esto, la confiabilidad para encontrar routers de la red es aceptable, en especial para redes donde existe un sólo router o donde los paquetes ARP tienen una interacción intensa con una IP determinada.
 
 
 \section{Referencias}
