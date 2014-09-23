@@ -125,10 +125,10 @@ Los tiempos de captura fueron los siguientes:
   \end{tabular}
 \end{center}
 
-Para la captura de paquetes, generamos un script en Python que, a partir de la biblioteca Scapy\footnote{http://www.secdev.org/projects/scapy/}, $sniffeara$ la red y almacenara las IP's fuente y destino involucradas en el envío y recepción de paquetes. Para corroborar la correctitud de nuestros datos, utilizamos Wireshark\footnote{http://www.wireshark.org} y comparamos lo obtenido con los resultados del programa. 
+Para la captura de paquetes, generamos un script\footnote{sniffer.py} en Python que, a partir de la biblioteca Scapy\footnote{http://www.secdev.org/projects/scapy/}, $sniffeara$ la red y almacenara las IP's fuente y destino involucradas en el envío y recepción de paquetes. Para corroborar la correctitud de nuestros datos, utilizamos Wireshark\footnote{http://www.wireshark.org} y comparamos lo obtenido con los resultados del programa. 
 Las capturas se realizaron seteando la interfaz de red en modo $promiscuo$. Esto significa que vamos a poder analizar paquetes que esten dirigidos a MACs ajenas, y además solo vamos a analizar paquetes de la red en la que estamos asociados mediante el Access Point.
 
-Para almacenar los resultados, filtramos por protocolo $ARP$ y mensajes del tipo $who-has$.
+Para almacenar los resultados, filtramos por protocolo $ARP$ y mensajes del tipo $who-has$ que no sean del tipo $Gratuitous$.
 
 
 \section{Resultados}
@@ -277,7 +277,7 @@ En este caso, se puede ver que el nodo con mayor cantidad de aristas incidentes 
 \end{figure}
 
 En este caso, son dos los nodos con mayor peso: el 10.254.54.226 y el 10.254.54.69. Les sigue el nodo 10.254.54.1. \\
-Analizando la ip 10.254.54.226 desde $wireshark$ se ve que la misma no envió ningun paquete $is-at$, por lo que podría ser un router.\\
+Analizando la ip 10.254.54.226 desde $wireshark$ se ve que la misma no envió ningun paquete $is-at$, por lo que podría ser un dispositivo analizando la red de manera pasiva o un router.\\
 Con respecto a la ip 10.254.54.69, analizando los datos desde el $wireshark$, podemos ver que envió paquetes $is-at$ hacia distintas ips con el fin de mal informar que su dirección MAC se correspondia con la ip 10.254.54.1 en un intento de realizar ARP Spoofing.
 
 \newpage
