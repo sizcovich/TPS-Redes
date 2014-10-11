@@ -81,12 +81,17 @@ Los paquetes constan de una sección de datos y un header con la siguiente estru
 \end{center}
 \end{figure}
 
-\item Mensajes de control de ICMP:
+\item \textbf{Mensajes de control de ICMP}:
 Los mensajes de control que analizaremos a lo largo del trabajo son los siguientes:
 \begin{itemize}
-\item \textbf{Echo Reply (0)}: 
+\item \textbf{Echo Reply (tipo 0)}: Consiste en un mensaje generado como respuesta a un mensaje Echo Request (petición de Eco).
+\item \textbf{Echo Request (tipo 8)}: Consiste en un mensaje de control que se envía a un host con la expectativa de recibir de él un Echo Reply (Respuesta eco).
+\item \textbf{Time Exceeded (tipo 11)}: Consiste en un mensaje que se utiliza para indicar que el tiempo de vida de un paquete llegó a su fin.
 \end{itemize}
 
+\item \textbf{Round-Trip Time}: Corresponde al retardo del tránsito de paquetes a través de la red IP desde que es enviado hasta volver al emisor, pasando por el destino.
+
+\item \textbf{Traceroute}: Consiste en una herramienta de diagnóstico que muestra la ruta y mide el RTT.
 \end{itemize}
 
 \section{Desarrollo}
@@ -144,6 +149,7 @@ Para la segunda parte del análisis, modificamos la implementación con el fin d
 \end{algorithmic}
 \end{algorithm}
 
+Las implementaciones se realizaron en python.
 
 \section{Resultados}
 
