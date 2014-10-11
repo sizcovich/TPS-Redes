@@ -6,26 +6,20 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{fancyhdr}
-\usepackage{multirow}
-\usepackage{rotating}
-\usepackage{indentfirst}
 \usepackage{latexsym}
 \usepackage{caratula}
-\usepackage{gnuplottex}
 \usepackage{epsfig}
+%\usepackage{algorithmicx}
 \usepackage{lastpage}
 \usepackage{amsfonts}
 \usepackage{listings}
-\lstset{language=C}
-%\usepackage[export]{adjustbox}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{pdfpages}
 \usepackage{amsmath}
 \usepackage{verbatim}
-%\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{color}
-
 \graphicspath{{imgs/}}
 
 % Acomodo fancyhdr.
@@ -60,14 +54,95 @@
 
 \section{Introducción}
 
-%\begin{figure}[H] %[h] Aqui [b] para button [t] para top
-%\begin{center}
-%\includegraphics[width=250pt]{../imgs/IPtoMAC.png}
-%\caption{Formato de una ARP.}
-%\end{center}
-%\end{figure}
+En el siguiente trabajo práctico, experimentamos $traceroute$ con herramientas y técnicas frecuentes a nivel de red. Para ello, implementamos en primer lugar una $tool$ que mitiera realizar un $traceroute$ mediante sucesivos paquetes con TTLs incrementales, calculando los RTTs entre cada salto para los que se reciba una respuesta ICMP de tipo $time exceeded$. 
+
+Luego, adaptamos la $tool$ realizada para que, una vez terminada la búsqueda, calculara el valor standard o valor Z del RTT (ZRTT) de cada salto $i$ con respecto a la ruta global de la siguiente manera: 
+$$ZRTT_i = \frac{RTT_i - \overline{RTT}}{SRTT}$$
+siendo $\overline{RTT}$ y $SRTT$ el promedio y el desvío standard de los RTTs de la ruta, respectivamente. Por otra parte, los $RTT_i$ corresponden al tiempo de ida y vuelta dentre el hop $i$ y el hop $i-1$, siendo éstos consecutivos.
+
+Por último, utilizamos la $tool$ para estudiar y analizar rutas a universidades en diferentes lugares del mundo.
+
+Para un análisis adecuado, realizamos gráficos de distribuciones de RTTs estudiando qué saltos son estadísticamente significativos con respecto a la ruta analizada. A partir de esta herramienta, detectamos saltos correspondientes a enlaces submarinos, entre otros. 
+
+\section{Introducción Teórica}
+\begin{itemize}
+\item \textbf{ICMP(Internet Control Message Protocol):} Protocolo de control que forma parte del núcleo de la arquitectura TCP/IP. El mismo se encarga de proveer mensajes de error y de control. Éstos son:
+\begin{itemize}
+\item Errores en los datagramas IP.
+\item Necesidad de comunicar información de diagnóstico.
+\item Necesidad de comunicar información de ruteo.
+\end{itemize}
+Los paquetes constan de una sección de datos y un header con la siguiente estructura:
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/icmp.png}
+\caption{Header de ICMP.}
+\end{center}
+\end{figure}
+
+\item Mensajes de control de ICMP:
+Los mensajes de control que analizaremos a lo largo del trabajo son los siguientes:
+\begin{itemize}
+\item \textbf{Echo Reply (0)}: 
+\end{itemize}
+
+\end{itemize}
 
 \section{Desarrollo}
+Para la implementación del traceroute, seguimos el siguiente algoritmo:
+
+\begin{algorithm}
+\caption{Algoritmo de Traceroute}
+\begin{algorithmic}
+\Procedure{traceroute}{$IP_{dst}$}
+
+\State $h\gets IP_{dst}$
+\State $ttl\gets 1$
+\State $anotadas \gets \{\}$
+\Repeat
+	\State $h.TTL \gets ttl$
+	\State $enviar(h, EchoRequest, TimeOut)$
+	\If {$obtener(TimeExceeded)\ \&\&\ \neg obtener(TimeOut)$}
+    	\State $anotadas.push(IP_{rcv})$
+    \Else
+    	\State $anotadas.push(^*)$
+    \EndIf
+    \State $ttl\gets ttl+1$
+\Until{$IP_{dst} = IP_{rcv}$}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+donde $h$ representa el host destino e $IP_{rcv}$ representa la IP del hop del que proviene el paquete recibido. Por otro lado, $ttl$ representa el \textit{time to live} del paquete y $TTL$ el campo correspondiente en el header del mismo.
+
+Para la segunda parte del análisis, modificamos la implementación con el fin de que, una vez terminada la búsqueda, calculara el valor standard o valor Z del RTT (ZRTT) de cada salto $i$ con respecto a la ruta global. El cambio dio como resultado el siguiente algoritmo:
+
+\begin{algorithm}
+\caption{Algoritmo de Traceroute con ZRTT}
+\begin{algorithmic}
+\Procedure{traceroute}{$IP_{dst}$}
+
+\State $h\gets IP_{dst}$
+\State $ttl\gets 1$
+\State $anotadas \gets \{\}$
+\State $RTTs \gets \{\}$
+\Repeat
+	\State $h.TTL \gets ttl$
+	\State $enviar(h, EchoRequest, TimeOut)$
+	\State $clock.reset()$
+	\If {$obtener(TimeExceeded)\ \&\&\ \neg obtener(TimeOut)$}
+    	\State $anotadas.push(IP_{rcv})$
+    \Else
+    	\State $anotadas.push(^*)$
+    \EndIf
+    \State $RTTs_i \gets clock.now()$
+    \State $ttl\gets ttl+1$
+    \State $ZRTT_i \gets \frac{RTTs_i - promedio(RTTs)}{standDesv(RTTs)}$
+\Until{$IP_{dst} = IP_{rcv}$}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 
 \section{Resultados}
