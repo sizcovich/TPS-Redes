@@ -3,6 +3,7 @@ from scapy.all import *
 import pygeoip
 import numpy
 import ipaddress
+import time
 
 if __name__ == '__main__':
 	ttl_aux = 1
@@ -12,6 +13,7 @@ if __name__ == '__main__':
 	gic = pygeoip.GeoIP('GeoLiteCity.dat')
 	while(ttl_aux < ttl_max):
 		packet = IP(dst=sys.argv[1], ttl=ttl_aux) / ICMP()
+		time.sleep(0.5)
 		ans,unans = sr(packet, timeout = 1, verbose = 0)
 		#print "ttl: " + str(ttl_aux)	
 		if(len(ans[ICMP]) == 0 ):
@@ -42,8 +44,10 @@ if __name__ == '__main__':
 		while(i < 3):
 			packet = IP(dst=ip) / ICMP()
 			#packet.display()
+			time.sleep(0.5)
 			ans,unans = sr(packet, timeout = 10, verbose = 0)
 			while(len(ans[ICMP]) == 0 ):
+				time.sleep(0.5)
 				ans,unans = sr(packet, timeout = 10, verbose = 0)
 			icmp_pck = ans[ICMP][0][1]								
 			tx_time = ans[0][0].sent_time
