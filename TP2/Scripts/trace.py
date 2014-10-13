@@ -43,11 +43,11 @@ if __name__ == '__main__':
 	for ip in ip_list:
 		i = 0
 		time_list = []		
-		while(i < 3):
+		while(i < 10):
 			packet = IP(dst=ip) / ICMP()
 			#packet.display()
 			time.sleep(0.5)
-			ans,unans = sr(packet, timeout = 10, verbose = 0)
+			ans,unans = sr(packet, timeout = 2, verbose = 0)
 			if(len(ans[ICMP]) != 0 ):
 				icmp_pck = ans[ICMP][0][1]								
 				tx_time = ans[0][0].sent_time
