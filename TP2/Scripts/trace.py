@@ -26,7 +26,7 @@ if __name__ == '__main__':
 				ip_list.append(icmp_pck.src)
 				#print "time: " + str(delta)				
 				print str(ttl_aux) + " " + str(icmp_pck.src) + " " + str(delta) 
-				iplong = int(ipaddress.ipaddress(unicode('201.212.5.12'))) #int(ipaddress.ip_address('201.212.5.12'))
+				iplong = int(ipaddress.IPv4Address(unicode('201.212.5.12'))) #int(ipaddress.ip_address('201.212.5.12'))
 				print iplong
 				print gic.record_by_addr(str(iplong))
 				#print gic.record_by_addr('3386115340')
