@@ -4,6 +4,11 @@ import pygeoip
 import numpy
 import ipaddress
 import time
+import ast
+from mpl_toolkits.basemap import Basemap
+import  matplotlib.pyplot as pl
+from PIL import *
+
 
 if __name__ == '__main__':
 	ttl_aux = 1
@@ -12,6 +17,8 @@ if __name__ == '__main__':
 	ip_list = []
 	gic = pygeoip.GeoIP('GeoLiteCity.dat')
 	ip_rtt_dicc = {}
+	latitudes = []
+	longitudes = []
 	while(ttl_aux < ttl_max):
 		packet = IP(dst=sys.argv[1], ttl=ttl_aux) / ICMP()
 		time.sleep(0.5)
@@ -30,15 +37,32 @@ if __name__ == '__main__':
 				ip_rtt_dicc[icmp_pck.src] = [delta]
 				#print "time: " + str(delta)				
 				print str(ttl_aux) + " " + str(icmp_pck.src) + " " + str(delta) 
-				iplong = int(ipaddress.IPv4Address(unicode(str(icmp_pck.src)))) #int(ipaddress.ip_address('201.212.5.12'))
-				print iplong
-				print gic.record_by_addr(str(iplong))
-				#print gic.record_by_addr('3386115340')
-				
+				iplong = int(ipaddress.IPv4Address(unicode(str(icmp_pck.src))))
+				ipdata = gic.record_by_addr(str(iplong))
+				tipo = type(ipdata)
+				#me guardo las coordenadas para el mapa
+				if(tipo == dict):
+					latitudes.append(ipdata['latitude'])
+					longitudes.append(ipdata['longitude'])
 			else:
 				print str(ttl_aux) + " " + "*"	
 		ttl_aux = ttl_aux+1
-	print ip_list
+
+	#creacion de mapa y trazado de recorrido
+	fig = pl.figure(figsize=(12,12))
+	ax = fig.add_axes([0.1,0.1,0.8,0.8])
+	mapa = Basemap(projection='cyl', llcrnrlat=-90, urcrnrlat=90,llcrnrlon=-180, urcrnrlon=180, resolution='c', area_thresh=1000.)
+	mapa.bluemarble()
+	mapa.drawcoastlines(linewidth=0.5)
+	mapa.drawcountries(linewidth=0.5)
+	mapa.drawstates(linewidth=0.5)
+	mapa.drawparallels(numpy.arange(-180.,180.,20.),labels=[1,0,0,1])
+	mapa.drawmeridians(numpy.arange(-180.,180.,20.),labels=[1,0,0,1])
+	mapa.drawmapboundary(fill_color='aqua')
+	x,y = mapa(longitudes, latitudes)
+	pl.plot(x,y,'y-',linewidth=2 )
+	pl.show()
+
 	ip_dicc = {}
 	for ip in ip_list:
 		i = 0
@@ -58,4 +82,5 @@ if __name__ == '__main__':
 			i = i+1
 		ip_dicc[ip] = [numpy.mean(ip_rtt_dicc[ip]), numpy.std(ip_rtt_dicc[ip])]
 	print ip_rtt_dicc
+	print ""
 	print ip_dicc
