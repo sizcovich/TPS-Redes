@@ -55,10 +55,10 @@
 
 \section{Introducción}
 
-En el siguiente trabajo práctico, experimentamos $traceroute$ con herramientas y técnicas frecuentes a nivel de red. Para ello, implementamos en primer lugar una $tool$ que mitiera realizar un $traceroute$ mediante sucesivos paquetes con TTLs incrementales, calculando los RTTs entre cada salto para los que se reciba una respuesta ICMP de tipo $time exceeded$. 
+En el siguiente trabajo práctico, experimentamos $traceroute$ con herramientas y técnicas frecuentes a nivel de red. Para ello implementamos, en primer lugar, una $tool$ que permitiera realizar un $traceroute$ mediante sucesivos paquetes con TTLs incrementales, calculando los RTTs entre cada salto para los que se recibiría una respuesta ICMP de tipo \textit{time exceeded}. 
 
-Luego, adaptamos la $tool$ realizada para que, una vez terminada la búsqueda, calculara el valor standard o valor Z del RTT (ZRTT) de cada salto $i$ con respecto a la ruta global de la siguiente manera: 
-$$ZRTT_i = \frac{RTT_i - \overline{RTT}}{SRTT}$$
+Luego, adaptamos la $tool$ realizada para que, una vez terminada la búsqueda, calculara el valor standard o valor Z del RTT (ZRTT) de cada salto $i$ con respecto a la ruta global de la siguiente manera: \\
+$$ZRTT_i = \frac{RTT_i - \overline{RTT}}{SRTT}$$\\
 siendo $\overline{RTT}$ y $SRTT$ el promedio y el desvío standard de los RTTs de la ruta, respectivamente. Por otra parte, los $RTT_i$ corresponden al tiempo de ida y vuelta dentre el hop $i$ y el hop $i-1$, siendo éstos consecutivos.
 
 Por último, utilizamos la $tool$ para estudiar y analizar rutas a universidades en diferentes lugares del mundo.
@@ -77,7 +77,7 @@ Los paquetes constan de una sección de datos y un header con la siguiente estru
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
-\includegraphics[width=400pt]{../imgs/icmp.png}
+\includegraphics[width=410pt]{../imgs/icmp.png}
 \caption{Header de ICMP.}
 \end{center}
 \end{figure}
@@ -122,9 +122,18 @@ Para la implementación del traceroute, seguimos el siguiente algoritmo:
 
 donde $h$ representa el host destino e $IP_{rcv}$ representa la IP del hop del que proviene el paquete recibido. Por otro lado, $ttl$ representa el \textit{time to live} del paquete y $TTL$ el campo correspondiente en el header del mismo.
 
-Para la segunda parte del análisis, modificamos la implementación con el fin de que, una vez terminada la búsqueda, calculara el valor standard o valor Z del RTT (ZRTT) de cada salto $i$ con respecto a la ruta global. El cambio dio como resultado el siguiente algoritmo:
+Para la segunda parte del análisis, modificamos la implementación con el fin de que, una vez terminada la búsqueda, calculara el valor standard o valor Z del RTT (ZRTT) de cada salto $i$ con respecto a la ruta global. Para ello, tuvimos en cuenta las siguientes definiciones:\\
 
-\begin{algorithm}
+\textit{\textbf{Media:}}
+$$\overline{x} = \frac{1}{n} \sum_{1=1}^{n}x_i$$
+
+
+\textit{\textbf{Desvío standard:}}
+$$\sigma = \sqrt{\frac{1}{n} \sum_{1=1}^{n}(x_i - \overline{x})^2}$$
+
+El cambio dio como resultado el siguiente algoritmo:
+
+\begin{algorithm}[H]
 \caption{Algoritmo de Traceroute con ZRTT}
 \begin{algorithmic}
 \Procedure{traceroute}{$IP_{dst}$}
@@ -150,34 +159,43 @@ Para la segunda parte del análisis, modificamos la implementación con el fin d
 \end{algorithmic}
 \end{algorithm}
 
-Las implementaciones se realizaron en python. Para hallar la ubicación de las direcciones IP utilizamos $pygeoip$ y para la construcción de gráficos usamos $matplotlib$.
+Las implementaciones se realizaron en python. Para hallar la ubicación de las direcciones IP utilizamos $pygeoip$. Para ello, fue necesario descargar la base de datos $GeoLiteCity$\footnote{https://code.google.com/p/pysnip/downloads/detail?name=GeoLiteCity.dat} que le asigna una ubicación a cada dirección IP.
 
-Las universidades utilizadas para realizar las pruebas fueron:
+Por otro lado, para la construcción de gráficos utilizamos $matplotlib$.
+
+Con el fin de que los resultados fueran variados, elegimos como hosts destino los servidores web de tres universidades ubicadas en continentes distintos.
+Las universidades utilizadas fueron:
 \begin{itemize}
-\item \textbf{University of South Africa}: www.unisa.ac.za
-\item \textbf{University of Zurich}: www.uzh.ch
-\item \textbf{International University of Japan}: www.iuj.ac.jp
+\item \textbf{University of South Africa}: www.unisa.ac.za\\
+Esta universidad se encuentra en Sudáfrica, África.
+\item \textbf{University of Zurich}: www.uzh.ch\\
+Esta universidad se encuentra en Suiza, Europa.
+\item \textbf{International University of Japan}: www.iuj.ac.jp\\
+Esta universidad se encuentra en Japón, Asia.
 \end{itemize}
 \newpage
 \section{Resultados}
 Con el fin de evaluar distintas opciones, decidimos correr el algoritmo de $traceroute$ desde un host utilizando el servicio de \textbf{Fibertel} y desde otro utilizando \textbf{Telefónica}.
+
+En primer lugar, decidimos realizar un gráfico de seguimiento de acuerdo a las $longitudes$ y $latitudes$ resultantes del traceroute. Para ello, corrimos el script trace.py con cada sitio web y con un time to live de 30 (por ser el valor TTL máximo utilizado por defecto). Luego, realizamos los gráficos correspondientes.
+
+Por último, realizamos los gráficos correspondientes a las estadísticas pedidas. Éstas son, para cada hop, RTT promedio (el RTT promedio de todos los paquetes recibidos provenientes de ese hop) y ZRTT. Decidimos agregar un umbral para la identificación de enlaces submarinos según los ZRTT relativos obtenidos para cada enlace. El uso de los ZRTT relativos presenta una manera detallada de identificar variaciones de tiempo entre enlaces, pudiendo identificar nodos con una diferencia de RTT mayor al promedio, como tendría un enlace submarino debido a la distancia que recorren los datos. 
+
 Los resultados obtenidos fueron los que siguen:
 
 \subsection{University of South Africa}
 
-En primer lugar, decidimos realizar un gráfico de seguimiento de acuerdo a las $longitudes$ y $latitudes$ resultantes del traceroute
-
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-unisa.png}
-\caption{Ruta a la International University of South Africa desde servicio Fibertel.}
+\caption{Ruta hacia International University of South Africa desde servicio Fibertel.}
 \end{center}
 \end{figure}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-unisa(telef).png}
-\caption{Ruta a la International University of South Africa desde servicio Telefónica.}
+\caption{Ruta hacia International University of South Africa desde servicio Telefónica.}
 \end{center}
 \end{figure}
 
@@ -188,14 +206,14 @@ En primer lugar, decidimos realizar un gráfico de seguimiento de acuerdo a las 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-uzh.png}
-\caption{Ruta a la University of Zurich desde servicio Fibertel.}
+\caption{Ruta hacia University of Zurich desde servicio Fibertel.}
 \end{center}
 \end{figure}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-uzh(telef).png}
-\caption{Ruta a la University of Zurich desde servicio Telefónica.}
+\caption{Ruta hacia University of Zurich desde servicio Telefónica.}
 \end{center}
 \end{figure}
 
@@ -205,14 +223,14 @@ En primer lugar, decidimos realizar un gráfico de seguimiento de acuerdo a las 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-iuj.png}
-\caption{Ruta a la University of Japan desde servicio Fibertel.}
+\caption{Ruta hacia University of Japan desde servicio Fibertel.}
 \end{center}
 \end{figure}
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-iuj(telef).png}
-\caption{Ruta a la University of Japan desde servicio Telefónica.}
+\caption{Ruta hacia University of Japan desde servicio Telefónica.}
 \end{center}
 \end{figure}
 
@@ -221,9 +239,27 @@ En primer lugar, decidimos realizar un gráfico de seguimiento de acuerdo a las 
 \includepdf[scale=0.70]{../imgs/zrtt-iuj.pdf}
 \newpage
 \section{Discusión}
+Dados los gráficos presentados en la sección anterior, pudimos hallar distintos resultados. 
+
+En primer lugar, encontramos posibles errores del geolocalizador utilizado para las IPs. Por ejemplo, al notar que todas las rutas del gateway de \textbf{Telefónica} pasan siempre por España, creemos que seguramente la empresa que provee los enlaces transatlánticos tenga IPs reservadas y, dado que se encuentra registrada en España, el geolocalizador le asigna dicha localización. Esta falla se puede ver en la latencia de los saltos dado que en algunos casos, como \textbf{University of Japan}, no tiene sentido que la latencia de Argentina a Estados Unidos sea menor que la de un vínculo interno entre Argentina, siendo este último el lugar de origen.
+
+Por otro lado, encontramos como anómalo obtener, para un determinado nodo, un RTT absoluto menor al RTT absoluto del nodo anterior, lo que significaría que llegar a este nodo toma menos tiempo que llegar al anterior. Esta anomalía se debe a que los valores del RTT absolutos se calculan mediante el promedio de los RTT obtenidos para cada nodo, pudiendo el paquete ICMP haber tomado caminos diferentes y habiendo conseguido llegar de manera apenas más rápida en promedio.
+
+\subsection{Saltos correspondientes a enlaces submarinos}
+
+En primer lugar, basándonos en el análisis realizado sobre la experimentación, propusimos como umbral en las mediciones de los ZRTT relativos para la detección de enlaces sumbarinos el valor 1. Dicho valor nos pareció suficiente para detectar grandes variaciones en relación al desvío estándar de RTT entre nodos.
+
+Los posibles enlaces submarinos son:
+\begin{itemize}
+\item En la traza a la universidad .......
+\end{itemize}
+
+En los distintos gráficos, podemos notar que los enlaces submarinos y los routers que asignan prioridad baja a las respuestas de paquetes ICMP muestran ambos un ZRTT alto, pero con la diferencia de que los routers que asignan una prioridad diferente hacen que el nodo siguiente tenga un ZRTT más bajo que el resto. Si bien se destacan del resto, usar únicamente un umbral positivo sobre los ZRTT presenta problemas a la hora de decidir si realmente pertenecen a un enlace submarino.
 
 \section{Conclusiones}
 
+Concluimos que la técnica estudiada funciona bien sólo en los casos que la traza hacia el host destino no exhibe gateways que demoran más en responder con paquetes ICMP de tipo Time Exceeded que lo que demoran en reenviar paquetes al siguiente hop en la ruta a su destino, ya que en esos casos la técnica puede producir falsos positivos.
+En el caso general, esta técnica resulta adecuada para identificar hops candidatos a saltos submarinos, pero suele ser necesaria una etapa de análisis adicional para filtrar los falsos positivos dentro del conjunto de candidatos identificado, de manera de obtener un subconjunto compuesto únicamente por hops correspondientes a saltos submarinos.
 
 \section{Referencias}
 \begin{itemize}
