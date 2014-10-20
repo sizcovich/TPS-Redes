@@ -9,6 +9,7 @@
 \usepackage{latexsym}
 \usepackage{caratula}
 \usepackage{epsfig}
+\usepackage{pdfpages}
 %\usepackage{algorithmicx}
 \usepackage{lastpage}
 \usepackage{amsfonts}
@@ -157,14 +158,67 @@ Las universidades utilizadas para realizar las pruebas fueron:
 \item \textbf{University of Zurich}: www.uzh.ch
 \item \textbf{International University of Japan}: www.iuj.ac.jp
 \end{itemize}
-
+\newpage
 \section{Resultados}
+Con el fin de evaluar distintas opciones, decidimos correr el algoritmo de $traceroute$ desde un host utilizando el servicio de \textbf{Fibertel} y desde otro utilizando \textbf{Telefónica}.
+Los resultados obtenidos fueron los que siguen:
+
 \subsection{University of South Africa}
 
+En primer lugar, decidimos realizar un gráfico de seguimiento de acuerdo a las $longitudes$ y $latitudes$ resultantes del traceroute
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/map-unisa.png}
+\caption{Ruta a la International University of South Africa desde servicio Fibertel.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/map-unisa(telef).png}
+\caption{Ruta a la International University of South Africa desde servicio Telefónica.}
+\end{center}
+\end{figure}
+
+\includepdf[scale=0.70]{../imgs/rtt-unisa.pdf}
+\includepdf[scale=0.70]{../imgs/zrtt-unisa.pdf}
+
 \subsection{University of Zurich}
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/map-uzh.png}
+\caption{Ruta a la University of Zurich desde servicio Fibertel.}
+\end{center}
+\end{figure}
 
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/map-uzh(telef).png}
+\caption{Ruta a la University of Zurich desde servicio Telefónica.}
+\end{center}
+\end{figure}
+
+\includepdf[scale=0.70]{../imgs/rtt-uzh.pdf}
+\includepdf[scale=0.70]{../imgs/zrtt-uzh.pdf}
 \subsection{International University of Japan}
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/map-iuj.png}
+\caption{Ruta a la University of Japan desde servicio Fibertel.}
+\end{center}
+\end{figure}
 
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/map-iuj(telef).png}
+\caption{Ruta a la University of Japan desde servicio Telefónica.}
+\end{center}
+\end{figure}
+
+\includepdf[scale=0.70]{../imgs/rtt-iuj.pdf}
+
+\includepdf[scale=0.70]{../imgs/zrtt-iuj.pdf}
 \newpage
 \section{Discusión}
 
