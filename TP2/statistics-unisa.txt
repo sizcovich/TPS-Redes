@@ -1,0 +1,15 @@
+TTL   IP Addresses    Absolute RTT    Relative RTT    Relative ZRTT  Location
+1     181.167.145.1      29.022 ms       29.022 ms           -0.056  Argentina
+5     200.89.165.57      30.520 ms        1.498 ms           -0.259  Argentina
+6     200.89.165.2       29.641 ms       -0.879 ms           -0.290  Argentina
+7     200.89.165.86      28.395 ms       -1.247 ms           -0.295  Argentina
+8     208.50.25.97       29.425 ms        1.030 ms           -0.265  United States
+9     146.82.32.154     285.535 ms      256.110 ms            3.011  United States
+10    77.109.128.149    285.473 ms       -0.062 ms           -0.279  Switzerland
+11    77.109.128.146    294.840 ms        9.367 ms           -0.158  Switzerland
+12    77.109.134.50     244.860 ms      -49.980 ms           -0.920  Switzerland
+13    196.32.209.117    425.673 ms      180.813 ms            2.044  South Africa
+14    155.232.6.86      432.671 ms        6.998 ms           -0.189  Wynberg, South Africa
+15    155.232.6.29      444.425 ms       11.754 ms           -0.128  Wynberg, South Africa
+16    155.232.6.138     434.053 ms      -10.372 ms           -0.412  Wynberg, South Africa
+

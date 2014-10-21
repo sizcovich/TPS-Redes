@@ -1,0 +1,17 @@
+TTL   IP Addresses    Absolute RTT    Relative RTT    Relative ZRTT  Location
+1     181.167.145.1      27.275 ms       27.275 ms           -0.050  Argentina
+5     200.89.165.13      34.171 ms        6.896 ms            0.320  Argentina
+6     200.89.165.250     32.573 ms       -1.599 ms            0.250  Argentina
+7     208.178.195.205    32.707 ms        0.135 ms            0.265  Alexandria, United States
+8     67.17.75.66       167.064 ms      134.356 ms            1.368  United States
+9     4.68.111.121      163.154 ms       -3.909 ms            0.231  United States
+16    4.69.134.49       297.531 ms      134.377 ms            1.368  United States
+17    4.69.137.81       317.171 ms       19.640 ms            0.425  United States
+18    213.242.73.74     277.642 ms      -39.529 ms           -0.062  United Kingdom
+19    130.59.36.210     295.036 ms       17.394 ms            0.406  Zurich, Switzerland
+20    130.59.36.2       269.128 ms      -25.908 ms            0.050  Zurich, Switzerland
+21    192.41.136.2      267.857 ms       -1.270 ms            0.253  Zurich, Switzerland
+22    192.41.136.71     266.747 ms       -1.110 ms            0.254  Zurich, Switzerland
+25    130.60.184.140    268.718 ms        1.971 ms            0.280  Zurich, Switzerland
+26    130.60.184.132    263.794 ms       -4.924 ms            0.223  Zurich, Switzerland
+
