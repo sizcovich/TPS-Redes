@@ -249,16 +249,20 @@ Por otro lado, encontramos como anómalo obtener, para un determinado nodo, un R
 
 En primer lugar, basándonos en el análisis realizado sobre la experimentación, propusimos como umbral en las mediciones de los ZRTT relativos para la detección de enlaces sumbarinos el valor 1. Dicho valor nos pareció suficiente para detectar grandes variaciones en relación al desvío estándar de RTT entre nodos.
 
-Los posibles enlaces submarinos son:
+Los posibles enlaces submarinos basados en el umbral del ZRTT son:
 \begin{itemize}
-\item En la traza a la universidad .......
+\item En la traza a la universidad de South Africa hay dos hops que son potenciales enlaces submarinos, estos son el [208.50.25.97(US) - 146.82.32.154(US)] y el [77.109.134.50(SW) - 196.32.209.117(SA)]. Creemos que estos enlaces corresponden a $Argentina \rightarrow EEUU$ y $Suiza \rightarrow Sudáfrica$, y la localización dada en el primer hop sea un posible error de la geolocalización.
+
+\item En la traza de la universidad de Zurich los dos hops que se destacan son el [208.178.195.205(US) - 67.17.75.66(US)] y el [4.68.111.121(US) - 4.69.134.49(US)]. En este caso creemos que también se produjo un error en la localización y el primer enlace corresponde a $Argentina \rightarrow EEUU$  y el segundo a $EEUU \rightarrow UK$.
+
+\item En la traza de la universidad de Japón hay dos hops que sobresalen del resto, el [207.136.166.241(US) - 67.17.106.162(US)] y el [129.250.2.168(US) - 129.250.3.15(US)]. En este caso también creemos que es posible que la geolocalización no sea muy precisa y los enlaces correspondan a $Argentina \rightarrow EEUU$ y $EEUU \rightarrow Japon$ respectivamente.
 \end{itemize}
 
 En los distintos gráficos, podemos notar que los enlaces submarinos y los routers que asignan prioridad baja a las respuestas de paquetes ICMP muestran ambos un ZRTT alto, pero con la diferencia de que los routers que asignan una prioridad diferente hacen que el nodo siguiente tenga un ZRTT más bajo que el resto. Si bien se destacan del resto, usar únicamente un umbral positivo sobre los ZRTT presenta problemas a la hora de decidir si realmente pertenecen a un enlace submarino.
 
 \section{Conclusiones}
 
-Concluimos que la técnica estudiada funciona bien sólo en los casos que la traza hacia el host destino no exhibe gateways que demoran más en responder con paquetes ICMP de tipo Time Exceeded que lo que demoran en reenviar paquetes al siguiente hop en la ruta a su destino, ya que en esos casos la técnica puede producir falsos positivos.
+Concluimos que la técnica estudiada funciona bien sólo en los casos en que la traza hacia el host destino no posee gateways que demoran más en responder paquetes ICMP de tipo Time Exceeded que lo que demoran en reenviar paquetes al siguiente hop en la ruta a su destino, ya que en esos casos la técnica puede producir falsos positivos.
 En el caso general, esta técnica resulta adecuada para identificar hops candidatos a saltos submarinos, pero suele ser necesaria una etapa de análisis adicional para filtrar los falsos positivos dentro del conjunto de candidatos identificado, de manera de obtener un subconjunto compuesto únicamente por hops correspondientes a saltos submarinos.
 
 \section{Referencias}
