@@ -293,6 +293,8 @@ TTL   IP Addresses    Absolute RTT    Relative RTT    Relative ZRTT  Location
 \end{center}
 \end{figure}
 
+En el mapa anterior, podemos observar que, en primer lugar, la ruta va desde Argentina hacia Estados Unidos. Una vez en allí, podemos percibir que la ruta continúa hacia el centro del país. Si bien el mapa muestra que el enlace atraviesa el Océano Atlántico, suponemos que esto no es más que un error del gráfico dado que la ruta directa hacia Japón atraviesa el Océano Pacífico.
+
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-iuj(telef).png}
@@ -301,6 +303,8 @@ TTL   IP Addresses    Absolute RTT    Relative RTT    Relative ZRTT  Location
 \end{figure}
 
 \includepdf[scale=0.70]{../imgs/rtt-iuj.pdf}
+
+En el gráfico anterior, podemos observar que el $RTT$ es bajo para las IPs ubicadas en Argentina, tal como se esperaba. Por otro lado, hallamos un valor bajo en el primer enlace a Estados Unidos (IP 207.136.166.241), lo que nos pareció extraño en comparación con los siguientes valores $RTT$ del mismo país. Por último, el $RTT$ a Japón es mayor al de Estados Unidos en pequeña proporción, lo que resultaba esperable.
 
 \includepdf[scale=0.70]{../imgs/zrtt-iuj.pdf}
 \newpage
