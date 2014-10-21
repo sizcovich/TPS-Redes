@@ -125,11 +125,11 @@ donde $h$ representa el host destino e $IP_{rcv}$ representa la IP del hop del q
 Para la segunda parte del análisis, modificamos la implementación con el fin de que, una vez terminada la búsqueda, calculara el valor standard o valor Z del RTT (ZRTT) de cada salto $i$ con respecto a la ruta global. Para ello, tuvimos en cuenta las siguientes definiciones:\\
 
 \textit{\textbf{Media:}}
-$$\overline{x} = \frac{1}{n} \sum_{1=1}^{n}x_i$$
+$$\overline{x} = \frac{1}{n} \sum_{i=1}^{n}x_i$$
 
 
 \textit{\textbf{Desvío standard:}}
-$$\sigma = \sqrt{\frac{1}{n} \sum_{1=1}^{n}(x_i - \overline{x})^2}$$
+$$\sigma = \sqrt{\frac{1}{n} \sum_{i=1}^{n}(x_i - \overline{x})^2}$$
 
 El cambio dio como resultado el siguiente algoritmo:
 
@@ -220,8 +220,8 @@ TTL   IP Addresses    Absolute RTT    Relative RTT    Relative ZRTT  Location
 \end{figure}
 
 \includepdf[scale=0.70]{../imgs/rtt-unisa.pdf}
-En este gráfico podemos ver que el nodo con ip $77.109.134.50$ en promedio tarda menos que los 3 nodos que lo anteceden. Este factor suponemos que se da por diferentes rutas en los paquetes, o los nodos anteriores al mismo tienen una baja prioriad para responder paquetes ICMP del tipo Time Exceeded.
-También se puede observar el incremento significativo del rtt en en los nodos $146.82.32.154$ y $196.32.209.117$ con lo que estos podrían ser candidatos a ser tramos finales de los enlaces submarinos. 
+En este gráfico podemos ver que el nodo con ip 77.109.134.50 en promedio tarda menos que los 3 nodos que lo anteceden. Este factor suponemos que se da por diferentes rutas en los paquetes, o los nodos anteriores al mismo tienen una baja prioriad para responder paquetes ICMP del tipo Time Exceeded.
+También se puede observar el incremento significativo del rtt en en los nodos 146.82.32.154 y 196.32.209.117 con lo que estos podrían ser candidatos a ser tramos finales de los enlaces submarinos. 
 \includepdf[scale=0.70]{../imgs/zrtt-unisa.pdf}
 
 \subsection{University of Zurich}
@@ -262,7 +262,7 @@ TTL   IP Addresses    Absolute RTT    Relative RTT    Relative ZRTT  Location
 
 \includepdf[scale=0.70]{../imgs/rtt-uzh.pdf}
 En este gráfico podemos ver que algunos nodos tardan menos en promedio que los nodos que lo anteceden. Este factor suponemos que se da por diferentes rutas en los paquetes, o los nodos anteriores al mismo tienen una baja prioriad para responder paquetes ICMP del tipo Time Exceeded.
-También se puede observar el incremento significativo del rtt en en los nodos $67.17.75.66$ y $4.69.134.49$ con lo que estos podrían ser candidatos a ser tramos finales de los enlaces submarinos. 
+También se puede observar el incremento significativo del rtt en en los nodos 67.17.75.66 y 4.69.134.49 con lo que estos podrían ser candidatos a ser tramos finales de los enlaces submarinos. 
 \includepdf[scale=0.70]{../imgs/zrtt-uzh.pdf}
 \subsection{International University of Japan}
 
