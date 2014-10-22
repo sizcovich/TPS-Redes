@@ -9,11 +9,16 @@ from mpl_toolkits.basemap import Basemap
 import  matplotlib.pyplot as pl
 from PIL import *
 
+#
+# USO: sudo python trace.py <url> <max TTL> <cantidad de muestras de rtt>
+#
+
 
 if __name__ == '__main__':
 	ttl_aux = 1
 	i = 0
 	ttl_max = int(sys.argv[2])
+	cant_muestras_rtt = int(sys.argv[3])
 	ip_list = []
 	gic = pygeoip.GeoIP('GeoLiteCity.dat')
 	ip_rtt_dicc = {}
@@ -22,7 +27,7 @@ if __name__ == '__main__':
 	while(ttl_aux < ttl_max):
 		packet = IP(dst=sys.argv[1], ttl=ttl_aux) / ICMP()
 		time.sleep(0.5)
-		ans,unans = sr(packet, timeout = 1, verbose = 0)
+		ans,unans = sr(packet, timeout = 2, verbose = 0)
 		#print "ttl: " + str(ttl_aux)	
 		if(len(ans[ICMP]) == 0 ):
 			print str(ttl_aux) + " *"
@@ -67,7 +72,7 @@ if __name__ == '__main__':
 	for ip in ip_list:
 		i = 0
 		time_list = []		
-		while(i < 10):
+		while(i < cant_muestras_rtt):
 			packet = IP(dst=ip) / ICMP()
 			#packet.display()
 			time.sleep(0.5)
