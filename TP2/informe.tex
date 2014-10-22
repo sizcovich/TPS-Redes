@@ -92,7 +92,8 @@ Los mensajes de control que analizaremos a lo largo del trabajo son los siguient
 
 \item \textbf{Round-Trip Time}: Corresponde al retardo del tránsito de paquetes a través de la red IP desde que es enviado hasta volver al emisor, pasando por el destino.
 
-\item \textbf{Traceroute}: Consiste en una herramienta de diagnóstico que muestra la ruta y mide el RTT.
+\item \textbf{Traceroute}: Consiste en una herramienta de diagnóstico que muestra la ruta y mide el RTT. Es una herramienta que provee información de cada sistema intermediario (por ejemplo, IPs de routers) que se encuentran a lo largo del camino IP desde el $sender$ hasta el $receiver$. 
+
 \end{itemize}
 
 \section{Desarrollo}
@@ -121,6 +122,14 @@ Para la implementación del traceroute, seguimos el siguiente algoritmo:
 \end{algorithm}
 
 donde $h$ representa el host destino e $IP_{rcv}$ representa la IP del hop del que proviene el paquete recibido. Por otro lado, $ttl$ representa el \textit{time to live} del paquete y $TTL$ el campo correspondiente en el header del mismo.
+
+El programa comienza enviando mensajes ICMP Echo request con una dirección IP destino y un $Time\ To\ Live$ (TTL) seteado en 1. El primer router que recibe el paquete decrementa el TTL, dado que dicho valor pasa a ser 0, éste descarta el mensaje. Sin embargo, antes de realizar el borrado, el host construye un mensaje de error ICMP (con un mensaje ICMP de tipo ``TTL exceeded'') y lo envía al $sender$. La recepción de dicho mensaje permite al $sender$ identificar qué host se encuentra en un enlace que es camino al destino especificado.
+
+El $sender$ repite el procedimiento dos veces, donde cada una de ellas reporta al host que recibió el paquete. Si todos los paquetes viajan a través del mismo camino, cada mensaje de error ICMP será recibido por el mismo host. En los casos en los que existan dos o más caminos posibles, los resultados pueden variar.
+
+El proceso se repite hasta que el $sender$ recibe una respuesta del destino (o que se alcance el máximo TTL).
+
+Cabe destacar que algunos routers se encuentran configurados para descartar los paquetes ICMP o para procesarlos y no devolver mensajes de error ICMP. Dichos routers ocultan la ``topología'' de la red. Cuando el $traceroute$ se encuentra con un router que no responde, imprime un $^*$.
 
 Para la segunda parte del análisis, modificamos la implementación con el fin de que, una vez terminada la búsqueda, calculara el valor standard o valor Z del RTT (ZRTT) de cada salto $i$ con respecto a la ruta global. Para ello, tuvimos en cuenta las siguientes definiciones:\\
 
@@ -175,7 +184,6 @@ Esta universidad se encuentra en Japón, Asia.
 \end{itemize}
 \newpage
 \section{Resultados}
-Con el fin de evaluar distintas opciones, decidimos correr el algoritmo de $traceroute$ desde un host utilizando el servicio de \textbf{Fibertel} y desde otro utilizando \textbf{Telefónica}.
 
 En primer lugar, decidimos realizar un gráfico de seguimiento de acuerdo a las $longitudes$ y $latitudes$ resultantes del traceroute. Para ello, corrimos el script trace.py con cada sitio web y con un time to live de 30 (por ser el valor TTL máximo utilizado por defecto). Luego, realizamos los gráficos correspondientes.
 
@@ -204,20 +212,19 @@ TTL   IP Addresses    Absolute RTT    Relative RTT    Relative ZRTT  Location
 
 \end{verbatim}
 
-
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-unisa.png}
-\caption{Ruta hacia International University of South Africa desde servicio Fibertel.}
+\caption{Ruta hacia International University of South Africa.}
 \end{center}
 \end{figure}
 
-\begin{figure}[H] %[h] Aqui [b] para button [t] para top
-\begin{center}
-\includegraphics[width=400pt]{../imgs/map-unisa(telef).png}
-\caption{Ruta hacia International University of South Africa desde servicio Telefónica.}
-\end{center}
-\end{figure}
+%\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+%\begin{center}
+%\includegraphics[width=400pt]{../imgs/map-unisa(telef).png}
+%\caption{Ruta hacia International University of South Africa desde servicio Telefónica.}
+%\end{center}
+%\end{figure}
 
 \includepdf[scale=0.70]{../imgs/rtt-unisa.pdf}
 En este gráfico podemos ver que el nodo con ip 77.109.134.50 en promedio tarda menos que los 3 nodos que lo anteceden. Este factor suponemos que se da por diferentes rutas en los paquetes, o los nodos anteriores al mismo tienen una baja prioriad para responder paquetes ICMP del tipo Time Exceeded.
@@ -249,16 +256,16 @@ TTL   IP Addresses    Absolute RTT    Relative RTT    Relative ZRTT  Location
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-uzh.png}
-\caption{Ruta hacia University of Zurich desde servicio Fibertel.}
+\caption{Ruta hacia University of Zurich.}
 \end{center}
 \end{figure}
 
-\begin{figure}[H] %[h] Aqui [b] para button [t] para top
-\begin{center}
-\includegraphics[width=400pt]{../imgs/map-uzh(telef).png}
-\caption{Ruta hacia University of Zurich desde servicio Telefónica.}
-\end{center}
-\end{figure}
+%\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+%\begin{center}
+%\includegraphics[width=400pt]{../imgs/map-uzh(telef).png}
+%\caption{Ruta hacia University of Zurich desde servicio Telefónica.}
+%\end{center}
+%\end{figure}
 
 \includepdf[scale=0.70]{../imgs/rtt-uzh.pdf}
 En este gráfico podemos ver que algunos nodos tardan menos en promedio que los nodos que lo anteceden. Este factor suponemos que se da por diferentes rutas en los paquetes, o los nodos anteriores al mismo tienen una baja prioriad para responder paquetes ICMP del tipo Time Exceeded.
@@ -289,29 +296,47 @@ TTL   IP Addresses    Absolute RTT    Relative RTT    Relative ZRTT  Location
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
 \includegraphics[width=400pt]{../imgs/map-iuj.png}
-\caption{Ruta hacia University of Japan desde servicio Fibertel.}
+\caption{Ruta hacia University of Japan.}
 \end{center}
 \end{figure}
 
 En el mapa anterior, podemos observar que, en primer lugar, la ruta va desde Argentina hacia Estados Unidos. Una vez en allí, podemos percibir que la ruta continúa hacia el centro del país. Si bien el mapa muestra que el enlace atraviesa el Océano Atlántico, suponemos que esto no es más que un error del gráfico dado que la ruta directa hacia Japón atraviesa el Océano Pacífico.
 
-\begin{figure}[H] %[h] Aqui [b] para button [t] para top
-\begin{center}
-\includegraphics[width=400pt]{../imgs/map-iuj(telef).png}
-\caption{Ruta hacia University of Japan desde servicio Telefónica.}
-\end{center}
-\end{figure}
+%\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+%\begin{center}
+%\includegraphics[width=400pt]{../imgs/map-iuj(telef).png}
+%\caption{Ruta hacia University of Japan desde servicio Telefónica.}
+%\end{center}
+%\end{figure}
 
 \includepdf[scale=0.70]{../imgs/rtt-iuj.pdf}
 
-En el gráfico anterior, podemos observar que el $RTT$ es bajo para las IPs ubicadas en Argentina, tal como se esperaba. Por otro lado, hallamos un valor bajo en el primer enlace a Estados Unidos (IP 207.136.166.241), lo que nos pareció extraño en comparación con los siguientes valores $RTT$ del mismo país. Por último, el $RTT$ a Japón es mayor al de Estados Unidos en pequeña proporción, lo que resultaba esperable.
+En el gráfico anterior, podemos observar que el $RTT$ es bajo para las IPs ubicadas en Argentina, tal como se esperaba. Por otro lado, hallamos un valor bajo en el primer enlace a Estados Unidos (IP 207.136.166.241), lo que nos pareció extraño en comparación con los siguientes valores $RTT$ del mismo país, lo que podría indicar un error de la localización por parte del Geolocalizador. Por último, el $RTT$ a Japón es mayor al de Estados Unidos en pequeña proporción, lo que resultaba esperable.
 
 \includepdf[scale=0.70]{../imgs/zrtt-iuj.pdf}
 \newpage
 \section{Discusión}
 Dados los gráficos presentados en la sección anterior, pudimos hallar distintos resultados. 
 
-En primer lugar, encontramos posibles errores del geolocalizador utilizado para las IPs. Por ejemplo, al notar que todas las rutas del gateway de \textbf{Telefónica} pasan siempre por España, creemos que seguramente la empresa que provee los enlaces transatlánticos tenga IPs reservadas y, dado que se encuentra registrada en España, el geolocalizador le asigna dicha localización. Esta falla se puede ver en la latencia de los saltos dado que en algunos casos, como \textbf{University of Japan}, no tiene sentido que la latencia de Argentina a Estados Unidos sea menor que la de un vínculo interno entre Argentina, siendo este último el lugar de origen.
+En primer lugar, encontramos posibles errores del geolocalizador utilizado para las IPs. Esta particularidad se notó principalmente cuando corrimos el $traceroute$ desde computadoras con distintos servicios de Internet. Veamos el siguiente ejemplo:
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/map-unisa.png}
+\caption{Ruta hacia International University of South Africa desde servicio Fibertel.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] %[h] Aqui [b] para button [t] para top
+\begin{center}
+\includegraphics[width=400pt]{../imgs/map-unisa(telef).png}
+\caption{Ruta hacia International University of South Africa desde servicio Telefónica.}
+\end{center}
+\end{figure}
+
+En este caso, podemos notar que la ruta del gateway de \textbf{Telefónica} pasa por España antes de dirigirse a Estados Unidos. Sabemos que dicha característica es imposible dado que no existen enlaces directos a Europa sin pasar por Estados Unidos\footnote{FUENTE: http://maps.level3.com/default/\#.VEeqmZOG8ho}. Luego, la única explicación que le encontramos a dicho resultado es que la IP en cuestión esté registrada por \textbf{Telefónica}, que al ser una empresa española el geolocalizador asocie a dicho país.
+
+De este modo, creemos que seguramente la empresa que provee los enlaces transatlánticos tenga IPs reservadas y, dado que algunas se encuentran registradas en países que pueden no ser los que poseen dichos hosts físicamente, el geolocalizador le asigne dicha localización. Del mismo modo, esta falla se puede ver en la latencia de los saltos dado que en algunos casos, como \textbf{University of Japan}, no tiene sentido que la latencia de Argentina a Estados Unidos sea menor que la de un vínculo interno entre Argentina, siendo este último el lugar de origen.
 
 Por otro lado, encontramos como anómalo obtener, para un determinado nodo, un RTT absoluto menor al RTT absoluto del nodo anterior, lo que significaría que llegar a este nodo toma menos tiempo que llegar al anterior. Esta anomalía se debe a que los valores del RTT absolutos se calculan mediante el promedio de los RTT obtenidos para cada nodo, pudiendo el paquete ICMP haber tomado caminos diferentes y habiendo conseguido llegar de manera apenas más rápida en promedio. Y además, algunos host podrían darle menos prioridad a responder paquetes ICMP de tipo Time Exceeded que al envío de paquetes al siguiente host.
 
@@ -337,6 +362,8 @@ En el caso general, esta técnica resulta adecuada para identificar hops candida
 \begin{itemize}
 \item PETERSON, DAVIE ; Computer Networks, 5th edition, Wiley
 
+\item http://openmaniak.com/ping.php
 
+\item http://www.erg.abdn.ac.uk/~gorry/eg3561/inet-pages/icmp.html
 \end{itemize}
 \end{document}
