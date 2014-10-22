@@ -318,7 +318,10 @@ En el gráfico anterior, podemos observar que el $RTT$ es bajo para las IPs ubic
 \section{Discusión}
 Dados los gráficos presentados en la sección anterior, pudimos hallar distintos resultados. 
 
-En primer lugar, encontramos posibles errores del geolocalizador utilizado para las IPs. Esta particularidad se notó principalmente cuando corrimos el $traceroute$ desde computadoras con distintos servicios de Internet. Veamos el siguiente ejemplo:
+En primer lugar, pudimos notar que seguramente la empresa que provee los enlaces transatlánticos tenga IPs reservadas y, dado que algunas se encuentran registradas en países que pueden no ser los que poseen dichos hosts físicamente, el geolocalizador le asigne dicha localización. Esta falla se puede ver en la latencia de los saltos dado que en algunos casos, como \textbf{University of Japan}, no tiene sentido que la latencia de Argentina a Estados Unidos sea menor que la de un vínculo interno entre Argentina, siendo este último el lugar de origen.
+
+
+Por otra parte, notamos que pueden existir distintas rutas posibles hacia un mismo destino, como ya se mencionó anteriormente. Esta particularidad se notó principalmente cuando corrimos el $traceroute$ desde computadoras con distintos servicios de Internet. Veamos el siguiente ejemplo:
 
 \begin{figure}[H] %[h] Aqui [b] para button [t] para top
 \begin{center}
@@ -334,9 +337,7 @@ En primer lugar, encontramos posibles errores del geolocalizador utilizado para 
 \end{center}
 \end{figure}
 
-En este caso, podemos notar que la ruta del gateway de \textbf{Telefónica} pasa por España antes de dirigirse a Estados Unidos. Sabemos que dicha característica es imposible dado que no existen enlaces directos a Europa sin pasar por Estados Unidos\footnote{FUENTE: http://maps.level3.com/default/\#.VEeqmZOG8ho}. Luego, la única explicación que le encontramos a dicho resultado es que la IP en cuestión esté registrada por \textbf{Telefónica}, que al ser una empresa española el geolocalizador asocie a dicho país.
-
-De este modo, creemos que seguramente la empresa que provee los enlaces transatlánticos tenga IPs reservadas y, dado que algunas se encuentran registradas en países que pueden no ser los que poseen dichos hosts físicamente, el geolocalizador le asigne dicha localización. Del mismo modo, esta falla se puede ver en la latencia de los saltos dado que en algunos casos, como \textbf{University of Japan}, no tiene sentido que la latencia de Argentina a Estados Unidos sea menor que la de un vínculo interno entre Argentina, siendo este último el lugar de origen.
+En este caso, podemos notar que el gráfico muestra que la ruta del gateway de \textbf{Telefónica} pasa por España antes de dirigirse a Estados Unidos. Esto puede ocurrir en el caso en el que la IP en cuestión esté registrada por \textbf{Telefónica}, que al ser una empresa española el geolocalizador asocie a dicho país (siendo entonces un posible error del geolocalizador utilizado para las IPs) o porque realmente pase por ese lugar.
 
 Por otro lado, encontramos como anómalo obtener, para un determinado nodo, un RTT absoluto menor al RTT absoluto del nodo anterior, lo que significaría que llegar a este nodo toma menos tiempo que llegar al anterior. Esta anomalía se debe a que los valores del RTT absolutos se calculan mediante el promedio de los RTT obtenidos para cada nodo, pudiendo el paquete ICMP haber tomado caminos diferentes y habiendo conseguido llegar de manera apenas más rápida en promedio. Y además, algunos host podrían darle menos prioridad a responder paquetes ICMP de tipo Time Exceeded que al envío de paquetes al siguiente host.
 
@@ -361,6 +362,8 @@ En el caso general, esta técnica resulta adecuada para identificar hops candida
 \section{Referencias}
 \begin{itemize}
 \item PETERSON, DAVIE ; Computer Networks, 5th edition, Wiley
+
+\item http://openmaniak.com/ping.php
 
 \item http://www.erg.abdn.ac.uk/~gorry/eg3561/inet-pages/icmp.html
 \end{itemize}
