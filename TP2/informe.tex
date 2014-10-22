@@ -318,8 +318,7 @@ En el gráfico anterior, podemos observar que el $RTT$ es bajo para las IPs ubic
 \section{Discusión}
 Dados los gráficos presentados en la sección anterior, pudimos hallar distintos resultados. 
 
-En primer lugar, pudimos notar que seguramente la empresa que provee los enlaces transatlánticos tenga IPs reservadas y, dado que algunas se encuentran registradas en países que pueden no ser los que poseen dichos hosts físicamente, el geolocalizador le asigne dicha localización. Esta falla se puede ver en la latencia de los saltos dado que en algunos casos, como \textbf{University of Japan}, no tiene sentido que la latencia de Argentina a Estados Unidos sea menor que la de un vínculo interno entre Argentina, siendo este último el lugar de origen.
-
+En primer lugar, pudimos notar que seguramente la empresa que provee los enlaces transatlánticos tenga IPs reservadas y, dado que algunas se encuentran registradas en países que pueden no ser los que poseen dichos hosts físicamente, el geolocalizador le asigne dicha localización.
 
 Por otra parte, notamos que pueden existir distintas rutas posibles hacia un mismo destino, como ya se mencionó anteriormente. Esta particularidad se notó principalmente cuando corrimos el $traceroute$ desde computadoras con distintos servicios de Internet. Veamos el siguiente ejemplo:
 
