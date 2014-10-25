@@ -54,13 +54,52 @@
 \newpage
 
 \section{Introducción}
+En el siguiente trabajo práctico, ejercitamos las nociones del nivel de transporte estudiadas en la materia a través de la implementación y análisis de un protocolo sencillo: \textbf{PTC}. 
 
+El trabajo consistió, esencialmente, en simular efectos típicos de una red (tales como pérdida de paquetes o latencia) y analizar el impacto de esto en las estimaciones del RTO de un protocolo de transporte en el contexto de una red local. 
 
+El trabajo se dividió en dos secciones: una parte implementativa y otra en la que debimos realizar experimentos, graficar resultados y extraer conclusiones sobre lo observado.
 
 \section{Introducción Teórica}
 
 
-\section{Desarrollo}
+\section{Primera Parte: escenario de análisis}
+
+Tomando como punto de partida el código suministrado por la cátedra, implementamos ciertas modificaciones al protocolo con el fin de generar un escenario de análisis sobre el que estudiamos qué parámetros $\alpha$, $\beta$ optimizan el cálculo del RTO\footnote{The Recovery Time Objective (RTO) is the duration of time and a service level within which a business process must be restored after a disaster in order to avoid unacceptable consequences associated with a break in continuity.}.
+
+En primer lugar, agregamos la posibilidad de introducir un delay ($ack\_delay$) y una probabilidad $p$ de pérdida de paquetes ($ack\_loss\_probability$) al momento de enviar los ACKs. Con el fin de que fuera editable, modificamos el constructor de la clase (en el archivo $protocol.py$) para que tome el delay y la probabilidad de pérdida:
+\begin{verbatim}
+		def __init__(self, ack_delay=0, ack_loss_probability=0):
+\end{verbatim}
+
+Luego, modificamos la función $send\_ack$ del archivo $handler.py$ con el fin de armar el ACK para enviar una vez que llega un paquete. Para ello, agregamos lo que sigue:
+
+\begin{verbatim}
+if self.protocol.state == ESTABLISHED:
+            if random.uniform(0, 1) < self.protocol.ack_loss_probability:
+                print("ACKed lost segment")
+                return
+            if self.protocol.ack_delay > 0:
+                print("Delayed ACK")
+                time.sleep(self.protocol.ack_delay)
+        ack_packet = self.build_packet()
+        print("Sending ACK: window=%d" % ack_packet.get_window_size())
+        self.socket.send(ack_packet)
+\end{verbatim}
+        
+El primer $if$ sirve para que se aplique el delay o pérdida únicamente si se encuentra establecida la conexión.
+Luego, $if random.uniform(0, 1) < self.protocol.ack_loss_probability:$ permite ver si se perdió el ACK o no, dependiendo de la probabilidad de pérdida que se le configure. En el caso en el que el paquete se pierde, realiza $return$ para terminar la función sin mandar ACK, caso contrario lo demora con $time.sleep()$, tal como se desea.
+
+Para definir la probabilidad $p$ de pérdidad de paquetes, decidimos simularla utilizando $random.uniform(0,1)$ \footnote{docs.python.org/2/library/random.html} con el fin de que la decisión de si los paquetes fueron enviados efectivamente fuera la misma que la de ``tirar una moneda'', esto es, siguiendo una distribución uniforme.
+
+Dado que la clase que usa PTCProtocol también debe inicializarse con los parámetros mencionados anteriormente, debimos modificar la clase $Socket$ de $ptc\_socket.py$ agregando los parámetros al constructor, siendo dicha clase la que se llama para crear un nuevo Socket. Ésto se realizó de la siguiente forma:
+\begin{verbatim}
+class Socket(object):
+    def __init__(self, ack_delay=0, ack_loss_probability=0):
+		self.protocol = PTCProtocol(ack_delay=ack_delay, ack_loss_probability=ack_loss_probability)
+\end{verbatim}
+
+\section{Segunda parte: experimentación y análisis}
 
 \section{Resultados}
 

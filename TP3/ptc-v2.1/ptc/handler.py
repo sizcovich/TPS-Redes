@@ -9,6 +9,8 @@
 #              Segundo cuatrimestre de 2014              #
 ##########################################################
 
+import random
+import time
 
 from constants import CLOSED, SYN_RCVD, ESTABLISHED, SYN_SENT,\
                       LISTEN, FIN_WAIT1, FIN_WAIT2, CLOSE_WAIT,\
@@ -33,7 +35,17 @@ class IncomingPacketHandler(object):
         self.protocol.set_state(state)
         
     def send_ack(self):
+        #ack_packet = self.build_packet()
+        #self.socket.send(ack_packet)
+        if self.protocol.state == ESTABLISHED:
+            if random.uniform(0, 1) < self.protocol.ack_loss_probability:
+                print("ACKed lost segment")
+                return
+            if self.protocol.ack_delay > 0:
+                print("Delayed ACK")
+                time.sleep(self.protocol.ack_delay)
         ack_packet = self.build_packet()
+        print("Sending ACK: window=%d" % ack_packet.get_window_size())
         self.socket.send(ack_packet)
 
     def handle(self, packet):
