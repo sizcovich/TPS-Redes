@@ -61,11 +61,19 @@ El trabajo consistió, esencialmente, en simular efectos típicos de una red (ta
 El trabajo se dividió en dos secciones: una parte implementativa y otra en la que debimos realizar experimentos, graficar resultados y extraer conclusiones sobre lo observado.
 
 \section{Introducción Teórica}
+\begin{itemize}
+\item RTO consiste en un RTT estimado definido en función de $\alpha$ y $\beta$ para un delay fijo. Cantidad de retransmisiones en función de $\alpha$ y $\beta$. Comparación entre el RTO y el RTT ``real''.\footnote{https://tools.ietf.org/html/rfc6298}
 
+$$RTTVAR = (1 - \beta) RTTVAR + \beta |SRTT - RTT|$$
+$$SRTT = (1 - \alpha)SRTT + \alpha RTT$$
+$$RTO = SRTT + max(1, RTTVAR)$$
+
+siendo SRTT (smoothed round-trip time) el RTT estimado y RTTVAR (round-trip time variation) una variación en el tiempo.
+\end{itemize}
 
 \section{Primera Parte: escenario de análisis}
 
-Tomando como punto de partida el código suministrado por la cátedra, implementamos ciertas modificaciones al protocolo con el fin de generar un escenario de análisis sobre el que estudiamos qué parámetros $\alpha$, $\beta$ optimizan el cálculo del RTO\footnote{The Recovery Time Objective (RTO) is the duration of time and a service level within which a business process must be restored after a disaster in order to avoid unacceptable consequences associated with a break in continuity.}.
+En primer lugar, tomando como punto de partida el código suministrado por la cátedra, implementamos ciertas modificaciones al protocolo con el fin de generar un escenario de análisis sobre el que estudiamos qué parámetros $\alpha$, $\beta$ optimizan el cálculo del RTO\footnote{The Recovery Time Objective (RTO) is the duration of time and a service level within which a business process must be restored after a disaster in order to avoid unacceptable consequences associated with a break in continuity.}.
 
 En primer lugar, agregamos la posibilidad de introducir un delay ($ack\_delay$) y una probabilidad $p$ de pérdida de paquetes ($ack\_loss\_probability$) al momento de enviar los ACKs. Con el fin de que fuera editable, modificamos el constructor de la clase (en el archivo $protocol.py$) para que tome el delay y la probabilidad de pérdida:
 \begin{verbatim}
@@ -100,6 +108,34 @@ class Socket(object):
 \end{verbatim}
 
 \section{Segunda parte: experimentación y análisis}
+
+En esta sección, definimos un esquema cliente-servidor en el que el cliente envía datos y el servidor se limita a reconocerlos. Para distintas combinaciones de $\alpha$ y $\beta$ debimos analizar cómo evoluciona la estimación del RTO en el cliente y buscar valores que acerquen tanto como sea posible dicha estimación al RTT ``real''. A partir de dichos resultados, analizamos cómo impactan los efectos de red simulados en los parámetros encontrados.
+
+%%%%%%Tener en cuenta además que el protocolo mantiene la estimación en ticks, por lo que será necesario hacer la conversión a una unidad de tiempo para poder contrastarlo correctamente con el RTT.
+
+En primer lugar, debimos realizar las modificaciones necesarias al código de forma tal que se pudieran setear los valores $\alpha$, $\beta$ y $k$. 
+Para ello, modificamos el constructor de la clase $ptc\_socket$ agregándole los parámetros 
+\begin{itemize}
+\item alpha=0.125
+\item beta=0.25
+\item k=4
+\end{itemize}
+siendo éstos los valores por defecto de $constants.py$.
+
+Luego, creamos una instancia del protocolo agregándole los nuevos parámetros del modo que quedara de la siguiente forma:
+\begin{verbatim}
+PTCProtocol(ack_delay=ack_delay, 
+					ack_loss_probability=ack_loss_probability, alpha=alpha, beta=beta, k=k)
+\end{verbatim}
+
+Por otro lado, modificamos el constructor PTCProtocol para que acepte dichos parámetros de la siguiente forma:
+\begin{verbatim}
+def __init__(self, ack_delay=0, ack_loss_probability=0, beta, alpha, k):
+\end{verbatim}
+
+Luego, cambiamos $ALPHA$, $BETA$ y $K$ por $self.protocol.alpha$, $self.protocol.beta$ y $self.protocol.k$ respectivamente, en la función $update\_rtt\_estimation\_with$ para que dichos valores fueran los seteados desde el miembro protocolo.
+
+Por último, creamos el cliente y servidor.
 
 \section{Resultados}
 
