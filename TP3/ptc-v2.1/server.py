@@ -13,19 +13,20 @@ parser.add_argument('-p', '--port', type=int, default=6677, help='PTC port')
 args = parser.parse_args()
  
 with Socket(ack_delay=args.delay, ack_loss_probability=args.loss) as sock:
-        sock.bind(('0.0.0.0', args.port))
-        sock.listen()
-        print '[PTC server] Waiting for a client...'
-        sock.accept()
-        print '[PTC server] Connection established.'
-        size = unpack('I', sock.recv(4))[0]
-        print '[PTC server] Receiving %d bytes...' % size
-        received = str()
-        #Un while que solo reciba los datos y los lea del buffer
-        #Guarda los datos recibidos en received (print para verlo)
-        while len(received) < size:
-            received += sock.recv(size - len(received))
-            print '[PTC server] Received %d bytes.' % len(received)
- 
-        sock.close()
-        print '[PTC server] Received %d bytes. Connection closed.' % size
+    sock.bind(('127.0.0.1', args.port))
+    sock.listen()
+    print 'Waiting for a client...'
+    sock.accept()
+    print 'Connection established.'
+    size = unpack('I', sock.recv(4))[0]
+    print 'Receiving %d bytes...' % size
+    received = str()
+    #Un while que solo reciba los datos y los lea del buffer
+    #Guarda los datos recibidos en received (print para verlo)
+    while len(received) < size:
+        received += sock.recv(size - len(received))
+        print 'Received %d bytes.' % len(received)
+
+    sock.close()
+    print 'Received %d bytes. Connection closed.' % size
+
