@@ -22,7 +22,6 @@ with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar) as sock:
     print 'Sending file size...'
     sock.send(pack('I', size)) #da la representacion en bytes de size
     print 'Uploading %d bytes...' % size
-    t0 = time()
     sock.send('a' * size)
     sock.shutdown(SHUT_WR)
 
