@@ -21,7 +21,7 @@ with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar) as sock:
     print 'Connection established.'
     print 'Sending file size...'
     sock.send(pack('I', args.size)) #da la representacion en bytes de size
-    print 'Uploading %d bytes...' % size
+    print 'Uploading %d bytes...' % args.size
     sock.send('a' * args.size) #crea un string con 50 a's
     sock.shutdown(SHUT_WR)
 
