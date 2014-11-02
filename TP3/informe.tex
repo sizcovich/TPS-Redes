@@ -65,6 +65,8 @@ El trabajo se dividió en dos secciones: una parte implementativa y otra en la q
 
 \item \textbf{Socket:} Un socket es en esencia un canal de comunicación entre procesos. Los sockets entre procesos remotos se llaman Internet sockets. Los sistemas operativos suelen ofrecer una interfaz para manipular sockets: conjunto de llamadas al sistema que abstraen al usuario de las problemáticas de networking que el SO resuelve, se llaman \textbf{Sockets API}.
 
+En el contexto del tp, se utilizaron sockets raw que conforman una variante de sockets con los que los procesos pueden leer y escribir datagramas IP con un número de protocolo no procesado por el kernel del SO. Dicho campo indica qué protocolo viaja dentro de IP permitiendo diseñar e implementar protocolos de transporte ad-hoc a nivel de usuario.
+
 \item \textbf{PTC:} Consiste en un protocolo de transporte en TCP simplificado. El mismo presenta las siguientes características:
 \begin{itemize} 
 \item Bidireccionalidad por ser full-duplex.
