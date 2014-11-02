@@ -90,7 +90,7 @@ $$RTTVAR = (1 - \beta) RTTVAR + \beta |SRTT - RTT|$$
 $$SRTT = (1 - \alpha)SRTT + \alpha RTT$$
 $$RTO = SRTT + max(1, RTTVAR)$$
 
-El parámetro $\alpha$ es seleccionado para regular el $SRTT$. Al elegir un $\alpha$ pequeño, el $RTO$ puede verse muy influenciado por una fluctuación temporaria mientras que con un $\alpha$ grande puede ser más estable pero no suficientemente rápido como para adaptarse a los cambios reales. La especificación de TCP recomienda regular a $\alpha$ entre 0.8 y 0.9.
+El parámetro $\alpha$ es seleccionado para regular el $SRTT$. Al elegir un $\alpha$ grande, el $RTO$ puede verse muy influenciado por una fluctuación temporaria mientras que con un $\alpha$ chico puede ser más estable pero no suficientemente rápido como para adaptarse a los cambios reales. La especificación de TCP recomienda regular a $\alpha$ entre 0.1 y 0.2.
 \end{itemize}
 
 \section{Primera Parte: escenario de análisis}
@@ -139,11 +139,11 @@ En esta sección, definimos un esquema cliente-servidor en el que el cliente env
 En primer lugar, debimos realizar las modificaciones necesarias al código de forma tal que se pudieran setear los valores $\alpha$, $\beta$ y $k$. 
 Para ello, modificamos el constructor de la clase $ptc\_socket$ agregándole los parámetros 
 \begin{itemize}
-\item alpha=0.8
-\item beta=0.4
+\item alpha=0.125
+\item beta=0.25
 \item k=4
 \end{itemize}
-siendo éstos los valores por defecto.
+siendo éstos los valores por defecto en $constants.py$.
 
 Luego, creamos una instancia del protocolo agregándole los nuevos parámetros de modo que quedara de la siguiente forma:
 \begin{verbatim}
