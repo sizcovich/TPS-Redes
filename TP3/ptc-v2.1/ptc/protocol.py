@@ -358,15 +358,22 @@ class PTCProtocol(object):
         self.close_event.set()
         self.set_state(CLOSED)
 
+#    def printToFile(self):
+#	with open(self.filepath, 'a') as f:
+#		norma = 0
+#		for (i, rto_rtt) in enumerate(self.rto_estimator.rtoList):
+#			dif_rto_rtt = rto_rtt[0]*CLOCK_TICK - rto_rtt[1]*CLOCK_TICK
+#			norma = norma + math.pow(dif_rto_rtt, 2)
+#			#f.write(str(i) + ' ' + str(rto_rtt[0]*CLOCK_TICK) + ' ' + str(rto_rtt[1]*CLOCK_TICK))
+#			#f.write('\n')
+#		norma = math.sqrt(norma)
+#		f.write(str(self.alpha) + ' ' + str(self.beta) + ' ' + str(norma))
+#   		#f.write(str(self.alpha) + ',' + str(self.beta) + ',' + str(self.rto_estimator.rtoList))
+#		f.write('\n')
+
+# Grafica por archivo el alpha y beta con delay y perdidad 0, rto en funcion del tiempo/paquetes recibidos
     def printToFile(self):
 	with open(self.filepath, 'a') as f:
-		norma = 0
 		for (i, rto_rtt) in enumerate(self.rto_estimator.rtoList):
-			dif_rto_rtt = rto_rtt[0]*CLOCK_TICK - rto_rtt[1]*CLOCK_TICK
-			norma = norma + math.pow(dif_rto_rtt, 2)
-			#f.write(str(i) + ' ' + str(rto_rtt[0]*CLOCK_TICK) + ' ' + str(rto_rtt[1]*CLOCK_TICK))
-			#f.write('\n')
-		norma = math.sqrt(norma)
-		f.write(str(self.alpha) + ' ' + str(self.beta) + ' ' + str(norma))
-    		#f.write(str(self.alpha) + ',' + str(self.beta) + ',' + str(self.rto_estimator.rtoList))
-		f.write('\n')
+			f.write(str(i) + ' ' + str(rto_rtt[0]*CLOCK_TICK))
+			f.write('\n')
