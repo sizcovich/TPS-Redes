@@ -197,7 +197,7 @@ with Socket(ack_delay=args.delay, ack_loss_probability=args.loss) as sock:
     print 'Received %d bytes. Connection closed.' % size
 \end{verbatim}
 
-En primer lugar, se liga al socket a la ipServer con el puerto ingresado como parámetro. Luego, se lo pone en estado de $listen$ a la espera de que algún cliente desee conectarse. Una vez que recibe un pedido remoto de conexión, lo acepta y devuelve un nuevo socket con la conexión establecida. Más tarde, obtiene la cantidad de bytes que va a recibir y los recibe dentro del ciclo. Una vez recibidos todos los bytes, se cierra el socket.
+En primer lugar, se liga al socket a la ipServer con el puerto ingresado como parámetro. Luego, se lo pone en estado de $listen$ a la espera de que algún cliente desee conectarse. Una vez que recibe un pedido remoto de conexión, lo acepta y devuelve un nuevo socket con la conexión establecida. Más tarde, obtiene la cantidad de bytes que va a recibir y los recibe dentro del ciclo. Una vez recibidos todos los bytes, se cierra el socket.
 
 \subsection{Client}
 \begin{verbatim}
@@ -228,7 +228,7 @@ with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar) as sock:
 	print 'Connection closed.'
 \end{verbatim}
 
-El cliente se encarga de iniciar el proceso de conexión a una dirección dada cuando lo desea, utilizando la syscall $connect$ con su \textit{Server hostname}, un \textit{Puerto} y un timeout. Luego, envía la cantidad de bytes que desea al server y por último envía un string de dicho tamaño generado por "a"'s. Una vez finalizado, realiza un $shutdown$ para el cierre de la conexión.
+El cliente se encarga de iniciar el proceso de conexión a una dirección dada cuando lo desea, utilizando la syscall $connect$ con su \textit{Server hostname}, un \textit{Puerto} y un timeout. Luego, envía la cantidad de bytes que desea al server y por último envía un string de dicho tamaño generado por ``a''. Una vez finalizado, realiza un $shutdown$ para el cierre de la conexión.
 
 \section{Resultados}
 \subsection{RTO en función de $\alpha$ y $\beta$ para un delay fijo}
