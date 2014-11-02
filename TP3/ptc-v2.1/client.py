@@ -10,10 +10,10 @@ parser.add_argument('-s', '--size', type=int, help='Bytes to send')
 parser.add_argument('-a', '--alpha', type=float, help='Alpha', default=0.125)
 parser.add_argument('-b', '--beta', type=float, help='Beta', default=0.25)
 parser.add_argument('-k', '--kvar', type=float, help='K', default=4)
-
+parser.add_argument('--fpath')
 args = parser.parse_args()
 
-with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar) as sock:
+with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar, filepath = args.fpath) as sock:
     print 'Connecting...'
     print gethostbyname(args.host)
     print args.port

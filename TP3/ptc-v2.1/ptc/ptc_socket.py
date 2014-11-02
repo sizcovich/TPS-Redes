@@ -21,9 +21,9 @@ from protocol import PTCProtocol
 
 class Socket(object):
     
-    def __init__(self, ack_delay=0, ack_loss_probability=0, alpha=0.125, beta=0.25, k=4):
+    def __init__(self, ack_delay=0, ack_loss_probability=0, alpha=0.125, beta=0.25, k=4, filepath='rto.dat'):
         self.protocol = PTCProtocol(ack_delay=ack_delay,
-                                    ack_loss_probability=ack_loss_probability, alpha=alpha, beta=beta, k=k)
+                                    ack_loss_probability=ack_loss_probability, alpha=alpha, beta=beta, k=k, filepath=filepath)
         self.sockname = None
 
     def bind(self, address_tuple=None):

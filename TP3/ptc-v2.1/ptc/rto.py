@@ -26,7 +26,7 @@ class RTOEstimator(object):
         self.protocol = protocol
         self.tracking = False
         self.lock = threading.RLock()
-	self.rtoList = []
+	self.rtoList = [INITIAL_RTO]
     
     def get_current_rto(self):
         with self.lock:
@@ -54,6 +54,7 @@ class RTOEstimator(object):
         with self.lock:
             self.rto = min(MAX_RTO, 2 * self.rto)
 	    self.rtoList.append(self.rto)
+	    print 'rto: ' + str(self.rto)
             
     def clear_rtt(self):
         with self.lock:
@@ -63,11 +64,13 @@ class RTOEstimator(object):
             self.srtt = 0
 
     def process_ack(self, ack_packet):
+	print 'process ack: ' + str(ack_packet.get_ack_number())
         with self.lock:
             if not self.tracking:
                 return
             if self.ack_covers_tracked_packet(ack_packet.get_ack_number()):
                 sampled_rtt = self.protocol.get_ticks() - self.rtt_start_time
+		print 'rtt: ' + str(sampled_rtt)
                 self.update_rtt_estimation_with(sampled_rtt)
                 self.update_rto()
                 self.untrack()
@@ -88,7 +91,8 @@ class RTOEstimator(object):
     def update_rto(self):
         self.rto = self.srtt + max(1, self.protocol.k * self.rttvar)
 	self.rtoList.append(self.rto)
-    
+    	print 'rto: ' + str(self.rto)
+
     def ack_covers_tracked_packet(self, ack_number):
         iss = self.protocol.iss
         seq_number = self.tracked_packet.get_seq_number() 

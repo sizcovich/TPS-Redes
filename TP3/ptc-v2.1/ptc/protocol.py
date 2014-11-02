@@ -19,7 +19,7 @@ from constants import CLOSED, ESTABLISHED, SYN_SENT,\
                       LISTEN, FIN_WAIT1, FIN_WAIT2,\
                       CLOSE_WAIT, LAST_ACK, CLOSING,\
                       SHUT_RD, SHUT_WR, SHUT_RDWR,\
-                      NO_WAIT,\
+                      NO_WAIT, CLOCK_TICK,\
                       MSS, MAX_SEQ, RECEIVE_BUFFER_SIZE,\
                       MAX_RETRANSMISSION_ATTEMPTS,\
                       BOGUS_RTT_RETRANSMISSIONS
@@ -318,7 +318,7 @@ class PTCProtocol(object):
         self.packet_sender.notify()
     
     def shutdown(self, how):
-
+	
         if how == SHUT_RD:
             self.shutdown_read_stream()
         elif how == SHUT_WR:
@@ -336,7 +336,7 @@ class PTCProtocol(object):
         
     def close(self, mode=NO_WAIT):
 	#print 'lista rto: ' + str(self.rto_estimator.rtoList)	
-	self.printToFile()
+	
         self.close_mode = mode
         if self.state != CLOSED:
             self.shutdown(SHUT_RDWR)
@@ -345,7 +345,8 @@ class PTCProtocol(object):
         self.join_threads()
             
     def free(self):
-	
+	self.printToFile()
+	print str(self.rto_estimator.rtoList)
         if self.control_block is not None:
             self.control_block.flush_buffers()
         self.stop_threads()
@@ -358,5 +359,11 @@ class PTCProtocol(object):
         self.set_state(CLOSED)
 
     def printToFile(self):
-	with open(self.filepath, 'w') as f:
-    		f.write(str(self.alpha) + ',' + str(self.beta) + ',' + str(self.rto_estimator.rtoList))
+	with open(self.filepath, 'a') as f:
+		f.write("--\n")
+		for (i, rto) in enumerate(self.rto_estimator.rtoList):
+			f.write(str(i) + ' ' + str(rto*CLOCK_TICK))
+			f.write('\n')
+		f.write("--\n")
+    		#f.write(str(self.alpha) + ',' + str(self.beta) + ',' + str(self.rto_estimator.rtoList))
+		#f.write('\n')
