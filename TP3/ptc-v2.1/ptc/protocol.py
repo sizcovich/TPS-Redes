@@ -37,7 +37,7 @@ from timer import RetransmissionTimer
 
 class PTCProtocol(object):
     
-    def __init__(self, ack_delay=0, ack_loss_probability=0, alpha=0.8, beta=0.4, k=4):
+    def __init__(self, ack_delay=0, ack_loss_probability=0, alpha=0.8, beta=0.4, k=4, filepath='rto.dat'):
         self.ack_delay = ack_delay
         self.ack_loss_probability = ack_loss_probability
         self.beta = beta
@@ -60,7 +60,8 @@ class PTCProtocol(object):
         self.close_event = threading.Event()
         self.initialize_threads()
         self.initialize_timers()
-        
+        self.filepath = filepath
+
     def initialize_threads(self):
         self.packet_sender = PacketSender(self)
         self.packet_receiver = PacketReceiver(self)
@@ -334,7 +335,8 @@ class PTCProtocol(object):
         self.packet_sender.notify()
         
     def close(self, mode=NO_WAIT):
-	
+	#print 'lista rto: ' + str(self.rto_estimator.rtoList)	
+	self.printToFile()
         self.close_mode = mode
         if self.state != CLOSED:
             self.shutdown(SHUT_RDWR)
@@ -343,7 +345,7 @@ class PTCProtocol(object):
         self.join_threads()
             
     def free(self):
-	print 'lista rto: ' + str(self.rto_estimator.rtoList)
+	
         if self.control_block is not None:
             self.control_block.flush_buffers()
         self.stop_threads()
@@ -354,3 +356,7 @@ class PTCProtocol(object):
         # close y free es luego invocada por algún otro thread.
         self.close_event.set()
         self.set_state(CLOSED)
+
+    def printToFile(self):
+	with open(self.filepath, 'w') as f:
+    		f.write(str(self.alpha) + ',' + str(self.beta) + ',' + str(self.rto_estimator.rtoList))
