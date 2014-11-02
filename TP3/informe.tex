@@ -62,7 +62,14 @@ El trabajo se dividió en dos secciones: una parte implementativa y otra en la q
 
 \section{Introducción Teórica}
 \begin{itemize}
-\item RTO consiste en un RTT estimado definido en función de $\alpha$ y $\beta$ para un delay fijo. Cantidad de retransmisiones en función de $\alpha$ y $\beta$. Comparación entre el RTO y el RTT ``real''.\footnote{https://tools.ietf.org/html/rfc6298}
+\item \textbf{PTC:} Consiste en un protocolo de transporte en TCP simplificado. El mismo presenta las siguientes características:
+\begin{itemize} 
+\item Bidireccionalidad por ser full-duplex.
+\item Orientación a conexión.
+\item Confiabilidad a través de un algoritmo de ventana deslizante.
+\end{itemize}
+
+\item \textbf{RTO:} Consiste en un RTT estimado definido en función de $\alpha$ y $\beta$ para un delay fijo. Cantidad de retransmisiones en función de $\alpha$ y $\beta$. Comparación entre el RTO y el RTT ``real''.\footnote{https://tools.ietf.org/html/rfc6298}
 
 $$RTTVAR = (1 - \beta) RTTVAR + \beta |SRTT - RTT|$$
 $$SRTT = (1 - \alpha)SRTT + \alpha RTT$$
