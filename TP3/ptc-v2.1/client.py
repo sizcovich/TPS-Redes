@@ -20,9 +20,9 @@ with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar) as sock:
     sock.connect((gethostbyname(args.host), args.port), timeout=10)
     print 'Connection established.'
     print 'Sending file size...'
-    sock.send(pack('I', size)) #da la representacion en bytes de size
+    sock.send(pack('I', args.size)) #da la representacion en bytes de size
     print 'Uploading %d bytes...' % size
-    sock.send('a' * size) #crea un string con 50 a's
+    sock.send('a' * args.size) #crea un string con 50 a's
     sock.shutdown(SHUT_WR)
 
 print 'Connection closed.'
