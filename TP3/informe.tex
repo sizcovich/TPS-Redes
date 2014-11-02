@@ -118,7 +118,7 @@ if self.protocol.state == ESTABLISHED:
 \end{verbatim}
         
 En el código anterior, se puede ver que el primer $if$ sirve para que se aplique el delay o pérdida únicamente si se encuentra establecida la conexión.
-Luego, $if random.uniform(0, 1) < self.protocol.ack_loss_probability:$ permite ver si se perdió el ACK o no, dependiendo de la probabilidad de pérdida que se le configure. En el caso en el que el paquete se pierde, realiza $return$ para terminar la función sin mandar ACK, caso contrario lo demora con $time.sleep()$, tal como se desea.
+Luego, $if random.uniform(0, 1) < self.protocol.ack\_loss\_probability:$ permite ver si se perdió el ACK o no, dependiendo de la probabilidad de pérdida que se le configure. En el caso en el que el paquete se pierde, realiza $return$ para terminar la función sin mandar ACK, caso contrario lo demora con $time.sleep()$, tal como se desea.
 
 Para definir la probabilidad $p$ de pérdidad de paquetes, decidimos simularla utilizando $random.uniform(0,1)$ \footnote{docs.python.org/2/library/random.html} con el fin de que la decisión de si los paquetes fueron enviados efectivamente fuera la misma que la de ``tirar una moneda'', esto es, siguiendo una distribución uniforme.
 
@@ -228,7 +228,7 @@ with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar) as sock:
 	print 'Connection closed.'
 \end{verbatim}
 
-El cliente se encarga de iniciar el proceso de conexión a una dirección dada cuando lo desea, utilizando la syscall $connect$ con su \textit{Server hostname}, un \textit{Puerto} y un timeout. Luego, envía la cantidad de bytes que desea al server y por último envía un string de dicho tamaño generado por ``a''. Una vez finalizado, realiza un $shutdown$ para el cierre de la conexión.
+El cliente se encarga de iniciar el proceso de conexión a una dirección dada cuando lo desea, utilizando la syscall $connect$ con su \textit{Server hostname}, un \textit{Puerto} y un timeout. Luego, envía la cantidad de bytes que desea al server y por último envía un string de dicho tamaño generado por ``a''s. Una vez finalizado, realiza un $shutdown$ para el cierre de la conexión.
 
 \section{Resultados}
 \subsection{RTO en función de $\alpha$ y $\beta$ para un delay fijo}
