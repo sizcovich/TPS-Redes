@@ -317,6 +317,7 @@ class PTCProtocol(object):
         self.packet_sender.notify()
     
     def shutdown(self, how):
+
         if how == SHUT_RD:
             self.shutdown_read_stream()
         elif how == SHUT_WR:
@@ -333,6 +334,7 @@ class PTCProtocol(object):
         self.packet_sender.notify()
         
     def close(self, mode=NO_WAIT):
+	
         self.close_mode = mode
         if self.state != CLOSED:
             self.shutdown(SHUT_RDWR)
@@ -341,6 +343,7 @@ class PTCProtocol(object):
         self.join_threads()
             
     def free(self):
+	print 'lista rto: ' + str(self.rto_estimator.rtoList)
         if self.control_block is not None:
             self.control_block.flush_buffers()
         self.stop_threads()
