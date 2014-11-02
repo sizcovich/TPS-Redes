@@ -62,6 +62,9 @@ El trabajo se dividió en dos secciones: una parte implementativa y otra en la q
 
 \section{Introducción Teórica}
 \begin{itemize}
+
+\item \textbf{Socket:} Un socket es en esencia un canal de comunicación entre procesos. Los sockets entre procesos remotos se llaman Internet sockets. Los sistemas operativos suelen ofrecer una interfaz para manipular sockets: conjunto de llamadas al sistema que abstraen al usuario de las problemáticas de networking que el SO resuelve, se llaman \textbf{Sockets API}.
+
 \item \textbf{PTC:} Consiste en un protocolo de transporte en TCP simplificado. El mismo presenta las siguientes características:
 \begin{itemize} 
 \item Bidireccionalidad por ser full-duplex.
@@ -69,20 +72,30 @@ El trabajo se dividió en dos secciones: una parte implementativa y otra en la q
 \item Confiabilidad a través de un algoritmo de ventana deslizante.
 \end{itemize}
 
-\item \textbf{RTO:} Consiste en un RTT estimado definido en función de $\alpha$ y $\beta$ para un delay fijo. Cantidad de retransmisiones en función de $\alpha$ y $\beta$. Comparación entre el RTO y el RTT ``real''.\footnote{https://tools.ietf.org/html/rfc6298}
+\item \textbf{RTO (Retransmission Timeout):} Consiste en la duración de un tiempo de retransmisión para asegurar el reenvío de datos en caso de ausencia de una respuesta del receptor\footnote{https://tools.ietf.org/html/rfc6298}. Para calcularlo, se utilizan dos variables de estado del sender: SRTT (smoothed round-trip time) y RTTVAR (round-trip time variation).
+
+En primer lugar, se le asignan a dichas variables los valores que siguen:
+
+			$$SRTT \leftarrow RTT$$
+            $$RTTVAR \leftarrow RTT/2$$
+            $$RTO \leftarrow SRTT + max(1, K^*RTTVAR)$$
+            
+con K = 4, siendo $RTT$ el primero medido.
+
+Luego, se van actualizando siguiendo las fórmulas siguientes:
 
 $$RTTVAR = (1 - \beta) RTTVAR + \beta |SRTT - RTT|$$
 $$SRTT = (1 - \alpha)SRTT + \alpha RTT$$
 $$RTO = SRTT + max(1, RTTVAR)$$
 
-siendo SRTT (smoothed round-trip time) el RTT estimado y RTTVAR (round-trip time variation) una variación en el tiempo.
+El parámetro $\alpha$ es seleccionado para regular el $SRTT$. Al elegir un $\alpha$ pequeño, el $RTO$ puede verse muy influenciado por una fluctuación temporaria mientras que con un $\alpha$ grande puede ser más estable pero no suficientemente rápido como para adaptarse a los cambios reales. La especificación de TCP recomienda regular a $\alpha$ entre 0.8 y 0.9.
 \end{itemize}
 
 \section{Primera Parte: escenario de análisis}
 
-En primer lugar, tomando como punto de partida el código suministrado por la cátedra, implementamos ciertas modificaciones al protocolo con el fin de generar un escenario de análisis sobre el que estudiamos qué parámetros $\alpha$, $\beta$ optimizan el cálculo del RTO\footnote{The Recovery Time Objective (RTO) is the duration of time and a service level within which a business process must be restored after a disaster in order to avoid unacceptable consequences associated with a break in continuity.}.
+En primer lugar, tomando como punto de partida el código suministrado por la cátedra, implementamos ciertas modificaciones al protocolo con el fin de generar un escenario de análisis sobre el que estudiamos qué parámetros $\alpha$, $\beta$ optimizan el cálculo del RTO.
 
-En primer lugar, agregamos la posibilidad de introducir un delay ($ack\_delay$) y una probabilidad $p$ de pérdida de paquetes ($ack\_loss\_probability$) al momento de enviar los ACKs. Con el fin de que fuera editable, modificamos el constructor de la clase (en el archivo $protocol.py$) para que tome el delay y la probabilidad de pérdida:
+Para ello, comenzamos agregando la posibilidad de introducir un delay ($ack\_delay$) y una probabilidad $p$ de pérdida de paquetes ($ack\_loss\_probability$) al momento de enviar los ACKs. Con el fin de que fuera editable, modificamos el constructor de la clase (en el archivo $protocol.py$) para que tome el delay y la probabilidad de pérdida:
 \begin{verbatim}
 		def __init__(self, ack_delay=0, ack_loss_probability=0):
 \end{verbatim}
@@ -102,7 +115,7 @@ if self.protocol.state == ESTABLISHED:
         self.socket.send(ack_packet)
 \end{verbatim}
         
-El primer $if$ sirve para que se aplique el delay o pérdida únicamente si se encuentra establecida la conexión.
+En el código anterior, se puede ver que el primer $if$ sirve para que se aplique el delay o pérdida únicamente si se encuentra establecida la conexión.
 Luego, $if random.uniform(0, 1) < self.protocol.ack_loss_probability:$ permite ver si se perdió el ACK o no, dependiendo de la probabilidad de pérdida que se le configure. En el caso en el que el paquete se pierde, realiza $return$ para terminar la función sin mandar ACK, caso contrario lo demora con $time.sleep()$, tal como se desea.
 
 Para definir la probabilidad $p$ de pérdidad de paquetes, decidimos simularla utilizando $random.uniform(0,1)$ \footnote{docs.python.org/2/library/random.html} con el fin de que la decisión de si los paquetes fueron enviados efectivamente fuera la misma que la de ``tirar una moneda'', esto es, siguiendo una distribución uniforme.
@@ -114,6 +127,7 @@ class Socket(object):
 		self.protocol = PTCProtocol(ack_delay=ack_delay, ack_loss_probability=ack_loss_probability)
 \end{verbatim}
 
+
 \section{Segunda parte: experimentación y análisis}
 
 En esta sección, definimos un esquema cliente-servidor en el que el cliente envía datos y el servidor se limita a reconocerlos. Para distintas combinaciones de $\alpha$ y $\beta$ debimos analizar cómo evoluciona la estimación del RTO en el cliente y buscar valores que acerquen tanto como sea posible dicha estimación al RTT ``real''. A partir de dichos resultados, analizamos cómo impactan los efectos de red simulados en los parámetros encontrados.
@@ -123,13 +137,13 @@ En esta sección, definimos un esquema cliente-servidor en el que el cliente env
 En primer lugar, debimos realizar las modificaciones necesarias al código de forma tal que se pudieran setear los valores $\alpha$, $\beta$ y $k$. 
 Para ello, modificamos el constructor de la clase $ptc\_socket$ agregándole los parámetros 
 \begin{itemize}
-\item alpha=0.125
-\item beta=0.25
+\item alpha=0.8
+\item beta=0.4
 \item k=4
 \end{itemize}
-siendo éstos los valores por defecto de $constants.py$.
+siendo éstos los valores por defecto.
 
-Luego, creamos una instancia del protocolo agregándole los nuevos parámetros del modo que quedara de la siguiente forma:
+Luego, creamos una instancia del protocolo agregándole los nuevos parámetros de modo que quedara de la siguiente forma:
 \begin{verbatim}
 PTCProtocol(ack_delay=ack_delay, 
 					ack_loss_probability=ack_loss_probability, alpha=alpha, beta=beta, k=k)
@@ -142,11 +156,84 @@ def __init__(self, ack_delay=0, ack_loss_probability=0, beta, alpha, k):
 
 Luego, cambiamos $ALPHA$, $BETA$ y $K$ por $self.protocol.alpha$, $self.protocol.beta$ y $self.protocol.k$ respectivamente, en la función $update\_rtt\_estimation\_with$ para que dichos valores fueran los seteados desde el miembro protocolo.
 
-Por último, creamos el cliente y servidor.
+Por último, creamos el servidor y el cliente de la siguiente forma:
+
+\subsection{Server}
+\begin{verbatim}
+#inicializo parser
+parser = argparse.ArgumentParser()
+#Agrego el parametro de delay de ACK
+parser.add_argument('-d', '--delay', type=float, default=0.0, help='ACK packet delay in
+									 seconds (default 0)')
+#Agrego el parametro de perdida de ACK
+parser.add_argument('-l', '--loss', type=float, default=0.0, help='probability of losing an 
+									ACK packet (default 0)')
+#Agrego el parametro de puerto
+parser.add_argument('-p', '--port', type=int, default=6677, help='PTC port')
+args = parser.parse_args()
+\end{verbatim}
+
+En primer lugar, se parsearon los parámetros de modo tal a moder manipular los valores convenientemente siendo éstos el \textit{delay de ACK} (con un default de 0), la \textit{probabilidad de pérdida de ACK} (con un default de 0) y el \textit{puerto} (con un default de 6677).
+
+\begin{verbatim}
+with Socket(ack_delay=args.delay, ack_loss_probability=args.loss) as sock:
+    sock.bind((ipServer, args.port))
+    sock.listen()
+    print 'Waiting for a client...'
+    sock.accept()
+    print 'Connection established.'
+    size = unpack('I', sock.recv(4))[0]
+    print 'Receiving %d bytes...' % size
+    received = str()
+    #Un while que solo reciba los datos y los lea del buffer
+    #Guarda los datos recibidos en received (print para verlo)
+    while len(received) < size:
+        received += sock.recv(size - len(received))
+        print 'Received %d bytes.' % len(received)
+
+    sock.close()
+    print 'Received %d bytes. Connection closed.' % size
+\end{verbatim}
+
+En primer lugar, se liga al socket a la ipServer con el puerto ingresado como parámetro. Luego, se lo pone en estado de $listen$ a la espera de que algún cliente desee conectarse. Una vez que recibe un pedido remoto de conexión, lo acepta y devuelve un nuevo socket con la conexión establecida. Más tarde, obtiene la cantidad de bytes que va a recibir y los recibe dentro del ciclo. Una vez recibidos todos los bytes, se cierra el socket.
+
+\subsection{Client}
+\begin{verbatim}
+parser = argparse.ArgumentParser()
+parser.add_argument('--host', help='Server hostname')
+parser.add_argument('-p', '--port', type=int, help='Server port')
+parser.add_argument('-s', '--size', type=int, help='Bytes to send')
+parser.add_argument('-a', '--alpha', type=float, help='Alpha', default=0.125)
+parser.add_argument('-b', '--beta', type=float, help='Beta', default=0.25)
+parser.add_argument('-k', '--kvar', type=float, help='K', default=4)
+args = parser.parse_args()
+\end{verbatim}
+
+En primer lugar, se parsearon los parámetros de modo tal a moder manipular los valores convenientemente siendo éstos el \textit{Server hostname}, el \textit{Puerto}, el \textit{tamaño de los bytes a enviar}, $\alpha$, $\beta$ y $k$.
+
+\begin{verbatim}
+with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar) as sock:
+    print 'Connecting...'
+    print gethostbyname(args.host)
+    print args.port
+    sock.connect((gethostbyname(args.host), args.port), timeout=10)
+    print 'Connection established.'
+    print 'Sending file size...'
+    sock.send(pack('I', args.size)) #da la representacion en bytes de size
+    print 'Uploading %d bytes...' % args.size
+    sock.send('a' * args.size) #crea un string con a's
+    sock.shutdown(SHUT_WR)
+	print 'Connection closed.'
+\end{verbatim}
+
+El cliente se encarga de iniciar el proceso de conexión a una dirección dada cuando lo desea, utilizando la syscall $connect$ con su \textit{Server hostname}, un \textit{Puerto} y un timeout. Luego, envía la cantidad de bytes que desea al server y por último envía un string de dicho tamaño generado por "a"'s. Una vez finalizado, realiza un $shutdown$ para el cierre de la conexión.
 
 \section{Resultados}
+\subsection{RTO en función de $\alpha$ y $\beta$ para un delay fijo}
 
+\subsection{Cantidad de retransmisiones en función de $\alpha$ y $\beta$}
 
+\subsection{Comparación entre el RTO y el RTT ``real''}
 
 \section{Conclusiones}
 
@@ -154,6 +241,10 @@ Por último, creamos el cliente y servidor.
 \section{Referencias}
 \begin{itemize}
 \item PETERSON, DAVIE ; Computer Networks, 5th edition, Wiley
+
+\item{RFC6298: Computing TCP's Retransmission Timer}
+
+\item{STEVENS W., RICHARD; TCP/IP Illustrated, Volume 1: The Protocols Addison-Wesley (1993)}
 
 \end{itemize}
 \end{document}
