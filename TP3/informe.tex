@@ -231,6 +231,33 @@ with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar) as sock:
 El cliente se encarga de iniciar el proceso de conexión a una dirección dada cuando lo desea, utilizando la syscall $connect$ con su \textit{Server hostname}, un \textit{Puerto} y un timeout. Luego, envía la cantidad de bytes que desea al server y por último envía un string de dicho tamaño generado por ``a''s. Una vez finalizado, realiza un $shutdown$ para el cierre de la conexión.
 
 \section{Resultados}
+
+Al probar el protocolo con un size de 500, utilizamos el Flow Graph de Wireshark con el fin de visualizar el intercambio de paquetes entre el cliente y el servidor. Los resultados obtenidos fueron los siguientes:
+
+\begin{verbatim}
+|Tiempo | 127.0.0.1             |Comentario
+|0.74891| 5062 > 6677 [SYN]     | [PTC: [#SEQ: 107522395, #ACK: 0, WND: 1024]
+|0.74970| 6677 > 5062 [SYN,ACK] | [PTC: [#SEQ: 1974092788, #ACK: 107522396, WND: 1024]
+|0.75413| 5062 > 6677 [ACK]     | [PTC: [#SEQ: 107522396, #ACK: 1974092789, WND: 1024]
+|0.75754| 5062 > 6677 [ACK]     | [PTC: [#SEQ: 107522396, #ACK: 1974092789, WND: 1024]	
+							...
+|1.13176| 6677 > 5062 [ACK]     | [PTC: [#SEQ: 1974092789, #ACK: 107572400, WND: 1024]
+|1.13219| 5062 > 6677 [FIN,ACK]	| [PTC: [#SEQ: 107572400, #ACK: 1974092789, WND: 1024]
+|1.13507| 6677 > 5062 [FIN,ACK]	| [PTC: [#SEQ: 1974092789, #ACK: 107572400, WND: 1024]					
+|1.13732| 5062 > 6677 [ACK]     | [PTC: [#SEQ: 107572401, #ACK: 1974092790, WND: 1024]
+|1.13913| 6677 > 5062 [ACK]     | [PTC: [#SEQ: 1974092790, #ACK: 107572401, WND: 1024]
+\end{verbatim}
+
+Los datos estadísticos obtenidos al realizar dicha ejecución fueron los que siguen:
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=16cm]{wireshark.png}
+\capture{Ejecución de intercambio de paquetes en el protocolo PTC.}
+\end{center}
+\end{figure}
+
+
 \subsection{RTO en función de $\alpha$ y $\beta$ para un delay fijo}
 
 \subsection{Cantidad de retransmisiones en función de $\alpha$ y $\beta$}
