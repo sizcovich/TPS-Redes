@@ -28,6 +28,7 @@ class RTOEstimator(object):
         self.lock = threading.RLock()
 	self.rtoList = [(INITIAL_RTO,INITIAL_RTO)]
 	self.rtt = 0
+	self.rttList = []
     
     def get_current_rto(self):
         with self.lock:
@@ -54,7 +55,7 @@ class RTOEstimator(object):
     def back_off_rto(self):
         with self.lock:
             self.rto = min(MAX_RTO, 2 * self.rto)
-	    self.rtoList.append((self.rto,-1))
+	  #  self.rtoList.append((self.rto,-1))
 	    print 'rto: ' + str(self.rto)
             
     def clear_rtt(self):
@@ -73,6 +74,7 @@ class RTOEstimator(object):
                 sampled_rtt = self.protocol.get_ticks() - self.rtt_start_time
 		self.rtt = sampled_rtt
 		print 'rtt: ' + str(sampled_rtt)
+		self.rttList.append((ack_packet.get_ack_number(), sampled_rtt))
                 self.update_rtt_estimation_with(sampled_rtt)
                 self.update_rto()
                 self.untrack()
@@ -89,6 +91,7 @@ class RTOEstimator(object):
             deviation = abs(self.srtt - sampled_rtt)
             self.rttvar = (1 - self.protocol.beta) * self.rttvar + self.protocol.beta * deviation
             self.srtt = (1 - self.protocol.alpha) * self.srtt + self.protocol.alpha * sampled_rtt
+	    
             
     def update_rto(self):
         self.rto = self.srtt + max(1, self.protocol.k * self.rttvar)

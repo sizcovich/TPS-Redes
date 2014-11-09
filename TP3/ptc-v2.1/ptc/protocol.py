@@ -335,7 +335,7 @@ class PTCProtocol(object):
         self.packet_sender.notify()
         
     def close(self, mode=NO_WAIT):
-	#print 'lista rto: ' + str(self.rto_estimator.rtoList)	
+	print 'lista rto: ' + str(self.rto_estimator.rtoList)	
 	
         self.close_mode = mode
         if self.state != CLOSED:
@@ -345,7 +345,7 @@ class PTCProtocol(object):
         self.join_threads()
             
     def free(self):
-	self.printToFile()
+	self.printToFilePacketRTT()
 	print str(self.rto_estimator.rtoList)
         if self.control_block is not None:
             self.control_block.flush_buffers()
@@ -358,6 +358,13 @@ class PTCProtocol(object):
         self.close_event.set()
         self.set_state(CLOSED)
 
+    def printToFilePacketRTT(self):
+	with open(self.filepath, 'a') as f:
+		for (acknumber, rtt) in self.rto_estimator.rttList:
+			print 'acknumber: ' + str(acknumber)			
+			print 'rtt: ' + str(rtt)
+			f.write(str(acknumber) + ' ' + str(rtt*CLOCK_TICK))
+			f.write('\n')
 #    def printToFile(self):
 #	with open(self.filepath, 'a') as f:
 #		norma = 0
@@ -372,8 +379,8 @@ class PTCProtocol(object):
 #		f.write('\n')
 
 # Grafica por archivo el alpha y beta con delay y perdidad 0, rto en funcion del tiempo/paquetes recibidos
-    def printToFile(self):
-	with open(self.filepath, 'a') as f:
-		for (i, rto_rtt) in enumerate(self.rto_estimator.rtoList):
-			f.write(str(i) + ' ' + str(rto_rtt[0]*CLOCK_TICK))
-			f.write('\n')
+#    def printToFile(self):
+#	with open(self.filepath, 'a') as f:
+#		for (i, rto_rtt) in enumerate(self.rto_estimator.rtoList):
+#			f.write(str(i) + ' ' + str(rto_rtt[0]*CLOCK_TICK))
+#			f.write('\n')

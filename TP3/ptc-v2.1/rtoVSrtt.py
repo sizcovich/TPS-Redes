@@ -15,8 +15,8 @@ args = parser.parse_args()
 
 alphaStart = args.alpha
 betaStart = args.beta
-for alpha in range(alphaStart,10,1):
-	for beta in range(betaStart,10,1):
+for alpha in range(alphaStart,11,1):
+	for beta in range(betaStart,12,1):
 		filepath = args.fpath		
 		with Socket(beta=beta/10.0, alpha=alpha/10.0, k=4, filepath = filepath) as sock:
 		    print 'Connecting...'
