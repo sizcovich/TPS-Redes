@@ -161,6 +161,9 @@ Luego, cambiamos $ALPHA$, $BETA$ y $K$ por $self.protocol.alpha$, $self.protocol
 Por último, creamos el servidor y el cliente de la siguiente forma:
 
 \subsection{Server}
+
+Para crear el servidor, se parsearon los parámetros de modo tal a moder manipular los valores convenientemente siendo éstos el \textit{delay de ACK} (con un default de 0), la \textit{probabilidad de pérdida de ACK} (con un default de 0) y el \textit{puerto} (con un default de 6677).
+
 \begin{verbatim}
 #inicializo parser
 parser = argparse.ArgumentParser()
@@ -175,7 +178,7 @@ parser.add_argument('-p', '--port', type=int, default=6677, help='PTC port')
 args = parser.parse_args()
 \end{verbatim}
 
-En primer lugar, se parsearon los parámetros de modo tal a moder manipular los valores convenientemente siendo éstos el \textit{delay de ACK} (con un default de 0), la \textit{probabilidad de pérdida de ACK} (con un default de 0) y el \textit{puerto} (con un default de 6677).
+En primer lugar, se liga al socket a la ipServer con el puerto ingresado como parámetro. Luego, se lo pone en estado de $listen$ a la espera de que algún cliente desee conectarse. Una vez que recibe un pedido remoto de conexión, lo acepta y devuelve un nuevo socket con la conexión establecida. Más tarde, obtiene la cantidad de bytes que va a recibir y los recibe dentro del ciclo. Una vez recibidos todos los bytes, se cierra el socket.
 
 \begin{verbatim}
 with Socket(ack_delay=args.delay, ack_loss_probability=args.loss) as sock:
@@ -196,8 +199,6 @@ with Socket(ack_delay=args.delay, ack_loss_probability=args.loss) as sock:
     sock.close()
     print 'Received %d bytes. Connection closed.' % size
 \end{verbatim}
-
-En primer lugar, se liga al socket a la ipServer con el puerto ingresado como parámetro. Luego, se lo pone en estado de $listen$ a la espera de que algún cliente desee conectarse. Una vez que recibe un pedido remoto de conexión, lo acepta y devuelve un nuevo socket con la conexión establecida. Más tarde, obtiene la cantidad de bytes que va a recibir y los recibe dentro del ciclo. Una vez recibidos todos los bytes, se cierra el socket.
 
 \subsection{Client}
 \begin{verbatim}
@@ -253,7 +254,7 @@ Los datos estadísticos obtenidos al realizar dicha ejecución fueron los que si
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=16cm]{wireshark.png}
-\capture{Ejecución de intercambio de paquetes en el protocolo PTC.}
+\caption{Ejecución de intercambio de paquetes en el protocolo PTC.}
 \end{center}
 \end{figure}
 
@@ -263,6 +264,22 @@ Los datos estadísticos obtenidos al realizar dicha ejecución fueron los que si
 \subsection{Cantidad de retransmisiones en función de $\alpha$ y $\beta$}
 
 \subsection{Comparación entre el RTO y el RTT ``real''}
+
+Dado que con $\beta$ = 0 la diferencia $|RTT-RTO|$ es muy grande (del orden de 1.9) impidiendo una comparación significativa de los demás valores, decidimos no mostrar los resultados obtenidos para dicha configuración.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{alphaBetaCorteCostado.png}
+\caption{Diferencia RTT-RTO en función de $\alpha$ y $\beta$}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{alpha-beta-dif-SinCeroB.png}
+\caption{Diferencia RTT-RTO en función de $\alpha$ y $\beta$}
+\end{center}
+\end{figure}
 
 \section{Conclusiones}
 
