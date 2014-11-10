@@ -34,6 +34,7 @@ class Soquete(object):
         
     def send(self, packet):
         data = packet.get_bytes()
+	print len(data)
         dst_address = packet.get_destination_ip()
         dst_port = packet.get_destination_port()
         self.socket.sendto(data, (dst_address, dst_port))

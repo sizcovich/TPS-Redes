@@ -29,7 +29,8 @@ class RTOEstimator(object):
 	self.rtoList = [(INITIAL_RTO,INITIAL_RTO)]
 	self.rtt = 0
 	self.rttList = []
-    
+	#self.retransmissionCounter = 0    
+
     def get_current_rto(self):
         with self.lock:
             return self.rto
@@ -57,7 +58,8 @@ class RTOEstimator(object):
             self.rto = min(MAX_RTO, 2 * self.rto)
 	  #  self.rtoList.append((self.rto,-1))
 	    print 'rto: ' + str(self.rto)
-            
+           # self.retransmissionCounter = self.retransmissionCounter + 1
+
     def clear_rtt(self):
         with self.lock:
             # Mantener los tiempos actuales de retransmisión hasta que puedan
@@ -96,7 +98,7 @@ class RTOEstimator(object):
     def update_rto(self):
         self.rto = self.srtt + max(1, self.protocol.k * self.rttvar)
 	self.rtoList.append((self.rto,self.rtt))
-    	print 'rto: ' + str(self.rto)
+    	#print 'rto: ' + str(self.rto)
 
     def ack_covers_tracked_packet(self, ack_number):
         iss = self.protocol.iss
