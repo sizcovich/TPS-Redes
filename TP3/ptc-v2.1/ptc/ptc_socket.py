@@ -18,12 +18,9 @@ from constants import SHUT_RD, SHUT_WR, SHUT_RDWR,\
 from exceptions import PTCError
 from protocol import PTCProtocol
 
-
-     INVALID_ARG_ERROR = '%s: invalid argument'
-     CONNECT_TIMED_OUT_ERROR = 'connect timed out'
-     ACCEPT_TIMED_OUT_ERROR = 'accept timed out'
-
-     NULL_ADDRESS = '0.0.0.0'
+INVALID_ARG_ERROR = '%s: invalid argument'
+CONNECT_TIMED_OUT_ERROR = 'connect timed out'
+ACCEPT_TIMED_OUT_ERROR = 'accept timed out'
 
 class Socket(object):
     

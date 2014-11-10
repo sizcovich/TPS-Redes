@@ -58,5 +58,4 @@ class Soquete(object):
         port = packet.get_destination_port()
         address_is_null = self.address == Socket.NULL_ADDRESS
         return (address_is_null or address == self.address) and\
-                 port == self.port
                 port == self.port

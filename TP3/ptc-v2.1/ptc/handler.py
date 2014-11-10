@@ -17,7 +17,6 @@ from constants import CLOSED, SYN_RCVD, ESTABLISHED, SYN_SENT,\
                       LAST_ACK, CLOSING
 from packet import SYNFlag, ACKFlag, FINFlag
 
-
 class IncomingPacketHandler(object):
     
     def __init__(self, protocol):
