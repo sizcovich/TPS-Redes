@@ -13,14 +13,11 @@
 import random
 import threading
 
-from constants import SHUT_RD, SHUT_WR, SHUT_RDWR,\
+from constants import NULL_ADDRESS, SHUT_RD, SHUT_WR, SHUT_RDWR,\
                       WAIT, NO_WAIT, ABORT
 from exceptions import PTCError
 from protocol import PTCProtocol
 
-INVALID_ARG_ERROR = '%s: invalid argument'
-CONNECT_TIMED_OUT_ERROR = 'connect timed out'
-ACCEPT_TIMED_OUT_ERROR = 'accept timed out'
 
 class Socket(object):
     
@@ -31,7 +28,7 @@ class Socket(object):
 
     def bind(self, address_tuple=None):
         if address_tuple is None:
-            address = self.NULL_ADDRESS
+            address = NULL_ADDRESS
             port = random.randint(1000, 60000)
             address_tuple = (address, port)
         if not self.is_bound():

@@ -6,17 +6,19 @@ from rtoCalculator import RtoCalculator
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--fpathIn')
-parser.add_argument('--fpathOut')
+parser.add_argument('--fpathOutRTTvsRTO')
+#parser.add_argument('--fpathOutRTO')
 args = parser.parse_args()
 
 CLOCK_TICK = 0.01
 filepathIn = args.fpathIn
-filepathOut = args.fpathOut
+filepathOutRTTvsRTO = args.fpathOutRTTvsRTO
+#filepathOutRTO = args.fpathOutRTO
 for alpha in range(0,11,1):
 	for beta in range(0,11,1):
 		rtoCalculator = RtoCalculator(filepath = filepathIn, alpha = alpha/10.0, beta = beta/10.0, k = 4)	
 		print rtoCalculator.rtt_rto
-		with open(filepathOut, 'a') as f:
+		with open(filepathOutRTTvsRTO, 'a') as f:
 			norma = 0
 			for (rtt, rto) in rtoCalculator.rtt_rto:
 				dif_rto_rtt = rto*CLOCK_TICK - rtt*CLOCK_TICK
@@ -24,5 +26,4 @@ for alpha in range(0,11,1):
 			norma = math.sqrt(norma)
 			f.write(str(alpha/10.0) + ' ' + str(beta/10.0) + ' ' + str(norma))
 			f.write('\n')
-
 

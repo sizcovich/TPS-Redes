@@ -8,14 +8,18 @@
 #                       FCEN - UBA                       #
 #              Segundo cuatrimestre de 2014              #
 ##########################################################
+
+
 import threading
 import random
+import math
+
 from cblock import PTCControlBlock
 from constants import CLOSED, ESTABLISHED, SYN_SENT,\
                       LISTEN, FIN_WAIT1, FIN_WAIT2,\
                       CLOSE_WAIT, LAST_ACK, CLOSING,\
                       SHUT_RD, SHUT_WR, SHUT_RDWR,\
-                      NO_WAIT,\
+                      NO_WAIT, CLOCK_TICK,\
                       MSS, MAX_SEQ, RECEIVE_BUFFER_SIZE,\
                       MAX_RETRANSMISSION_ATTEMPTS,\
                       BOGUS_RTT_RETRANSMISSIONS
@@ -29,14 +33,15 @@ from seqnum import SequenceNumber
 from soquete import Soquete
 from thread import Clock, PacketSender, PacketReceiver
 from timer import RetransmissionTimer
+from packet import SYNFlag, ACKFlag, FINFlag
 
 class PTCProtocol(object):
     
     def __init__(self, ack_delay=0, ack_loss_probability=0, packet_loss_probability=0, alpha=0.8, beta=0.4, k=4, filepath='rto.dat'):
         self.ack_delay = ack_delay
         self.ack_loss_probability = ack_loss_probability
-        print 'self.ack_loss_probability: ' + str(self.ack_loss_probability)
-        self.packet_loss_probability = packet_loss_probability
+	print 'self.ack_loss_probability: ' + str(self.ack_loss_probability)
+	self.packet_loss_probability = packet_loss_probability
         self.beta = beta
         self.alpha = alpha
         self.k = k
@@ -58,7 +63,7 @@ class PTCProtocol(object):
         self.initialize_threads()
         self.initialize_timers()
         self.filepath = filepath
-        self.retransmission_counter = 0
+	self.retransmission_counter = 0
 
     def initialize_threads(self):
         self.packet_sender = PacketSender(self)
@@ -131,10 +136,10 @@ class PTCProtocol(object):
 
     def send_and_queue(self, packet, is_retransmission=False):
         if is_retransmission:
-           self.retransmission_counter = self.retransmission_counter +1
+	    self.retransmission_counter = self.retransmission_counter +1
             # Algoritmo de Karn: no usar paquetes retransmitidos para
             # actualizar las estimaciones del RTO.
-           if self.rto_estimator.is_tracking_packets():
+            if self.rto_estimator.is_tracking_packets():
                 tracked_packet = self.rto_estimator.get_tracked_packet()
                 tracked_seq = tracked_packet.get_seq_number()
                 if tracked_seq == packet.get_seq_number():
@@ -154,10 +159,10 @@ class PTCProtocol(object):
             current_rto = self.rto_estimator.get_current_rto()
             self.retransmission_timer.start(current_rto)
         
-        if self.state == ESTABLISHED and FINFlag not in packet:
-           if random.uniform(0, 1) < self.packet_loss_probability:    
-              return
-        self.socket.send(packet)
+ 	if self.state == ESTABLISHED and FINFlag not in packet:
+		if random.uniform(0, 1) < self.packet_loss_probability:    
+			return
+	self.socket.send(packet)
         
     def set_destination_on_packet_builder(self, address, port):
         self.packet_builder.set_destination_address(address)
@@ -320,6 +325,7 @@ class PTCProtocol(object):
         self.packet_sender.notify()
     
     def shutdown(self, how):
+	
         if how == SHUT_RD:
             self.shutdown_read_stream()
         elif how == SHUT_WR:
@@ -336,7 +342,8 @@ class PTCProtocol(object):
         self.packet_sender.notify()
         
     def close(self, mode=NO_WAIT):
-    #print 'lista rto: ' + str(self.rto_estimator.rtoList)	
+	#print 'lista rto: ' + str(self.rto_estimator.rtoList)	
+	
         self.close_mode = mode
         if self.state != CLOSED:
             self.shutdown(SHUT_RDWR)
@@ -345,8 +352,8 @@ class PTCProtocol(object):
         self.join_threads()
             
     def free(self):
-        self.printToFileRetransmission()
-        #print str(self.rto_estimator.rtoList)
+	self.printToFileRetransmission()
+	#print str(self.rto_estimator.rtoList)
         if self.control_block is not None:
             self.control_block.flush_buffers()
         self.stop_threads()
@@ -359,17 +366,17 @@ class PTCProtocol(object):
         self.set_state(CLOSED)
 
     def printToFileRetransmission(self):
-        with open(self.filepath, 'a') as f:
-            f.write(str(self.alpha) + ' ' + str(self.beta) + ' ' + str(self.retransmission_counter))
-            f.write('\n')
+	with open(self.filepath, 'a') as f:
+		f.write(str(self.alpha) + ' ' + str(self.beta) + ' ' + str(self.retransmission_counter))
+		f.write('\n')
 
     def printToFilePacketRTT(self):
-        with open(self.filepath, 'a') as f:
-            for (acknumber, rtt) in self.rto_estimator.rttList:
-                print 'acknumber: ' + str(acknumber)
-                print 'rtt: ' + str(rtt)
-                f.write(str(acknumber) + ' ' + str(rtt*CLOCK_TICK))
-                f.write('\n')
+	with open(self.filepath, 'a') as f:
+		for (acknumber, rtt) in self.rto_estimator.rttList:
+			print 'acknumber: ' + str(acknumber)			
+			print 'rtt: ' + str(rtt)
+			f.write(str(acknumber) + ' ' + str(rtt*CLOCK_TICK))
+			f.write('\n')
 #    def printToFile(self):
 #	with open(self.filepath, 'a') as f:
 #		norma = 0

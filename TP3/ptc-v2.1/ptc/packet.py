@@ -1,3 +1,15 @@
+# -*- coding: utf-8 -*-
+
+##########################################################
+#                 Trabajo Práctico 3                     #
+#         Programación de protocolos end-to-end          #
+#                                                        # 
+#              Teoría de las Comunicaciones              #
+#                       FCEN - UBA                       #
+#              Segundo cuatrimestre de 2014              #
+##########################################################
+
+
 import random
 import struct
 import socket
@@ -7,7 +19,7 @@ from seqnum import SequenceNumber
 
 
 class IPChecksumAlgorithm(object):
-    # Naive, inefficient implementation of the Internet checksum algorithm.
+    # Implementación naive, ineficiente, del algorimo de checksum de Internet.
     
     @classmethod
     def for_bytes(cls, message):
@@ -408,4 +420,4 @@ class ACKFlag(PTCFlag):
     
     @classmethod
     def get_bits(self):
-        return 0x10
+        return 0x10            

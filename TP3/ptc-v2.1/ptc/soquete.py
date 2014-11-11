@@ -12,9 +12,8 @@
 
 import socket
 
-from constants import PROTOCOL_NUMBER
 from ptc.packet_utils import PacketDecoder
-
+from constants import PROTOCOL_NUMBER, NULL_ADDRESS
 
 
 class Soquete(object):
@@ -23,6 +22,7 @@ class Soquete(object):
     
     def __init__(self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_RAW, PROTOCOL_NUMBER)
+        self.socket.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
         
     def close(self):
         self.socket.close()  
@@ -53,9 +53,7 @@ class Soquete(object):
         return packet
                 
     def is_for_me(self, packet):
-        from ptc_socket import Socket
         address = packet.get_destination_ip()
         port = packet.get_destination_port()
-        address_is_null = self.address == Socket.NULL_ADDRESS
-        return (address_is_null or address == self.address) and\
+        return (self.address == NULL_ADDRESS or address == self.address) and\
                 port == self.port

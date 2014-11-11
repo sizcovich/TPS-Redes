@@ -42,6 +42,8 @@ WAIT = 3    # Cerrar normalmente y en forma sincronizada con el interlocutor
 NO_WAIT = 4 # Cerrar normalmente; no esperar a que interlocutor también cierre
 ABORT = 5   # Cerrar inmediatamente; abortar la conexión
 
+NULL_ADDRESS = '0.0.0.0'
+
 # Tamaño en bytes del buffer que almacena los datos entrantes
 RECEIVE_BUFFER_SIZE = 1024
 
