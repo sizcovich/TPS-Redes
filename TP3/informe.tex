@@ -296,6 +296,11 @@ Se puede observar que con pérdidas de paquetes del 20\% y 50\%, no hay cambios 
 Para realizar este test, se midieron los RTTs de las paquetes transmitidos en una ejecución para luego simular el calculo de RTO en función de alpha y beta.
 Para el cáculo del RTO se abstrajo el mismo del código de PTC y se lo encapsuló en la clase RTOcalculator. De esta manera, podemos comparar para una transmisión como varia el mismo en función de alpha y beta.
 
+Para la comparación del RTT contra el RTO se utilizó la norma 2 de vectores:
+$$ |RTT-RTO| = \sqrt{(RTT_1-RTO_1)^2+..+(RTT_n-RTO_n)^2} $$
+
+Por lo tanto mientras menor sea el valor $|RTT-RTO|$ mejor va a ser la aproximación del RTO al RTT durante la duración de la conexión. 
+
 \subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes}
 \begin{figure}[H]
 \begin{center}
