@@ -272,13 +272,28 @@ Los datos estadísticos obtenidos al realizar dicha ejecución fueron los que si
 \end{figure}
 
 
-\subsection{RTO en función de $\alpha$ y $\beta$ para un delay fijo}
-
 \subsection{Cantidad de retransmisiones en función de $\alpha$ y $\beta$}
-test de comparacion de RTT vs RTO con delay
-la idea es ver con que valores de alpha y beta se adapta mejor a los cambios
 
-\subsubsection{ Diferencia RTT-RTO en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{alphaBetaRetransmision0,2.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con pérdida de 20\% de paquetes.}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{alphaBetaRetransmision0,5.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con pérdida de 50\% de paquetes.}
+\end{center}
+\end{figure}
+
+Se puede observar que con pérdidas de paquetes del 20\% y 50\%, no hay cambios significativos en la cantidad de retransmisiones en función de $\alpha$ y $\beta$. Luego, podemos determinar que dichos valores no afectan la cantidad de retransmisiones de paquetes.s
+
+\subsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ para un delay fijo}
+
+\subsubsection{Diferencia RTT-RTO en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=17cm]{delay-50F.png}
