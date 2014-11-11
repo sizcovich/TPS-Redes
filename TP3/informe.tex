@@ -97,7 +97,7 @@ El parámetro $\alpha$ es seleccionado para regular el $SRTT$. Al elegir un $\al
 
 En primer lugar, tomando como punto de partida el código suministrado por la cátedra, implementamos ciertas modificaciones al protocolo con el fin de generar un escenario de análisis sobre el que estudiamos qué parámetros $\alpha$, $\beta$ optimizan el cálculo del RTO.
 
-Para ello, comenzamos agregando la posibilidad de introducir un delay ($ack\_delay$) y una probabilidad $p$ de pérdida de paquetes ($ack\_loss\_probability$) al momento de enviar los ACKs. Con el fin de que fuera editable, modificamos el constructor de la clase (en el archivo $protocol.py$) para que tome el delay y la probabilidad de pérdida:
+Para ello, del lado del servidor, comenzamos agregando la posibilidad de introducir un delay ($ack\_delay$) y una probabilidad $p$ de pérdida de paquetes ($ack\_loss\_probability$) al momento de enviar los ACKs. Con el fin de que fuera editable, modificamos el constructor de la clase (en el archivo $protocol.py$) para que tome el delay y la probabilidad de pérdida:
 \begin{verbatim}
 		def __init__(self, ack_delay=0, ack_loss_probability=0):
 \end{verbatim}
@@ -129,6 +129,19 @@ class Socket(object):
 		self.protocol = PTCProtocol(ack_delay=ack_delay, ack_loss_probability=ack_loss_probability)
 \end{verbatim}
 
+Estos cambios realizados, por motivos que desconocemos, no generaron el resultado esperado. Testeando las modificaciones, si utilizábamos una probabilidad de 1 de pérdida de paquetes (es decir, perder todos los acks de los paquetes enviados) en el cliente seguíamos recibiendo acks del lado del servidor.
+
+Por este motivo decidimos en lugar de simular la pérdida de paquetes perdiendo sus acks, modificar el código para que con cierta probabilidad no se realice el envió del paquete del lado del cliente.
+ Para esto modificamos la función $send\_and\_queue$ dentro de la clase $protocolo.py$. Los cambios realizados fueron los siguientes:
+ 
+ \begin{verbatim}
+  	if self.state == ESTABLISHED and FINFlag not in packet:
+		if random.uniform(0, 1) < self.packet_loss_probability:    
+			return
+	self.socket.send(packet)
+ \end{verbatim}
+
+A su vez se modificó la cadena de constructores para que el parámetro $packet\_loss\_probability$ sea configurable.
 
 \section{Segunda parte: experimentación y análisis}
 
