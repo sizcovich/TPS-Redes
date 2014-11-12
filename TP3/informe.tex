@@ -93,8 +93,10 @@ $$RTO = SRTT + max(1, RTTVAR)$$
 El parámetro $\alpha$ es seleccionado para regular el $SRTT$. Al elegir un $\alpha$ grande, el $RTO$ puede verse muy influenciado por una fluctuación temporaria mientras que con un $\alpha$ chico puede ser más estable pero no suficientemente rápido como para adaptarse a los cambios reales. La especificación de TCP recomienda regular a $\alpha$ entre 0.1 y 0.2.
 \end{itemize}
 
+\newpage
 \section{Primera Parte: escenario de análisis}
 
+\subsection{Experimentación variando el porcentaje de pérdida de ACK}
 En primer lugar, tomando como punto de partida el código suministrado por la cátedra, implementamos ciertas modificaciones al protocolo con el fin de generar un escenario de análisis sobre el que estudiamos qué parámetros $\alpha$, $\beta$ optimizan el cálculo del RTO.
 
 Para ello, del lado del servidor, comenzamos agregando la posibilidad de introducir un delay ($ack\_delay$) y una probabilidad $p$ de pérdida de paquetes ($ack\_loss\_probability$) al momento de enviar los ACKs. Con el fin de que fuera editable, modificamos el constructor de la clase (en el archivo $protocol.py$) para que tome el delay y la probabilidad de pérdida:
@@ -129,10 +131,10 @@ class Socket(object):
 		self.protocol = PTCProtocol(ack_delay=ack_delay, ack_loss_probability=ack_loss_probability)
 \end{verbatim}
 
-Estos cambios realizados, por motivos que desconocemos, no generaron el resultado esperado. Testeando las modificaciones, si utilizábamos una probabilidad de 1 de pérdida de paquetes (es decir, perder todos los acks de los paquetes enviados) en el cliente seguíamos recibiendo acks del lado del servidor.
+Por motivos que desconocemos, los cambios presentados anteriormente no generaron el resultado esperado. Testeando las modificaciones con una probabilidad de 100\% de pérdida de paquetes (es decir, perdiendo todos los ACKs de los paquetes enviados) del cliente, seguíamos recibiendo ACKs del lado del servidor. Es por esto que decidimos no enviar los paquetes del cliente directamente con cierta probabilidad en vez de simularla perdiendo sus ACKs.
 
-Por este motivo decidimos en lugar de simular la pérdida de paquetes perdiendo sus acks, modificar el código para que con cierta probabilidad no se realice el envió del paquete del lado del cliente.
- Para esto modificamos la función $send\_and\_queue$ dentro de la clase $protocolo.py$. Los cambios realizados fueron los siguientes:
+\subsection{Experimentación variando el porcentaje de envío de paquetes}
+Para tener la posibilidad de variar el porcentaje de paquetes enviados por el cliente, modificamos la función $send\_and\_queue$ dentro de la clase $PTCProtocol$ de la siguiente forma:
  
  \begin{verbatim}
   	if self.state == ESTABLISHED and FINFlag not in packet:
@@ -140,9 +142,9 @@ Por este motivo decidimos en lugar de simular la pérdida de paquetes perdiendo 
 			return
 	self.socket.send(packet)
  \end{verbatim}
+A su vez, se modificó la cadena de constructores para que el parámetro $packet\_loss\_probability$ sea configurable. A continuación, utilizamos $ack\_loss\_probability$ y $packet\_loss\_probability$ de forma indistinguida dado que las pruebas se realizaron con ambas modificaciones antes de que notáramos que los resultados eran los esperados únicamente cuando alterábamos el porcentaje de envío de paquetes. 
 
-A su vez se modificó la cadena de constructores para que el parámetro $packet\_loss\_probability$ sea configurable.
-
+\newpage
 \section{Segunda parte: experimentación y análisis}
 
 En esta sección, definimos un esquema cliente-servidor en el que el cliente envía datos y el servidor se limita a reconocerlos. Para distintas combinaciones de $\alpha$ y $\beta$ debimos analizar cómo evoluciona la estimación del RTO en el cliente y buscar valores que acerquen tanto como sea posible dicha estimación al RTT ``real''. A partir de dichos resultados, analizamos cómo impactan los efectos de red simulados en los parámetros encontrados.
@@ -244,9 +246,10 @@ with Socket(beta=args.beta, alpha=args.alpha, k=args.kvar) as sock:
 
 El cliente se encarga de iniciar el proceso de conexión a una dirección dada cuando lo desea, utilizando la syscall $connect$ con su \textit{Server hostname}, un \textit{Puerto} y un timeout. Luego, envía la cantidad de bytes que desea al server y por último envía un string de dicho tamaño generado por ``a''s. Una vez finalizado, realiza un $shutdown$ para el cierre de la conexión.
 
+\newpage
 \section{Resultados}
 
-Al probar el protocolo con un size de 500, utilizamos el Flow Graph de Wireshark con el fin de visualizar el intercambio de paquetes entre el cliente y el servidor. Los resultados obtenidos fueron los siguientes:
+Decidimos utilizar el Flow Graph de Wireshark con el fin de visualizar el intercambio de paquetes entre el cliente y el servidor. Para esto, probamos el protocolo con un size de 500. Los resultados obtenidos fueron los siguientes:
 
 \begin{verbatim}
 |Tiempo | 127.0.0.1             |Comentario
@@ -262,119 +265,32 @@ Al probar el protocolo con un size de 500, utilizamos el Flow Graph de Wireshark
 |1.13913| 6677 > 5062 [ACK]     | [PTC: [#SEQ: 1974092790, #ACK: 107572401, WND: 1024]
 \end{verbatim}
 
-Los datos estadísticos obtenidos al realizar dicha ejecución fueron los que siguen:
+Los datos estadísticos obtenidos al realizar dicha ejecución fueron los que siguen:\\
 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=16cm]{wireshark.png}
-\caption{Ejecución de intercambio de paquetes en el protocolo PTC.}
-\end{center}
-\end{figure}
-
-
-\subsection{Cantidad de retransmisiones en función de $\alpha$ y $\beta$}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{alphaBetaRetransmision0,2.png}
-\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con pérdida de 20\% de paquetes.}
-\end{center}
-\end{figure}
-
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{alphaBetaRetransmision0,5.png}
-\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con pérdida de 50\% de paquetes.}
-\end{center}
-\end{figure}
-
-Se puede observar que con pérdidas de paquetes del 20\% y 50\%, no hay cambios significativos en la cantidad de retransmisiones en función de $\alpha$ y $\beta$. Luego, podemos determinar que dichos valores no afectan la cantidad de retransmisiones de paquetes.s
-
-\subsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ para un delay fijo}
-
-Para realizar este test, se midieron los RTTs de las paquetes transmitidos en una ejecución para luego simular el calculo de RTO en función de alpha y beta.
-Para el cáculo del RTO se abstrajo el mismo del código de PTC y se lo encapsuló en la clase RTOcalculator. De esta manera, podemos comparar para una transmisión como varia el mismo en función de alpha y beta.
-
-Para la comparación del RTT contra el RTO se utilizó la norma 2 de vectores:
-$$ |RTT-RTO| = \sqrt{(RTT_1-RTO_1)^2+..+(RTT_n-RTO_n)^2} $$
-
-Por lo tanto mientras menor sea el valor $|RTT-RTO|$ mejor va a ser la aproximación del RTO al RTT durante la duración de la conexión. 
-
-\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{delay-50F.png}
-\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes.}
-\end{center}
-\end{figure}
-
-%\begin{figure}[H]
-%\begin{center}
-%\includegraphics[width=17cm]{delay-50F-costado.png}
-%\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes.}
-%\end{center}
-%\end{figure}
+\begin{tabular}{l | c | c  | r}
+\textbf{Tráfico} & \textbf{Capturados} & \textbf{Mostrados} & \textbf{Mostrados (\%)}\\
+\hline
+Paquetes & 163 & 161 & 98,77\%\\
+\hline
+Entre primero y último paquete & 1,139 segs & 0,390 segs & \\
+\hline
+Promedio paquetes/seg & 143,091 & 412,578 & \\
+\hline
+Promedio tamaño de paquetes & 376,503 bytes & 379,665 bytes & \\
+\hline
+Bytes & 61370 & 61126 & 99,692\% \\
+\hline
+Promedio bytes/seg & 53874,025 & 156641,362 & \\
+\hline
+\end{tabular}
 
 
-\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los últimos 50 paquetes}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{delay-50L.png}
-\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los últimos 50 paquetes.}
-\end{center}
-\end{figure}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{delay-50L-costado.png}
-\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los últimos 50 paquetes.}
-\end{center}
-\end{figure}
-
-\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{delay-30F30L-costado.png}
-\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes.}
-\end{center}
-\end{figure}
-
-
-\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{delay-30I.png}
-\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios.}
-\end{center}
-\end{figure}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{delay-30I-costado.png}
-\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios.}
-\end{center}
-\end{figure}
-
-\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes con delay de 2 segundos}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{delay-30F30L-2seg.png}
-\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes}
-\end{center}
-\end{figure}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=17cm]{delay-30F30L-2seg-costado.png}
-\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes}
-\end{center}
-\end{figure}
-
+A partir del Flow Graph y de los valores resultantes presentados, pudimos conocer los rangos aproximados del protocolo sin pérdidas de paquetes ni delay dentro de una LAN, necesarios para los análisis posteriores.
+\newpage
 \subsection{Comparación entre el RTO y el RTT ``real''}
 
-Dado que con $\beta$ = 0 $|RTT-RTO|$ es muy grande (del orden de 1.9) impidiendo una comparación significativa de los demás valores, decidimos no mostrar los resultados obtenidos para dicha configuración.
+En primer lugar, decidimos evaluar la diferencia entre el RTO medido y el RTT ``real''. Para esto, utilizamos los valores del Sampled RTT y del RTO del protocolo y realizamos la diferencia $|RTT-RTO|$. 
+Los resultados obtenidos luego de cada ejecución fueron los siguientes:
 
 \begin{figure}[H]
 \begin{center}
@@ -390,14 +306,180 @@ Dado que con $\beta$ = 0 $|RTT-RTO|$ es muy grande (del orden de 1.9) impidiendo
 \end{center}
 \end{figure}
 
+A partir de los gráficos anteriores, podemos observar que la mayor diferencia entre los RTT y RTO se da para un valor chico de $\beta$ (0.1) sin importar el valor de $\alpha$ como también para un valor grande de $\beta$ (0.9) combinado con un valor chico a mediano de $\alpha$ (entre 0 y 0.6).
+Por otro lado, podemos observar que la diferencia entre los RTT y RTO es menor cuando $\alpha$ ronda valores altos (entre 0.7 y 1) con un $\beta$ entre 0.3 y 0.5.
+Por último, notamos que el menor valor de $|$RTT-RTO$|$ se da con $\alpha$ $\in$ [0.9,1] y $\beta$ $\in$ [0.4,0.5].
+
+Dado que con $\beta$ = 0 $|RTT-RTO|$ es muy grande (del orden de 1.9) impidiendo una comparación significativa de los demás valores, decidimos no mostrar los resultados obtenidos para dicha configuración.
+
+\newpage
+\subsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ para un delay fijo}
+
+Por otra parte, nos pareció interesante evaluar el $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ para un delay fijo. Para esto, se midieron los RTTs de las paquetes transmitidos en una ejecución para luego simular el calculo de RTO en función de $\alpha$ y $\beta$.
+Para el cáculo del RTO, se abstrajo el mismo del código de PTC y se lo encapsuló en la clase $RTOcalculator$. De esta manera, pudimos comparar las variaciones del mismo en función de $\alpha$ y $\beta$ para una transmisión.
+
+Para la comparación del RTT contra el RTO, se utilizó la norma2 de vectores:
+$$ |RTT-RTO| = \sqrt{(RTT_1-RTO_1)^2+..+(RTT_n-RTO_n)^2} $$
+
+Por lo tanto, mientras menor sea el valor $|RTT-RTO|$, mejor va a ser la aproximación del RTO al RTT durante la duración de la conexión. 
+
+Las pruebas realizadas fueron las siguientes:
+
+\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes}
+En primer lugar, decidimos experimentar los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con 0.8 segundos de delay en los primeros 50 paquetes enviados por el cliente.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-50F.png}
+\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes.}
+\end{center}
+\end{figure}
+
+\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los últimos 50 paquetes}
+Luego, realizamos la misma experimentación de los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con 0.8 segundos de delay pero en los últimos 50 paquetes enviados por el cliente.
+
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[width=17cm]{delay-50L.png}
+%\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los últimos 50 paquetes.}
+%\end{center}
+%\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-50L-costado.png}
+\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los últimos 50 paquetes.}
+\end{center}
+\end{figure}
+
+\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes}
+Por otro lado, evaluamos las variaciones producidas al medir los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con 0.8 segundos de delay en los primeros y últimos 30 paquetes enviados por el cliente.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-30F30L-costado.png}
+\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes.}
+\end{center}
+\end{figure}
+
+
+\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios}
+Posteriormente, medimos los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con 0.8 segundos de delay en los 30 paquetes intermedios enviados por el cliente.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-30I.png}
+\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios.}
+\end{center}
+\end{figure}
+
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[width=17cm]{delay-30I-costado.png}
+%\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios.}
+%\end{center}
+%\end{figure}
+
+\subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes con delay de 2 segundos}
+Por último, decidimos variar el delay llevándolo a 2 segundos, y experimentar los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ en los primeros y últimos 30 paquetes enviados por el cliente.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-30F30L-2seg.png}
+\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes.}
+\end{center}
+\end{figure}
+
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[width=17cm]{delay-30F30L-2seg-costado.png}
+%\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes.}
+%\end{center}
+%\end{figure}
+
+\newpage
+\subsection{Cantidad de retransmisiones en función de $\alpha$ y $\beta$}
+Por otro lado, nos pareció interesante mostrar la cantidad de retransmisiones realizadas en el protocolo en función de $\alpha$ y $\beta$. Para ello, alteramos la probabilidad de pérdida de paquetes (esto es, de no envío de los mismos). 
+
+Los resultados de dichas experimentaciones fueron los siguientes:
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{alphaBetaRetransmision0,2.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con pérdida de 20\% de paquetes.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{alphaBetaRetransmision0,5.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con pérdida de 50\% de paquetes.}
+\end{center}
+\end{figure}
+
+Se puede observar que con pérdidas de paquetes del 20\% y 50\%, no hay cambios significativos en la cantidad de retransmisiones en función de $\alpha$ y $\beta$. Luego, podemos determinar que dichos valores no afectan la cantidad de retransmisiones de paquetes.
+
+Por otro lado, nos pareció interesante estudiar la cantidad de retransmisiones en casos con delay:
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-30F30L-ret.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-30F30L-ret-costado.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios.}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-30I-ret-costado.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-30I-ret.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes.}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-50F-ret-costado.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con delay en los últimos 50 paquetes.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=17cm]{delay-50L-ret-costado.png}
+\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes.}
+\end{center}
+\end{figure}
+
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[width=17cm]{delay-50L-ret.png}
+%\caption{Cantidad de retransmisiones en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes.}
+%\end{center}
+%\end{figure}
+
+\newpage
 \section{Análisis}
-En los gráficos de la sección anterior pudimos observar que los mejores valores que aproximan el RTO al RTT son utilizando $ 0.8 \leq \alpha \leq 1$ y $ 0.3 \leq  \beta \leq 0.6$. Estos valores fueron los obtenidos en los test realizados agregando delay para simular congestión en la red.
-Sin embargo, en los gráficos realizados para medir la cantidad de retransmisiones, vemos que los mejores valores obtenidos para que haya la mínima cantidad de las mismas es de $ 0.1 \leq \alpha \leq 0.3$ y $ 0.1 \leq  \beta \leq 0.3$.
+En los gráficos de la sección anterior, pudimos observar que los mejores valores que aproximan el RTO del RTT son $ 0.8 \leq \alpha \leq 1$ y $ 0.3 \leq  \beta \leq 0.6$. Estos valores fueron los obtenidos en los test realizados agregando delay para simular congestión en la red.
+Sin embargo, en los experimentos realizados para medir la cantidad de retransmisiones, vimos que los mejores valores obtenidos para que ésta sea mínima es de $ 0.1 \leq \alpha \leq 0.3$ y $ 0.1 \leq  \beta \leq 0.3$.
 
-
+\newpage
 \section{Conclusiones}
-De la experimentación pudimos ver como obtener valores de $\alpha$ y $\beta$ que mejor aproximen al RTT o minimicen la cantidad de retransmisiones de los paquetes.
-Con la experimentación realizada y los valores obtenidos de $\alpha$ y $\beta$ cercanos a los recomendados en el RFC 6298 concluimos que los mismos seguramente fueron elegidos teniendo en cuenta las variables analizadas en el transcurso del trabajo práctico.
+A partir de la experimentación realizada, pudimos ver qué valores de $\alpha$ y $\beta$ mejor aproximan al RTT del RTO y minimizan la cantidad de retransmisiones de los paquetes.
+Por otro lado, hallamos que dichos valores de $\alpha$ y $\beta$ son cercanos a los recomendados en el RFC-6298, por lo que concluimos que los mismos podrían haber sido elegidos a partir de las variables que se debieron analizar en el transcurso del trabajo práctico.
 
 \section{Referencias}
 \begin{itemize}
