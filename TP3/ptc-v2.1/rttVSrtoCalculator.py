@@ -24,6 +24,6 @@ for alpha in range(0,11,1):
 				dif_rto_rtt = rto*CLOCK_TICK - rtt*CLOCK_TICK
 				norma = norma + math.pow(dif_rto_rtt, 2)
 			norma = math.sqrt(norma)
-			f.write(str(alpha/10.0) + ' ' + str(beta/10.0) + ' ' + str(norma))
+			f.write(str(alpha/10.0) + ' ' + str(beta/10.0) + ' ' + str(norma) + ' ' + str(rtoCalculator.retransmissionCounter) )
 			f.write('\n')
 

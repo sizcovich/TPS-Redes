@@ -8,6 +8,7 @@
 #                       FCEN - UBA                       #
 #              Segundo cuatrimestre de 2014              #
 ##########################################################
+MAX_RTO = 6000
 
 class RtoCalculator(object):
      
@@ -22,11 +23,13 @@ class RtoCalculator(object):
         self.rttvar = 0
         self.rto = 100 #INITIAL_RTO
 	self.rtt_rto = []
+	self.retransmissionCounter = 0
 	
 	self.count = 0
 	self.fileRead()
 	self.calculateRTT_RTO()
         
+	print 'self.retransmissionCounter: ' + str(self.retransmissionCounter) 
     def fileRead(self):
 	with open(self.filepath, 'r') as f:
 		for line in f:
@@ -61,10 +64,17 @@ class RtoCalculator(object):
     def update_rto(self):
         self.rto = self.srtt + max(1, self.k * self.rttvar)
     	print 'rto: ' + str(self.rto)
-	
+    
+    def back_off_rto(self):
+        self.rto = min(MAX_RTO, 2 * self.rto)	
+    
     def calculateRTT_RTO(self):
         for rtt in self.rtt:
-		self.update_rtt_estimation_with(rtt)
-		self.update_rto()
-		self.rtt_rto.append((rtt, self.rto))
+		if rtt < self.rto:
+			self.update_rtt_estimation_with(rtt)
+			self.update_rto()
+			self.rtt_rto.append((rtt, self.rto))
+		else:
+			self.retransmissionCounter = self.retransmissionCounter +1
+			self.back_off_rto()
         #print self.rtt_rto
