@@ -316,6 +316,7 @@ Por lo tanto mientras menor sea el valor $|RTT-RTO|$ mejor va a ser la aproximac
 \end{center}
 \end{figure}
 
+
 \subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los últimos 50 paquetes}
 \begin{figure}[H]
 \begin{center}
@@ -395,8 +396,14 @@ Dado que con $\beta$ = 0 $|RTT-RTO|$ es muy grande (del orden de 1.9) impidiendo
 \end{center}
 \end{figure}
 
-\section{Conclusiones}
+\section{Análisis}
+En los gráficos de la sección anterior pudimos observar que los mejores valores que aproximan el RTO al RTT son utilizando $ 0.8 \leq \alpha \leq 1$ y $ 0.3 \leq  \beta \leq 0.6$. Estos valores fueron los obtenidos en los test realizados agregando delay para simular congestión en la red.
+Sin embargo, en los gráficos realizados para medir la cantidad de retransmisiones, vemos que los mejores valores obtenidos para que haya la minima cantidad de las mismas es de $ 0.8 \leq \alpha \leq 1$ y $ 0.3 \leq  \beta \leq 0.6$.
 
+
+\section{Conclusiones}
+De la experimentación pudimos ver como obtener valores de $\alpha$ y $\beta$ que mejor aproximen al RTT o minimicen la cantidad de retransmisiones de los paquetes.
+Con la experimentación realizada y los valores obtenidos de $\alpha$ y $\beta$ cercanos a los recomendados en el RFC 6298 concluimos que los mismos seguramente fueron elegidos teniendo en cuenta las variables analizadas en el transcurso del trabajo práctico.
 
 \section{Referencias}
 \begin{itemize}
