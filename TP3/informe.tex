@@ -287,7 +287,8 @@ Promedio bytes/seg & 53874,025 & 156641,362 & \\
 
 A partir del Flow Graph y de los valores resultantes presentados, pudimos conocer los rangos aproximados del protocolo sin pérdidas de paquetes ni delay dentro de una LAN, necesarios para los análisis posteriores.
 
-Para las experimentaciones que siguen, corrimos el protocolo en una LAN conformada por dos computadoras, siendo una utilizada como servidor y la otra como cliente.
+Para las experimentaciones que siguen, corrimos el protocolo en una LAN conformada por dos computadoras, siendo una utilizada como servidor y la otra como cliente. 
+Con el fin de lograr una clara presentación de los resultados, decidimos utilizar la función ``surf'' de $matlab$ que permite graficar superficies tridimensionales diferenciando los valores de la variable $z$ con colores para una mejor distinción de los mismos.
 
 \newpage
 \subsection{Comparación entre el RTO y el RTT ``real''}
@@ -443,9 +444,9 @@ Los resultados de dichas experimentaciones fueron los siguientes:
 \end{center}
 \end{figure}
 
-Se puede observar que con pérdidas de paquetes del 20\% y 50\%, no se pueden determinar patrones claros en la cantidad de retransmisiones en función de $\alpha$ y $\beta$. Luego, podemos determinar que dichos valores no afectan la cantidad de retransmisiones de paquetes.
+Se puede observar que, con pérdidas de paquetes del 20\% y 50\%, no se pueden determinar patrones claros en la cantidad de retransmisiones en función de $\alpha$ y $\beta$. Luego, podemos determinar que dichos valores no afectan la cantidad de retransmisiones de paquetes.
 
-Por otro lado, nos pareció interesante estudiar la cantidad de retransmisiones en casos con delay:
+A partir de dichos resultados, nos pareció que podríamos encontrar alguna diferencia relevante estudiando la cantidad de retransmisiones en casos con delay:
 
 \begin{figure}[H]
 \begin{center}
@@ -461,6 +462,7 @@ Por otro lado, nos pareció interesante estudiar la cantidad de retransmisiones 
 \end{center}
 \end{figure}
 
+En el caso anterior, se puede percibir que aplicando delay a los 30 paquetes intermedios en la transmisión de datos, la cantidad de retransmisiones en la mayoría de las variaciones de $\alpha$ y $\beta$ ronda el valor de 2, exceptuando los casos en los que $\alpha$=0, donde se alcanzan las 10 retransmisiones aproximadamente. En particular, con $\alpha$=0 y $\beta$=0 dicho valor llega a ser 22.
 
 \begin{figure}[H]
 \begin{center}
@@ -476,6 +478,7 @@ Por otro lado, nos pareció interesante estudiar la cantidad de retransmisiones 
 \end{center}
 \end{figure}
 
+En este caso, podemos observar que en los casos en los que se aplica delay a los primeros y últimos 30 paquetes, la cantidad de retransmisiones también se mantiene constante para la mayoría de los casos (rondando el valor de 7). Las particularidades se presentan cuando $\alpha$ o $\beta$ valen 0, caso en el que dicha cantidad es muy baja (del orden de 2).
 
 \begin{figure}[H]
 \begin{center}
@@ -491,6 +494,7 @@ Por otro lado, nos pareció interesante estudiar la cantidad de retransmisiones 
 \end{center}
 \end{figure}
 
+En este último caso, se midió la cantidad de retransmisiones para experimentaciones con delay en los últimos 50 paquetes por un lado, y en los primeros 50 por el otro. Se puede contemplar que, en ambos casos, la cantidad de retransmisiones rondan valores chicos (entre 2 y 5), a menos que $\alpha$ valga 0, en donde dichos valores ascienden a 10 en promedio. 
 %\begin{figure}[H]
 %\begin{center}
 %\includegraphics[width=17cm]{delay-50L-ret.png}
