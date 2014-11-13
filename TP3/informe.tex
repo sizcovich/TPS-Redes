@@ -131,7 +131,10 @@ class Socket(object):
 		self.protocol = PTCProtocol(ack_delay=ack_delay, ack_loss_probability=ack_loss_probability)
 \end{verbatim}
 
-Por motivos que desconocemos, los cambios presentados anteriormente no generaron el resultado esperado. Testeando las modificaciones con una probabilidad de 100\% de pérdida de paquetes (es decir, perdiendo todos los ACKs de los paquetes enviados) del cliente, seguíamos recibiendo ACKs del lado del servidor. Es por esto que decidimos no enviar los paquetes del cliente directamente con cierta probabilidad en vez de simularla perdiendo sus ACKs.
+Inesperadamente, los cambios presentados anteriormente no generaron el resultado esperado. Testeando las modificaciones con una probabilidad de 100\% de pérdida de paquetes (es decir, perdiendo todos los ACKs de los paquetes enviados) del cliente, seguíamos recibiendo ACKs del lado del servidor. 
+Analizando el código, encontramos que el error puede darse en la siguiente situación: el cliente envía un dato que el servidor recibe, pero cuyo ACK se pierde. Luego, el servidor lee del buffer de datos que tiene haciendo receive y liberándolo continuamente. Por último, comunica que se liberó con un ACK al cliente, pero entonces la pérdida del primer ACK no afecta en nada porque el segundo se envía.
+
+Es por esto que decidimos no enviar los paquetes del cliente directamente con cierta probabilidad en vez de simularla perdiendo sus ACKs.
 
 \subsection{Experimentación variando el porcentaje de envío de paquetes}
 Para tener la posibilidad de variar el porcentaje de paquetes enviados por el cliente, modificamos la función $send\_and\_queue$ dentro de la clase $PTCProtocol$ de la siguiente forma:
