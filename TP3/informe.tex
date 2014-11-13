@@ -513,7 +513,7 @@ Por otro lado, con respecto a los test realizados forzando la pérdida de paquet
 
 Del mismo modo, considerando un mayor incremento del delay en los tests, pasando de 0.8 segundos a 2 segundos de delay, no encontramos ningún cambio significativo en los resultados obtenidos.
 
-Por último, nos encontramos con gran frecuencia con el error ``[Errno 90] Message too long'' al correr el protocolo con pérdida de paquetes y delay. Creemos que éste se debe a que la configuración del maximum segment size en $constants.py$ es demasiado grande (MSS = 2*1024*1024). Al disminuir la cantidad de datos enviados en la conexión a 500 Bytes, encontramos una disminución de la frecuencia de aparición de dicho error.
+Por último, nos encontramos con gran frecuencia con el error ``[Errno 90] Message too long'' al correr el protocolo con pérdida de paquetes y delay. Al disminuir la cantidad de datos enviados en la conexión a 500 Bytes, encontramos una disminución de la frecuencia de aparición de dicho error. Sin embargo, creemos que este error podría arreglarse modificando el maximum segment size en $constants.py$ a un valor menor, como por ejemplo, 1024. 
 
 \section{Conclusiones}
 A partir de la experimentación realizada, pudimos ver qué valores de $\alpha$ y $\beta$ mejor aproximan al RTT del RTO y minimizan la cantidad de retransmisiones de los paquetes en un ambiente controlado.
