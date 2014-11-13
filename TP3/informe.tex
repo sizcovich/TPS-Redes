@@ -289,7 +289,16 @@ A partir del Flow Graph y de los valores resultantes presentados, pudimos conoce
 \newpage
 \subsection{Comparación entre el RTO y el RTT ``real''}
 
-En primer lugar, decidimos evaluar la diferencia entre el RTO medido y el RTT ``real''. Para esto, utilizamos los valores del Sampled RTT y del RTO del protocolo y realizamos la diferencia $|RTT-RTO|$. 
+En primer lugar, decidimos evaluar la diferencia entre el RTO medido y el RTT ``real''. 
+Para esto, se midieron los RTTs de las paquetes transmitidos durante una conexión, sin delay ni pérdidas de paquetes, para luego calcular el RTO en función de $\alpha$ y $\beta$.
+Para obtener el RTT se utilizó el valor del Sampled RTT del protocolo, y para el cáculo del RTO se abstrajo el mismo del código de PTC y se lo encapsuló en la clase $RTOcalculator$. De esta manera, pudimos comparar las variaciones del mismo en función de $\alpha$ y $\beta$ para una transmisión.
+
+Para la comparación del RTT contra el RTO, se utilizó la norma2 de vectores:
+$$ |RTT-RTO| = \sqrt{(RTT_1-RTO_1)^2+..+(RTT_n-RTO_n)^2} $$
+
+Por lo tanto, mientras menor sea el valor $|RTT-RTO|$, mejor va a ser la aproximación del RTO al RTT durante la duración de la conexión. 
+
+%Para esto, utilizamos los valores del Sampled RTT y del RTO del protocolo y realizamos la diferencia $|RTT-RTO|$. 
 Los resultados obtenidos luego de cada ejecución fueron los siguientes:
 
 \begin{figure}[H]
@@ -315,15 +324,9 @@ Dado que con $\beta$ = 0 $|RTT-RTO|$ es muy grande (del orden de 1.9) impidiendo
 \newpage
 \subsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ para un delay fijo}
 
-Por otra parte, nos pareció interesante evaluar el $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ para un delay fijo. Para esto, se midieron los RTTs de las paquetes transmitidos en una ejecución para luego simular el calculo de RTO en función de $\alpha$ y $\beta$.
-Para el cáculo del RTO, se abstrajo el mismo del código de PTC y se lo encapsuló en la clase $RTOcalculator$. De esta manera, pudimos comparar las variaciones del mismo en función de $\alpha$ y $\beta$ para una transmisión.
+Por otra parte, nos pareció interesante evaluar el $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ para un delay fijo. 
 
-Para la comparación del RTT contra el RTO, se utilizó la norma2 de vectores:
-$$ |RTT-RTO| = \sqrt{(RTT_1-RTO_1)^2+..+(RTT_n-RTO_n)^2} $$
-
-Por lo tanto, mientras menor sea el valor $|RTT-RTO|$, mejor va a ser la aproximación del RTO al RTT durante la duración de la conexión. 
-
-Las pruebas realizadas fueron las siguientes:
+Las pruebas realizadas fueron sobre una conexión donde se enviaron 100 paquetes de datos(sin tener en cuenta retransmisiones), y son  las siguientes:
 
 \subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes}
 En primer lugar, decidimos experimentar los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con 0.8 segundos de delay en los primeros 50 paquetes enviados por el cliente.
@@ -334,6 +337,10 @@ En primer lugar, decidimos experimentar los $|$RTT-RTO$|$ en función de $\alpha
 \caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros 50 paquetes.}
 \end{center}
 \end{figure}
+
+Podemos observar que la mayor diferencia entre los RTT y RTO se da para un valor chico de $\alpha$ (0.1) sin importar el valor de $\beta$.
+Por otro lado, podemos observar que la diferencia entre los RTT y RTO es menor cuando $\alpha$ ronda valores altos (entre 0.8 y 1) con un $\beta$ entre 0.3 y 0.6.
+Por último, notamos que el menor valor de $|$RTT-RTO$|$ se da con $\alpha$ $\in$ [0.9,1] y $\beta$ $\in$ [0.4,0.6].
 
 \subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los últimos 50 paquetes}
 Luego, realizamos la misma experimentación de los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con 0.8 segundos de delay pero en los últimos 50 paquetes enviados por el cliente.
@@ -352,6 +359,10 @@ Luego, realizamos la misma experimentación de los $|$RTT-RTO$|$ en función de 
 \end{center}
 \end{figure}
 
+Podemos observar que la mayor diferencia entre los RTT y RTO se da para un valor chico de $\alpha$ entre (0.1 y 0.2) y $\beta$ entre (0.1 y 1).
+Por otro lado, podemos observar que la diferencia entre los RTT y RTO es menor cuando $\alpha$ ronda valores altos en combinación con $\beta$ rondando valores chicos.
+Por último, notamos que el menor valor de $|$RTT-RTO$|$ se da con $\alpha$ $\in$ [0.8,1] y $\beta$ $\in$ [0.1,0.2].
+
 \subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes}
 Por otro lado, evaluamos las variaciones producidas al medir los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con 0.8 segundos de delay en los primeros y últimos 30 paquetes enviados por el cliente.
 
@@ -361,6 +372,10 @@ Por otro lado, evaluamos las variaciones producidas al medir los $|$RTT-RTO$|$ e
 \caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes.}
 \end{center}
 \end{figure}
+
+Podemos observar que la mayor diferencia entre los RTT y RTO se da para un valor chico de $\alpha$ entre (0.1 y 0.2) sin importar el valor de $\beta$.
+Por otro lado, podemos observar que la diferencia entre los RTT y RTO es menor cuando $\alpha$ ronda valores altos en combinación con $\beta$ rondando valores chicos.
+Por último, notamos que el menor valor de $|$RTT-RTO$|$ se da con $\alpha$ $\in$ [0.9,1] y $\beta$ $\in$ [0.2,0.4].
 
 
 \subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios}
@@ -379,6 +394,7 @@ Posteriormente, medimos los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con 
 %\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios.}
 %\end{center}
 %\end{figure}
+
 
 \subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes con delay de 2 segundos}
 Por último, decidimos variar el delay llevándolo a 2 segundos, y experimentar los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ en los primeros y últimos 30 paquetes enviados por el cliente.
@@ -416,7 +432,7 @@ Los resultados de dichas experimentaciones fueron los siguientes:
 \end{center}
 \end{figure}
 
-Se puede observar que con pérdidas de paquetes del 20\% y 50\%, no hay cambios significativos en la cantidad de retransmisiones en función de $\alpha$ y $\beta$. Luego, podemos determinar que dichos valores no afectan la cantidad de retransmisiones de paquetes.
+Se puede observar que con pérdidas de paquetes del 20\% y 50\%, no se pueden determinar patrones claros en la cantidad de retransmisiones en función de $\alpha$ y $\beta$. Luego, podemos determinar que dichos valores no afectan la cantidad de retransmisiones de paquetes.
 
 Por otro lado, nos pareció interesante estudiar la cantidad de retransmisiones en casos con delay:
 
