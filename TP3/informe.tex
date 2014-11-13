@@ -286,6 +286,9 @@ Promedio bytes/seg & 53874,025 & 156641,362 & \\
 
 
 A partir del Flow Graph y de los valores resultantes presentados, pudimos conocer los rangos aproximados del protocolo sin pérdidas de paquetes ni delay dentro de una LAN, necesarios para los análisis posteriores.
+
+Para las experimentaciones que siguen, corrimos el protocolo en una LAN conformada por dos computadoras, siendo una utilizada como servidor y la otra como cliente.
+
 \newpage
 \subsection{Comparación entre el RTO y el RTT ``real''}
 
@@ -499,6 +502,8 @@ Por otro lado, nos pareció interesante estudiar la cantidad de retransmisiones 
 \section{Análisis}
 En los gráficos de la sección anterior, pudimos observar que los mejores valores que aproximan el RTO del RTT son $ 0.8 \leq \alpha \leq 1$ y $ 0.3 \leq  \beta \leq 0.6$. Estos valores fueron los obtenidos en los test realizados agregando delay para simular congestión en la red.
 Sin embargo, en los experimentos realizados para medir la cantidad de retransmisiones, vimos que los mejores valores obtenidos para que ésta sea mínima es de $ 0.1 \leq \alpha \leq 0.3$ y $ 0.1 \leq  \beta \leq 0.3$.
+
+Por otro lado, nos encontramos con gran frecuencia con el error ``[Errno 90] Message too long'' al correr el protocolo con pérdida de paquetes y delay. Creemos que éste se debe a que la configuración del maximum segment size en $constants.py$ es demasiado grande (MSS = 2*1024*1024). Al disminuir la cantidad de datos enviados en la conexión a 500 Bytes, encontramos una disminución de la frecuencia de aparición de dicho error.
 
 \newpage
 \section{Conclusiones}
