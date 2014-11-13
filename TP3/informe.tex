@@ -462,7 +462,7 @@ A partir de dichos resultados, nos pareció que podríamos encontrar alguna dife
 \end{center}
 \end{figure}
 
-En el caso anterior, se puede percibir que aplicando delay a los 30 paquetes intermedios en la transmisión de datos, la cantidad de retransmisiones en la mayoría de las variaciones de $\alpha$ y $\beta$ ronda el valor de 2, exceptuando los casos en los que $\alpha$=0, donde se alcanzan las 10 retransmisiones aproximadamente. En particular, con $\alpha$=0 y $\beta$=0 dicho valor llega a ser 22.
+En el caso anterior, se puede percibir que aplicando delay a los 30 paquetes intermedios en la transmisión de datos, la cantidad de retransmisiones en la mayoría de las variaciones de $\alpha$ y $\beta$ ronda el valor de 2, exceptuando los casos en los que $\alpha$=0, donde se alcanzan las 10 retransmisiones aproximadamente. En particular, con $\alpha$=0 y $\beta$=0 dicho valor llega a ser 22.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -478,7 +478,8 @@ En el caso anterior, se puede percibir que aplicando delay a los 30 paquetes int
 \end{center}
 \end{figure}
 
-En este caso, podemos observar que en los casos en los que se aplica delay a los primeros y últimos 30 paquetes, la cantidad de retransmisiones también se mantiene constante para la mayoría de los casos (rondando el valor de 7). Las particularidades se presentan cuando $\alpha$ o $\beta$ valen 0, caso en el que dicha cantidad es muy baja (del orden de 2).
+En este caso, podemos observar que en los casos en los que se aplica delay a los primeros y últimos 30 paquetes, la cantidad de retransmisiones también se mantiene constante para la mayoría de los casos (rondando el valor de 7). Las particularidades se presentan cuando $\alpha$ o $\beta$ valen 0, caso en el que dicha cantidad es muy baja (del orden de 2).\\
+
 
 \begin{figure}[H]
 \begin{center}
@@ -504,15 +505,21 @@ En este último caso, se midió la cantidad de retransmisiones para experimentac
 
 \newpage
 \section{Análisis}
-En los gráficos de la sección anterior, pudimos observar que los mejores valores que aproximan el RTO del RTT son $ 0.8 \leq \alpha \leq 1$ y $ 0.3 \leq  \beta \leq 0.6$. Estos valores fueron los obtenidos en los test realizados agregando delay para simular congestión en la red.
-Sin embargo, en los experimentos realizados para medir la cantidad de retransmisiones, vimos que los mejores valores obtenidos para que ésta sea mínima es de $ 0.1 \leq \alpha \leq 0.3$ y $ 0.1 \leq  \beta \leq 0.3$.
+En los gráficos de la sección anterior, pudimos percibir que los valores que mejor aproximan el RTO del RTT son utilizando altos valores de $\alpha$ en combinación con bajos valores de $\beta$. En particular tomando $ \alpha \in [0.8,]1$ y $ \beta \in [0.3,0.6]$ obtenemos los mínimos valores. 
 
-Por otro lado, nos encontramos con gran frecuencia con el error ``[Errno 90] Message too long'' al correr el protocolo con pérdida de paquetes y delay. Creemos que éste se debe a que la configuración del maximum segment size en $constants.py$ es demasiado grande (MSS = 2*1024*1024). Al disminuir la cantidad de datos enviados en la conexión a 500 Bytes, encontramos una disminución de la frecuencia de aparición de dicho error.
+Sin embargo, en los experimentos realizados para medir la cantidad de retransmisiones, vimos que los valores que mejor resultados dan son aquellos donde $\alpha$ y $\beta$ son bajos. En particular, tomando $\alpha \in [0.1,0.3]$ y $\beta \in [0.1,0.3]$ obtenemos los mínimos de ellos.
+
+Por un lado, con respecto a los test realizados forzando la pérdida de paquetes, no pudimos encontrar una correlación entre los mismos y los valores de $\alpha$ y $\beta$.
+
+Por otra parte, considerando un mayor incremento del delay en los test, es decir, pasar de 0.8 segundos a 2 segundos de delay, no encontramos ningún cambio significativo en los resultados obtenidos.
+
+Por último, nos encontramos con gran frecuencia con el error ``[Errno 90] Message too long'' al correr el protocolo con pérdida de paquetes y delay. Creemos que éste se debe a que la configuración del maximum segment size en $constants.py$ es demasiado grande (MSS = 2*1024*1024). Al disminuir la cantidad de datos enviados en la conexión a 500 Bytes, encontramos una disminución de la frecuencia de aparición de dicho error.
 
 \newpage
 \section{Conclusiones}
-A partir de la experimentación realizada, pudimos ver qué valores de $\alpha$ y $\beta$ mejor aproximan al RTT del RTO y minimizan la cantidad de retransmisiones de los paquetes.
-Por otro lado, hallamos que dichos valores de $\alpha$ y $\beta$ son cercanos a los recomendados en el RFC-6298, por lo que concluimos que los mismos podrían haber sido elegidos a partir de las variables que se debieron analizar en el transcurso del trabajo práctico.
+A partir de la experimentación realizada, pudimos ver qué valores de $\alpha$ y $\beta$ mejor aproximan al RTT del RTO y minimizan la cantidad de retransmisiones de los paquetes en un ambiente controlado.
+
+Por otro lado, hallamos que dichos valores de $\alpha$ y $\beta$ son cercanos a los recomendados en el RFC-6298 en los test realizados en cuanto a cantidad de retransmisiones, por lo que concluimos que los mismos podrían haber sido elegidos priorizando la minimización de la cantidad de transmisiones en contra posición de minimizar la distancia del RTO al RTT. Lo cual tiene sentido ya que esto último ayudaría a disminuir y no generar mas congestión en una red que utilice el protocolo TCP.
 
 \section{Referencias}
 \begin{itemize}
