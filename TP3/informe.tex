@@ -394,6 +394,9 @@ Posteriormente, medimos los $|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con 
 %\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los 30 paquetes intermedios.}
 %\end{center}
 %\end{figure}
+Podemos observar que la mayor diferencia entre los RTT y RTO se da para un valor chico de $\alpha$ (0.1) sin importar el valor de $\beta$.
+Por otro lado, podemos observar que la diferencia entre los RTT y RTO es menor cuando $\alpha$ ronda valores altos en combinación con $\beta$ rondando valores chicos.
+Por último, notamos que el menor valor de $|$RTT-RTO$|$ se da con $\alpha$ $\in$ [0.9,1] y $\beta$ $\in$ [0.1,0.2].
 
 
 \subsubsection{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes con delay de 2 segundos}
@@ -412,6 +415,11 @@ Por último, decidimos variar el delay llevándolo a 2 segundos, y experimentar 
 %\caption{$|$RTT-RTO$|$ en función de $\alpha$ y $\beta$ con delay en los primeros y últimos 30 paquetes.}
 %\end{center}
 %\end{figure}
+
+Podemos observar que la mayor diferencia entre los RTT y RTO se da para un valor chico de $\alpha$ (0.1) sin importar el valor de $\beta$.
+Por otro lado, podemos observar que la diferencia entre los RTT y RTO es menor cuando $\alpha$ ronda valores altos en combinación con $\beta$ rondando valores chicos.
+Por último, notamos que el menor valor de $|$RTT-RTO$|$ se da con $\alpha$ $\in$ [0.9,1] y $\beta$ $\in$ [0.2,0.3].
+Estos resultados son similares a los realizados anteriormente con menor delay. Por lo que un incremento mayor del delay en la transmisión del paquete no afecta los resultados.
 
 \newpage
 \subsection{Cantidad de retransmisiones en función de $\alpha$ y $\beta$}
